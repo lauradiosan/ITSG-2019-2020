@@ -1,9 +1,9 @@
-#Analiza retelelor complexe
+# Analiza retelelor complexe
 
-##Obiective
+## Obiective
 Studiul proprietatilor si fenomenelor care apar in retelele complexe
 
-##TO DO list
+## TO DO list
 1. cum influenteaza tipul relatiilor dintre studenti definirea comunitatilor ce pot aparea in reteaua pe care o formeaza? (Exista mai mult tipuri de relatii in datasetul furnizat,  comunitatile create au o diveristate in tipurle relatiile ? Sau “cine se aseamana se aduna”?)
 	- dataset: http://networkrepository.com/soc-student-coop.php
 	- lucrare: http://www.ise.bgu.ac.il/faculty/fire/pdf/fire2012predicting.pdf
