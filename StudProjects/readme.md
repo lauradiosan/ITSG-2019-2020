@@ -1,8 +1,8 @@
 | Team   | Crt. No. | Last name     | First name       | Group            | Project                          |
 |--------|----------|---------------|------------------|------------------|----------------------------------|
-| team01 |   | Ivanov        | Silviu          | 258 | inima               |
+| team00 |   | Ivanov        | Silviu          | 258 | inima               |
 |        |   | Crisan        | Camelia         | 258 |                     |
-| team02 |   | Balanescu     | Bogdan          | 258 | emotion             |
+| team01 |   | Balanescu     | Bogdan          | 258 | emotion             |
 | team02 |   | Drimba        | Alexandru       | 258 | heart               |
 |        |   | Duma          | Iulia           | 258 |                     |
 |        |   | Cotutiu       | Ioana           | 258 |                     |
