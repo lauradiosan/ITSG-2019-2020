@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "facial-expression-recognition-tf", "facial-expression-recognition-tf\facial-expression-recognition-tf.pyproj", "{1133CC00-04C6-4B94-AF04-B90FB1CD4F15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1133CC00-04C6-4B94-AF04-B90FB1CD4F15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1133CC00-04C6-4B94-AF04-B90FB1CD4F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EEB0A2E-3314-4E26-91EC-D0070B5712D5}
+	EndGlobalSection
+EndGlobal
