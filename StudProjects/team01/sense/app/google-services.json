@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "316277038211",
+    "firebase_url": "https://ml-kit-tutorial-firebase.firebaseio.com",
+    "project_id": "ml-kit-tutorial-firebase",
+    "storage_bucket": "ml-kit-tutorial-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316277038211:android:2397e80f6a3cd068fd4fb6",
+        "android_client_info": {
+          "package_name": "com.example.bdaniel.sense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316277038211-nijbln015a727l1ske8am1dvn5n9noaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUd-qPVVUex_adCwLxP6TRN5j9f8kWOv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316277038211-nijbln015a727l1ske8am1dvn5n9noaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316277038211:android:abc1aed3910d9635fd4fb6",
+        "android_client_info": {
+          "package_name": "com.google.firebase.codelab.mlkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316277038211-nijbln015a727l1ske8am1dvn5n9noaf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUd-qPVVUex_adCwLxP6TRN5j9f8kWOv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316277038211-nijbln015a727l1ske8am1dvn5n9noaf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
