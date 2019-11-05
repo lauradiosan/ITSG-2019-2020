@@ -1,0 +1,7 @@
+.idea/*
+*.iml
+OpenFace/*
+logs
+test/AUs/*.csv
+test/AUs/*.txt
+test/images/*.jpg
