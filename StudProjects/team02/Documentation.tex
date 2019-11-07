@@ -1,0 +1,215 @@
+
+\documentclass[runningheads,a4paper,11pt]{report}
+
+\usepackage{algorithmic}
+\usepackage{algorithm} 
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{comment} 
+\usepackage{epsfig} 
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{geometry} 
+\usepackage{graphicx}
+\usepackage[colorlinks]{hyperref} 
+\usepackage{multicol}
+\usepackage{multirow} 
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+
+\geometry{a4paper,top=3cm,left=2cm,right=2cm,bottom=3cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{Project's name}
+\fancyhead[RE,LO]{Team's name}
+\fancyfoot[RE,LO]{ITSG 2019-2020}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \footrulewidth\hfill}}
+
+\hypersetup{
+pdftitle={artTitle},
+pdfauthor={name},
+pdfkeywords={pdf, latex, tex, ps2pdf, dvipdfm, pdflatex},
+bookmarksnumbered,
+pdfstartview={FitH},
+urlcolor=cyan,
+colorlinks=true,
+linkcolor=black,
+citecolor=green,
+}
+% \pagestyle{plain}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\linespread{1}
+
+% \pagestyle{myheadings}
+
+\makeindex
+
+
+\begin{document}
+
+\begin{titlepage}
+\sloppy
+\begin{center}
+BABE\c S BOLYAI UNIVERSITY, CLUJ NAPOCA, ROM\^ ANIA
+
+FACULTY OF MATHEMATICS AND COMPUTER SCIENCE
+
+\vspace{6cm}
+
+\Huge \textbf{Documentation}
+
+\vspace{1cm}
+
+\normalsize -- ITSG report --
+
+\end{center}
+
+
+\vspace{5cm}
+
+\begin{flushright}
+\Large{\textbf{Team members}}\\
+Cotu?iu Ioana, Software Engineering, 258 \\
+Drimba Alexandru, Software Engineering, 258 \\
+Duma Iulia Ana-Maria, Software Engineering, 258 \\
+Filipciuc Andreea, Software Engineering, 258 \\
+Gherghel Denisa-Maria, Software Engineering, 258 
+\end{flushright}
+
+\vspace{3cm}
+
+\begin{center}
+2019
+\end{center}
+
+\end{titlepage}
+
+\pagenumbering{gobble}
+
+% \maketitle           
+
+\begin{abstract}
+
+\end{abstract}
+
+\tableofcontents
+
+\newpage
+
+\chapter{Introduction}
+In the learning process carried out by a medical student, an application would be useful to visually represent relevant information about the studied organs and diseases. The purpose of this project is to design a program that will address this need, using artificial intelligence components. \hfill \break
+\\ Therefore, we will develop an application that will allow the visualization of an organ or its possible defects. Using an intelligent algorithm, the program will generate the desired output based on information taken from medical imaging. \hfill \break
+\\ The interpretations of medical data are being mostly done by medical experts. Since there is a rapid growth in medical images, the interpretations require even more extensive and tedious efforts by medical experts. Furthermore, the interpretation by a human expert is quite limited due to its subjectivity, the complexity of the image, extensive variations that exist across different interpreters, and fatigue. \hfill \break
+\\ Machine learning promises the potential to deal with big medical image data for accurate and efficient diagnosis. Artificial intelligence will not only help to select and extract features but also construct new ones. \break
+
+\chapter{The scientific problem}
+Computer-aided diagnostic systems have long been used by radiologists, mainly in chest x-ray and mammography applications. However, in recent years, the research on the application of AI in the medical field has been expanding. Therefore, the use of artificial intelligence in the field of radiology aims to reduce the rate of occurrence of errors due to fatigue, inattention, medical judgment. Due to its state as an assistant and not as a replacement for the specialist, AI can also be introduced in the academic field. Students can use AI to practice the theoretical notions learned in the courses. \hfill \break
+\\ From a formal point of view, the scientific purpose of this project is the analysis of medical images, namely segmentation, classification, and detection of defects in magnetic resonance imaging and computed tomographies. Our application must detect defects marked by different textures or hues of the pixels.
+
+
+\chapter{Related work}
+
+\section{Before AI}
+% 
+An attempt was made to introduce semi-automatic methods for the segmentation of medical images. These can be divided into several categories \cite{c2}: 
+\begin{enumerate}
+    \item atlas-based methods - this method requires the creation of masks by a human expert, masks that will be used for the segmentation of new images. This is usually done by looking for the correct alignment of the image with the mask, a process called image registration;
+    \item statistical models - this method obtains a parameterized model by using training data to learn how multiple organ-specific structures can vary. The correctness of this method depends on the accuracy of the data initialization and the presence of noise in training data;
+    \item deformable models - given an initial contour of the structure of interest, this method can evolve to fit the targeted structure as accurately as possible. This model does not require training data, nor prior knowledge, although it needs contour initialization and stopping criteria definition.
+\end{enumerate}
+These methods are semi-automatic and require initialization by a human expert, which leads to subjective errors. At the same time, they are dependent on several factors such as the size or the acquisition angle of the image. Those are prone to long periods of segmentation, overfitting and biased results.\hfill \break
+\\ To solve these shortcomings, automatic solutions were introduced, based on Artificial intelligence.
+
+\section{Machine Learning}
+
+In recent years, the focus of the researchers has shifted towards the application of artificial intelligence in the field of medical imaging. Deep learning algorithms, in particular, convolutional networks, have rapidly become a methodology of choice for analyzing medical images. These algorithms are extensively used to solve challenging tasks such as classification, segmentation and object detection. 
+
+\subsection{Convolutional Neural Networks} \hfill \break
+\\ \textit{Convolutional Neural Networks (CNN)} is one of the variants of neural networks used heavily in the field of Computer Vision. It derives its name from the type of hidden layers it consists of. The hidden layers of a CNN typically consist of convolutional layers, pooling layers, fully connected layers (also known as \textit{Fully Convolutional Neural Networks - FCN}), and normalization layers. 
+\subsubsection{\textbf{Algorithm}} \hfill \break
+Most of the papers that use CNN for medical image analysis propose a cascade structure. This structure involves the overlap of several neural networks, each of which will deal with a binary segmentation problem. This determines a piping mechanism through which the output of one network will be the input of the next. For example, such an approach is presented in the article \cite{c5} in which three networks are used to hierarchically and sequentially segment substructures of a brain tumor. The cascade helps to reduce false positives. \hfill \break
+\\In \cite{c5} the problem of high memory consumption in the case of 3D training images is also addressed. The proposed solution consists of an Anisotropic Convolutional Neural Networks, which basically uses an anisotropic kernel. These networks take a stack of slices as input with a large receptive field in 2D and a relatively small receptive field in the out-plane direction that is orthogonal to the 2D slices.
+\subsubsection{\textbf{Data}} \hfill \break
+\\ Multiple research centers provide datasets containing medical images available for the general public. These may be combined, for several organs, or might be specific for a particular organ. Depending on the problem studied, a certain type of dataset may be more useful. For example two organ-specific datasets are:
+
+\begin{enumerate}
+    \item\textit{ for the brain} - BraTS (Multimodal Brain Tumor Segmentation Challenge) data sets were used in several scientific articles, e.g.\cite{c5}, \cite{c3}. They are made available by the University of Pennsylvania and are updated annually with new medical images. The BraTS validation and testing sets contain images from patients with brain tumors of unknown grade. Each patient was scanned with four sequences: T1, T1C, T2, and FLAIR. All the images were skull-striped and re-sampled to an isotropic 1mm3 resolution, and the four sequences of the same patient had been co-registered. The ground truth was obtained by manual segmentation results given by experts;
+    \item \textit{for the liver} - the dataset 3DIRCAD is used in the article \cite{c1}. This dataset is composed of 3D CT-scans of women and men with hepatic tumors in 75\% of cases. For each patient there are several images in DICOM format, the labeled image corresponding to the various zones of interest segmented in DICOM format, a new set of images corresponding to the names of the various segmented zones of interest containing the DICOM image of each mask, and finally, all the files corresponding to surface meshes of the various zones of interest in VTK format.
+\end{enumerate}
+\subsubsection{\textbf{Results}} \hfill \break
+\\ To evaluate the performance of the algorithms, the researchers choose to use the Dice Similarity Coefficient. This is a statistical method used to determine the similarity between two samples. Namely, in the case of neural networks, it will quantify how closely the results of the algorithm matched the training dataset's hand-annotated ground truth segmentation. \hfill \break
+
+In \cite{c5}, the coefficient was calculated for three different levels of medical imaging, with enhanced tumor core, whole tumor, and tumor core. The proposed method achieves an average Dice scores of 82\%. A similar Dice score was achieved in \cite{c3} \hfill \break
+
+At \cite{c1} an average of 93.1\% is achieved for the Dice score. This score is compared with the results of the reference network UNet \cite{c4}, underlining the significant improvements in performance, with an increase of 20.2\%.  \hfill \break
+
+\subsubsection{\textbf{Tools}} \hfill \break
+\\ Some used tools are \textbf{Tensorflow2} and \textbf{NiftyNet} (in \cite{c5}) and \textbf{Pylearn2} library (in \cite{c3}). \hfill \break
+\subsection{Cellular Automata} \hfill \break
+\\They include an array of cells, where each cell can be in one of a finite number of possible states, which is updated synchronously in discrete time steps according to local transition rules. The state of a cell at the next time step is determined by its neighboring cell's current state. \hfill \break
+\subsubsection{\textbf{Algorithm}} \hfill \break
+The algorithm presented in \cite{c6} is based on a deterministic cellular automaton that is a dynamic model represented by an array of cells that evolve through a succession of states t, in the space of an N-dimensional image. At each evolution step, the function that determines the next state of the current cell (based on the states of the neighboring cells) is applied simultaneously in all the cells of the automaton. After a set of seed cells (a set of cells with label and strength) have been defined in a supervised or unsupervised manner, the automaton begins its evolution. \hfill \break
+\\The used segmentation seeds are chosen from the ground truth with a uniform probability distribution. Seed indices, for each dataset, are the same in every automaton variation.
+
+\subsubsection{\textbf{Data}} \hfill \break
+\\The data used in the article \cite{c6} for the test are BraTS (Multimodal Brain Tumor Segmentation Challenge) data sets (previously presented in 3.2.1). The difference is, however, the fact that the data was modified before the actual use by adding a new class representing healthy brain tissue. The purpose of these changes was to avoid false-positive results.
+\subsubsection{\textbf{Results}} \hfill \break
+\\For the evaluation of the results, the same Dice coefficient was used ( also described in 3.2.1). The proposed method achieves an average Dice score of 94.97\% for simulation data and 92.57\% for clinical data. The method proposed in this paper achieves 5-10\% better results than the standard methods.  \hfill \break
+
+\subsubsection{\textbf{Tools}} \hfill \break
+\\Parallel Computing and Image Processing toolboxes were used to develop the algorithm in \cite{c6}. The algorithm is running on GPU and was implemented in Matlab using CUDA and CUDA kernels.
+
+\chapter{Application requirements}
+The main functionalities of the developed application are described below:
+\begin{enumerate}
+    \item The user should be able to upload the medical image, which the system will then display;
+    \item The user should be able to view the image from all angles and enhance it on a specific point;
+    \item The system should be able to generate the image labels;
+    \item The user should be able to view the image with the labels overlayed;
+    \item The system should be able to detect the existence of a defect (abnormality) in the given image.
+\end{enumerate}
+
+\clearpage{}
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+
+% Find from the left the folder bibliography/ and locate first.bib. you
+% can generate your bibtex references using citethisforme and paste it inside the first.bib file
+% to cite a bibliography, use \cite{bisht_hinrichs_skrupsky_venkatakrishnan_2014} (example)
+% those are citations embedded to texts
+% please check out https://www.latex-tutorial.com/tutorials/bibtex/
+
+\begin{thebibliography}{first}
+\bibliographystyle{splncs04}
+    \bibitem{c1} Christ, P. F., Elshaer, M. E. A., Ettlinger, F., Tatavarty, S., Bickel, M., Bilic, P., Remper, M., Armbruster, M., Hofmann, F., D’Anastasi, M.: Automatic liver and lesion segmentation in CT using cascaded fully convolutional neural networks and 3D conditional random fields.In: MICCAI, Vol. 9901, pp. 415–423 (2016)
+    \bibitem{c2} Dolz, J., Desrosiers, C., Ben Ayed, I. 3D fully convolutional networks for subcortical segmentation in MRI: A large-scale study.In: NeuroImage. 170 (2017)
+    \bibitem{c3} Havaei, M.; Davy, A.; Warde-Farley, D.; Biard, A.; Courville, A.; Bengio, Y.; Larochelle, H.: Brain tumor segmentation with deep neural networks.In: MIA, 35, pp. 18–31 (2017)
+    \bibitem{c4} Ronneberger,  O., Fischer, P., Brox, T.: U-net:  Convolutional  networks  for biomedical image segmentation.In: MICCAI, vol. 9351, pp. 234–241 (2015)
+    \bibitem{c5} Wang, G., Li W., Ourselin, S., Vercauteren, T.: Automatic Brain Tumor Segmentation using Cascaded Anisotropic Convolutional Neural Networks.9 2017
+    \bibitem{c6} Rueda-Toicen, A., Carmona, R., Martín-Landrove, M., Torres, W.: Evolution Rules of Deterministic Cellular Automata for Multichannel Segmentation of Brain Tumors in MRI  (2014)
+\end{thebibliography}
+\end{document}
