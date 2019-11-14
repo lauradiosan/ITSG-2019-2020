@@ -6,7 +6,7 @@ Proiectul pe care trebuie să-l realizaţi este o oportunitate de a explora o pr
 **Lista proiectelor:**
 1. [Asistent Automat pentru un student la medicina](Projects/MedicalAssistant/readme.md)
 2. [Detectia emotiilor in comportamentul prescolarilor](Projects/EmotionKids/readme.md)
-3. [Sistem automat de asistenta auto](Projects/DrivingAssistance/readme.md)
+3. [Sistem automat de asistenta auto](Projects/DriverAssistance/readme.md)
 4. [Automatizarea planificarii vacantelor](Projects/HollydayPlanner/readme.md)
 5. [Analiza retelelor complexe](Projects/Networks/readme.md)
 6. [Asistent Automat pentru un student la istorie-arheologie](Projects/History/readme.md)
