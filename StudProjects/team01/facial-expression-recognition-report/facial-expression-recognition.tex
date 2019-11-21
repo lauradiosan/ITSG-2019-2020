@@ -21,6 +21,7 @@
 \usepackage{rotating}
 \usepackage{setspace}
 \usepackage{subfigure}
+\usepackage{todonotes}
 \usepackage{url}
 \usepackage{verbatim}
 \usepackage{xcolor}
@@ -227,7 +228,7 @@ In this section we present a few methods utilized in order to solve the Facial E
 \begin{itemize}
 	\item \textbf{\emph{What kind of data did they use?}} Coefficients describing elements of facial expressions (as features) and a range of seven emotional states (as labels). The emotional states detected are: neutral, joy, sadness, surprise, anger, fear, disgust.
 	\item \textbf{\emph{How does their model(s) work?}} Using Microsoft Kinect 3D for face modeling, they were able to extract 3D models of the face as 3D points, but Kinect 3D also can extract Action Units (AC) based on those points, which basically represent certain features of the face. Choosing 6 of those Action Units (upper lip raising, jaw lowering, lip stretching, lowering eyebrows, lip corner depressing, outer brow raising) they were able to train a 3-NN and an MLP classifier in order to solve the FER problem.
-	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%.
+	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%.\todo{please indicate the dataset used for obtaining these performances}
 \end{itemize}
 
 \textbf{Second}, let us look at \cite{Samadiani19}, where three significant challenges in FER are discussed: illumination variation, head pose and subject-dependence. We shall focus on the ones that target visual-only databases.
@@ -293,7 +294,7 @@ In this chapter, we analyze the achieved results for the proposed algorithm usin
 The independent variables we are experimenting with are the learning rate, and the loss function.\\
 The dependent variables will be the weights of the model.\\
 For our first attempt, we have uesd the whole FER-2013 dataset, and obtained a validation accuracy of 65\%, and for the next attempts we shall only use the Training pictures from the FER-2013 dataset, and it will also enable us to compute the precision for the Public Test set nad Private Test set of the FER-2013 dataset.\\
-We also compute the precision against the CK+ emotion dataset and present the results here.
+We also compute the precision against the CK+ emotion dataset and present the results here.\todo{here, the classifier was trained on FER and test on CK+ or it was trained from scratch by using CK+ data?}
 
 \section{Obtained results}
 \label{section:or}
@@ -608,6 +609,10 @@ When testing the model against photos from the CK+ dataset, the ones we saw that
 Perhaps, a more valid dataset is needed in order to achieve true and better results.\\
 Another observation could be that training with a high learning rate from the beginning may cause the model to reach a plateau much sooner. Lowering the learning rate seems to delay that.\\
 Also, training with a different loss function, yielded improvements in the model later on (as in later epochs) as well, instead of stopping to learn since epoch 70-90, like with the proposed loss function. Experimentation with other different loss functions could prove useful.
+\todo{because you state about a real-time approach, some statistics about the average testing time (per image or per dataset) could be added}
+\todo{you can try to train the model by using the square hinge loss}
+\todo{you can try to augment the training data (by variuos operations)
+
 
 \chapter{Conclusion and future work}
 \label{chapter:concl}
