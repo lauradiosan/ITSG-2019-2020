@@ -12,6 +12,7 @@ from keras.layers import Input
 from keras.layers import MaxPooling2D
 from keras.layers import SeparableConv2D
 from keras import layers
+from keras import losses
 from keras.regularizers import l2
 import pandas as pd
 import cv2
@@ -98,7 +99,8 @@ x = GlobalAveragePooling2D()(x)
 output = Activation('softmax',name='predictions')(x)
  
 model = Model(img_input, output)
-model.compile(optimizer='adam', loss='categorical_crossentropy',metrics=['accuracy'])
+#model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss=losses.MeanSquaredError(), metrics=['accuracy'])
 model.summary()
  
 # callbacks
