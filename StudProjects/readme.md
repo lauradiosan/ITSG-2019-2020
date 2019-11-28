@@ -1,5 +1,5 @@
-| Team   | Crt. No. | Last name     | First name       | Group            | Project                          | Pres date |
-|--------|----------|---------------|------------------|------------------|----------------------------------| |
+| Team   | Crt. No. | Last name     | First name       | Group            | Project                          | Pres date (5dec/12dec/17dec/16ian) |
+|--------|----------|---------------|------------------|------------------|----------------------------------| ----------|
 | team00 |   | Ivanov        | Silviu          | 258 | inima               ||
 |        |   | Crisan        | Camelia         | 258 |                     ||
 | team01 |   | Balanescu     | Bogdan          | 258 | emotion             ||
