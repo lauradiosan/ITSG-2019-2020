@@ -21,7 +21,7 @@
 |        |   | Vlad          | Cristina        | 258 |                     ||
 |        |   | Truta         | Diana           | 258 |                     ||
 |        |   | Igna          | Darius          | 258 |                     ||
-| team07 |   | Bartha        | Melania         | 254 | emotions            ||
+| team07 |   | Bartha        | Melania         | 254 | emotions            |19 dec|
 |        |   | Pirvu         | Alexandru       | 254 |                     ||
 | team08 |   | Jurja         | Alexandru Sorin | 258 | detectarea emotilor ||
 |        |   | Suciu         | Alexandra       | 258 |                     ||
