@@ -1,0 +1,74 @@
+INFO:niftynet:2019-12-01 19:14:16,427: set CUDA_VISIBLE_DEVICES to 0
+INFO:niftynet:2019-12-01 19:14:16,431: set initial_iter to 11 based on checkpoints
+INFO:niftynet:2019-12-01 19:14:16,432: starting segmentation application
+INFO:niftynet:2019-12-01 19:14:16,434: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv" instead.
+INFO:niftynet:2019-12-01 19:14:16,435: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv".
+INFO:niftynet:2019-12-01 19:14:16,439: [test-images] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv
+INFO:niftynet:2019-12-01 19:14:16,450: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv" instead.
+INFO:niftynet:2019-12-01 19:14:16,451: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv".
+INFO:niftynet:2019-12-01 19:14:16,452: [train-images] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv
+INFO:niftynet:2019-12-01 19:14:16,475: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv" instead.
+INFO:niftynet:2019-12-01 19:14:16,476: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv".
+INFO:niftynet:2019-12-01 19:14:16,478: [train-labels] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv
+WARNING:niftynet:2019-12-01 19:14:16,489: Loading from existing partitioning file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\dataset_split.csv, ignoring partitioning ratios.
+INFO:niftynet:2019-12-01 19:14:16,494: 
+
+Number of subjects 20, input section names: ['subject_id', 'test-images', 'train-images', 'train-labels']
+Dataset partitioning:
+-- training 10 cases (50.00%),
+-- validation 0 cases (0.00%),
+-- inference 10 cases (50.00%).
+
+CRITICAL:niftynet:2019-12-01 19:14:16,545: Reader required input section name [train-images], but in the filename list the column is empty.
+CRITICAL:niftynet:2019-12-01 19:14:16,545: file_list parameter should be a pandas.DataFrame instance and has input section name [train-images] as a column name.
+CRITICAL:niftynet:2019-12-01 19:14:16,548: Reader requires section(s): ['train-images']
+CRITICAL:niftynet:2019-12-01 19:14:16,551: Configuration input sections are: ['subject_id', 'test-images', 'train-images', 'train-labels']
+INFO:niftynet:2019-12-01 19:14:36,614: set CUDA_VISIBLE_DEVICES to 0
+INFO:niftynet:2019-12-01 19:14:36,617: set initial_iter to 11 based on checkpoints
+INFO:niftynet:2019-12-01 19:14:36,618: starting segmentation application
+INFO:niftynet:2019-12-01 19:14:36,619: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv" instead.
+INFO:niftynet:2019-12-01 19:14:36,620: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv".
+INFO:niftynet:2019-12-01 19:14:36,622: [test-images] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\test-images.csv
+INFO:niftynet:2019-12-01 19:14:36,629: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv" instead.
+INFO:niftynet:2019-12-01 19:14:36,630: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv".
+INFO:niftynet:2019-12-01 19:14:36,633: [train-images] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-images.csv
+INFO:niftynet:2019-12-01 19:14:36,641: `csv_file = ` not found, writing to "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv" instead.
+INFO:niftynet:2019-12-01 19:14:36,642: Overwriting existing: "C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv".
+INFO:niftynet:2019-12-01 19:14:36,643: [train-labels] search file folders, writing csv file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\train-labels.csv
+WARNING:niftynet:2019-12-01 19:14:36,654: Loading from existing partitioning file C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\dataset_split.csv, ignoring partitioning ratios.
+INFO:niftynet:2019-12-01 19:14:36,659: 
+
+Number of subjects 20, input section names: ['subject_id', 'test-images', 'train-images', 'train-labels']
+Dataset partitioning:
+-- training 10 cases (50.00%),
+-- validation 0 cases (0.00%),
+-- inference 10 cases (50.00%).
+
+INFO:niftynet:2019-12-01 19:14:36,765: Image reader: loading 10 subjects from sections ('test-images',) as input [image]
+INFO:niftynet:2019-12-01 19:14:36,769: training normalisation histogram references for image:{'test-images'}, using 10 subjects
+WARNING:niftynet:2019-12-01 19:15:21,138: moved existing histogram reference file
+ from C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\histogram_ref_file.txt to C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\histogram_ref_file.txt.backup
+INFO:niftynet:2019-12-01 19:15:24,291: reading size of preprocessed images
+WARNING:niftynet:2019-12-01 19:15:24,293: sampler queue_length should be larger than batch_size, defaulting to batch_size * 5.0 (10).
+INFO:niftynet:2019-12-01 19:15:24,298: initialised resize sampler {'image': (1, 144, 144, 144, 1, 1), 'image_location': (1, 7)} 
+INFO:niftynet:2019-12-01 19:15:24,312: using DenseVNet
+INFO:niftynet:2019-12-01 19:15:24,375: Initialising Dataset from 10 subjects...
+INFO:niftynet:2019-12-01 19:15:28,466: Restoring parameters from C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\models\model.ckpt-11
+INFO:niftynet:2019-12-01 19:15:58,275: inference iter 0,  (29.255785s)
+INFO:niftynet:2019-12-01 19:16:00,606: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat10__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:01,957: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat11__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:05,709: inference iter 1,  (3.748977s)
+INFO:niftynet:2019-12-01 19:16:07,186: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat12__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:10,317: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat13__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:35,852: inference iter 2,  (25.531575s)
+INFO:niftynet:2019-12-01 19:16:37,447: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat14__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:42,024: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat15__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:52,331: inference iter 3,  (10.306447s)
+INFO:niftynet:2019-12-01 19:16:53,826: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat16__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:16:55,899: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat17__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:17:13,091: inference iter 4,  (17.189045s)
+INFO:niftynet:2019-12-01 19:17:15,022: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat18__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:17:17,241: Saved C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models\testing\window_seg_pat19__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-01 19:17:17,262: cleaning up...
+INFO:niftynet:2019-12-01 19:17:17,263: stopping sampling threads
+INFO:niftynet:2019-12-01 19:17:17,338: SegmentationApplication stopped (time in second 109.61).
