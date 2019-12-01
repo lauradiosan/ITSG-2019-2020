@@ -1,0 +1,63 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ margin=1.9cm,
+ bottom=5cm,
+ }
+\title{Autonomous assistant for medical student}
+\author{Crișan Camelia Daniela, Ivanov Silviu-Gabriel}
+
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem Statement}
+ The purpose of the application is to facilitate the activity of learning the heart, of the medical students. This application will be a web application, in this way this will be accessed by every student from any device. As main functionality, the student will be able to insert an MRI (in nifty format), and as a result the student will be able to see in a 3D view the delimitation of the heart. \par
+The MRI scans are gray-scale and very noisy, with a lot of organs, for the delimitation of the heart and the chambers, a specialized doctor is needed. When a medical student starts to learn about heart and its chambers, he needs a lot of research and a doctor to show him where exactly is everything. Therefore, we are trying to replace the specialized doctor by automating the whole process of segmentation.
+\section*{Related Work \& Useful tools}
+\begin{itemize}
+\item NiftyNet - deep learning library for medical imaging \url{https://niftynet.io/}
+\item Mango -viewer for medical images \url{http://ric.uthscsa.edu/mango/}
+\item Anaconda- open source python distribution for large-scale data processing  \url{https://www.anaconda.com/}
+\end{itemize}
+\section*{Intelligent Algorithm}
+\begin{itemize}
+    \item The algorithm is capable from a scan to isolate the heart from an abdominal MRI scan, in order to achieve this, we implemented a neuronal network that can train on various number of MRI scans, that are already labeled by professional doctors.
+\end{itemize}
+\section*{Implementation}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{\scalebox{0.5}{$\blacksquare$}}
+\begin{itemize}
+    \item Fully convolutional neuronal network
+    \item NiftyNet network
+    \item The network is composed by two paths the compression path and the decompression path until original size is reached
+    \item Convolutions are performed in each stage using volumetric kernels with 5x5x5 voxels
+    \item The algorithm was trained with CUDA on the GPU
+    \item Creating an anaconda environment for development
+    \item Processing \& Training:
+    \begin{itemize}
+        \item Input is a set of nifty images, format via NiBabel library
+        \item The system, sets the CUDA visible devices, and queue length for network
+        \item Network is the intelligent module of the application
+        \item Loss function type is Dice
+        \item Data-set is 80\% training and 20\% validation
+        \item Seeking for 3 classes 
+        \item Data augmentation:
+        \begin{itemize}
+            \item A random angle is computed and applied for each axis
+            \item Flipping axes
+            \item Random scaling on volumes
+        \end{itemize}
+    \end{itemize}
+    \item TensorBoard used for loss graphs
+    \item Loss example:
+\end{itemize}
+\end{document}

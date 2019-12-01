@@ -1,4 +1,4 @@
-Input params at 2019-12-01 19:29:00.
+Input params at 2019-12-01 19:52:19.
 [CUSTOM]
 -- num_classes: 3
 -- output_prob: False
@@ -13,15 +13,15 @@ Input params at 2019-12-01 19:29:00.
 -- do_mixup: False
 -- mixup_alpha: 0.2
 -- mix_match: False
--- image: ('train-images',)
--- weight: ()
--- value: ()
--- sampler: ()
 -- label: ('train-labels',)
 -- inferred: ()
+-- value: ()
+-- sampler: ()
+-- weight: ()
+-- image: ('train-images',)
 -- name: net_segment
 [CONFIG_FILE]
--- path: D:\LauraDiosan\StudProjects\team00\Algorithm\training-config.ini
+-- path: D:\ITSGFork\StudProjects\team00\Algorithm\training-config.ini
 [TEST-IMAGES]
 -- csv_file: 
 -- csv_data_file: 
@@ -65,7 +65,7 @@ Input params at 2019-12-01 19:29:00.
 -- cuda_devices: 0
 -- num_threads: 2
 -- num_gpus: 1
--- model_dir: D:\LauraDiosan\StudProjects\team00\Algorithm\models
+-- model_dir: D:\ITSGFork\StudProjects\team00\Algorithm\models
 -- dataset_split_file: ./models/dataset_split.csv
 -- event_handler: ('model_saver', 'model_restorer', 'sampler_threading', 'apply_gradients', 'output_interpreter', 'console_logger', 'tensorboard_logger', 'performance_logger')
 -- iteration_generator: iteration_generator
