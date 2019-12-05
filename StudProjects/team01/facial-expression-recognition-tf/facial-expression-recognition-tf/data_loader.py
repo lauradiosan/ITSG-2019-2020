@@ -4,8 +4,9 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
  
-dataset_path = 'fer2013/private_test_fer2013.csv'
-#dataset_path = 'ck+-convertion/img_pixels.csv'
+#dataset_path = 'fer2013/private_test_fer2013.csv'
+dataset_path = 'ck+-convertion/img_pixels.csv'
+#dataset_path = 'ck+-convertion/ck+64.csv'
 image_size=(48,48)
  
 def load_fer2013():
@@ -16,7 +17,7 @@ def load_fer2013():
     for pixel_sequence in pixels:
         face = [int(pixel) for pixel in pixel_sequence.split(' ')]
         face = np.asarray(face).reshape(width, height)
-        face = cv2.resize(face.astype('uint8'),image_size)
+        face = cv2.resize(face.astype('uint8'), image_size)
         faces.append(face.astype('float32'))
     faces = np.asarray(faces)
     faces = np.expand_dims(faces, -1)
