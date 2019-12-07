@@ -1,8 +1,7 @@
-const urlProd = 'https://us-central1-soa-proj.cloudfunctions.net/';
-const urlDev = 'http://localhost:5000/soa-proj/us-central1/';
-const production = true;
+const urlProd = 'SET URL WHEN DEPLOYED TO PRODUCTION';
+const urlDev = 'http://localhost:5000/';
+const production = false;
 
 export const api = {
-    // retrieve "adoptability" service
+    getPrediction: () => `${production ? urlProd : urlDev}cnnclassifier/predict`
 };
-

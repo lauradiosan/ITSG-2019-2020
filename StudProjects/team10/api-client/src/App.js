@@ -2,6 +2,8 @@ import React, { useState, Fragment } from 'react'
 import AddPetForm from './forms/AddPetForm'
 import EditPetForm from './forms/EditPetForm'
 import PetTable from './tables/PetTable'
+import ItemService from "./api/itemApi";
+
 
 const App = () => {
 	// Data
@@ -11,6 +13,7 @@ const App = () => {
 	];
 
 	const initialFormState = { id: null, name: '', username: '' };
+	const [ itemsApi] = useState(new ItemService());
 
 	// Setting state
 	const [ pets, setPets ] = useState(petsData);
@@ -21,6 +24,16 @@ const App = () => {
 	const addPet = pet => {
 		pet.id = pets.length + 1;
 		setPets([ ...pets, pet ])
+	};
+
+	const getPred = () => {
+		const pathJson = {
+			'imgPath': "D:/Master/Sem3/ITSG/test4.jpg"
+		};
+		itemsApi.getPrediction(pathJson)
+			.then( (res) => {
+				console.log(res);
+			});
 	};
 
 	const deletePet = id => {
@@ -43,7 +56,7 @@ const App = () => {
 
 	return (
 		<div className="container">
-			<h1>Pet Finder CRUD</h1>
+			<h1>Pet Finder</h1>
 			<div className="flex-row">
 				<div className="flex-large">
 					{editing ? (
@@ -59,7 +72,7 @@ const App = () => {
 					) : (
 						<Fragment>
 							<h2>Add pet</h2>
-							<AddPetForm addPet={addPet} />
+							<AddPetForm addPet={addPet} getPrediction={getPred}/>
 						</Fragment>
 					)}
 				</div>

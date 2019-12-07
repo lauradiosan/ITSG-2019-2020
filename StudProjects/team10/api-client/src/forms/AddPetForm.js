@@ -17,6 +17,8 @@ const AddPetForm = props => {
 				if (!pet.name || !pet.age || !pet.description) return;
 				console.log(props);
 				props.addPet(pet);
+				// TODO: get the actual user input (image path)
+				props.getPrediction();
 				setPet(initialFormState)
 			}}
 		>
