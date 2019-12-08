@@ -6,17 +6,16 @@ class ItemService {
         console.debug(json);
         return fetch(api.getPrediction(), {
             method: "POST",
-            mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(json)
         })
             .then(response => {
-                console.log(response);
-                if (!response.ok) {
-                    this.handleResponseError(response);
-                }
+                // if (!response.ok) {
+                //     console.log("GRESIT");
+                //     this.handleResponseError(response);
+                // }
                 return response.json();
             })
             .catch(error => {
