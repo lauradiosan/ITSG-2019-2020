@@ -2,7 +2,7 @@
 |--------|----------|---------------|------------------|------------------|----------------------------------| ----------|
 | team00 |   | Ivanov        | Silviu          | 258 | inima               ||
 |        |   | Crisan        | Camelia         | 258 |                     ||
-| team01 |   | Balanescu     | Bogdan          | 258 | emotion             ||
+| team01 |   | Balanescu     | Bogdan          | 258 | emotion             | 19 dec |
 | team02 |   | Drimba        | Alexandru       | 258 | heart               |16 ian|
 |        |   | Duma          | Iulia           | 258 |                     ||
 |        |   | Cotutiu       | Ioana           | 258 |                     ||
