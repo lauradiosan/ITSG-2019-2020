@@ -1,4 +1,5 @@
-from flask import Flask, request
+from flask import Flask, request, Response, json
+from flask_cors import CORS
 from keras.models import load_model
 import tensorflow as tf
 import numpy as np
@@ -8,14 +9,16 @@ from PIL import Image
 from sklearn.externals import joblib
 
 app = Flask(__name__)
+CORS(app)
 
 cnn = load_model('pets_classification64pixels_15epochs.h5')
 clf = joblib.load('pets_mlp.pkl')
 
 @app.route('/cnnclassifier/predict', methods=['POST'])
 def predict():
+    data = request.get_json(force=True)
 	# run CNN Prediction
-    img_path = request.json['imgPath']
+    img_path = data['imgPath']
     img_path = 'D:/Master/Sem3/ITSG/' + img_path
     image = Image.open(img_path).convert('RGB')
     resized_image = image.resize((64, 64))
@@ -26,7 +29,6 @@ def predict():
     pred_cnn = np.argmax(cnn.predict(resized_image))
 
     # run MLP Prediction
-    data = request.json
     if 'imgPath' in data: 
     	del data['imgPath']
 
@@ -42,7 +44,7 @@ def predict():
     # combine the model results
     prediction = int((pred_cnn+pred_mlp)/2)
     data = {'result': prediction}
-    return flask.jsonify(data)
+    return Response(response=json.dumps(data), status=200, mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
