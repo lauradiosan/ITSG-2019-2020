@@ -12,10 +12,9 @@ class ItemService {
             body: JSON.stringify(json)
         })
             .then(response => {
-                // if (!response.ok) {
-                //     console.log("GRESIT");
-                //     this.handleResponseError(response);
-                // }
+                if (!response.ok) {
+                    this.handleResponseError(response);
+                }
                 return response.json();
             })
             .catch(error => {
