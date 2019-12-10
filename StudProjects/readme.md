@@ -8,7 +8,7 @@
 |        |   | Cotutiu       | Ioana           | 258 |                     ||
 |        |   | Gherghel      | Denisa          | 258 |                     ||
 |        |   | Filipciuc     | Andreea         | 258 |                     ||
-| team03 |   | Corman        | Robert          | 258 | emotion kids        ||
+| team03 |   | Corman        | Robert          | 258 | emotion kids        |16 ian|
 |        |   | Tigau-Almasan | Alexandra       | 258 |                     ||
 |        |   | Gorgos        | Andreea         | 258 |                     ||
 | team04 |   | Morariu       | Bogdan          | 258 | travel              ||
