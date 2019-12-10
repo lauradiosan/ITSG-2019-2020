@@ -1,7 +1,10 @@
 .idea/*
 *.iml
-OpenFace/*
+OpenFace/
 logs
-test/AUs/*.csv
-test/AUs/*.txt
-test/images/*.jpg
+test/
+train/
+out/
+data/
+CAFEdataset/*
+__pycache__

@@ -176,86 +176,33 @@ The chapter/section \ref{chapter:proposedApproach} details $\ldots$.
 \section{Problem definition}
 \label{section:problemDefinition}
 
-Give a description of the problem.
-Explain why it must be solved by an intelligent algorithm. 
-Details the advantages and/or disadvantages of solving the problem by a (some) given method(s).
+	For emotion recognition there is necessary to use different supervised machine learning algorithms in which a large set of annotated data is fed into the algorithms for the system to learn and predict the appropriate emotion types.  Machine learning algorithms generally provide more reasonable classification accuracy compared to other approaches, but one of the challenges in achieving good results in the classification process, is the need to have a sufficiently large training set.
+    
+	The intelligent algorithm we used is SVM (Support Vector Machine).
+    SVM is a supervised machine learning algorithm which can be used for both classification or regression challenges. However,  it is mostly used in classification problems. In this algorithm, we plot each data item as a point in n-dimensional space with the value of each feature being the value of a particular coordinate. Then, we perform classification by finding the hyper-plane that differentiate the two classes very well.
+    
+    In SVM, it is easy to have a linear hyper-plane between these two classes.  SVM has a technique called the kernel trick. These are functions which takes low dimensional input space and transform it to a higher dimensional space i.e. it converts not separable problem to separable problem, these functions are called kernels. It is mostly useful in non-linear separation problem. Simply put, it does some extremely complex data transformations, then find out the process to separate the data based on the labels or outputs you’ve defined. \cite{Ray17}
+    \begin{figure}
+    	\centerline{\includegraphics[width=8cm, height=8cm]{SVM}}
+   		\caption{Optimal Hyperplane using the SVM algorithm}
+    \end{figure}
+    
 
-Precisely define the problem you are addressing (i.e. formally specify the inputs and outputs). Elaborate on why this is an interesting and important problem.
-
-
-Item example: 
-
+Advantages:
 \begin{itemize}
-	\item content of item1
- 	\item content of item2
- 	\item content of item3
+	 {\color{blue}$\bullet$} SVM works relatively well when there is clear margin of separation between classes\\
+	{\color{blue}$\bullet$} SVM is more effective in high dimensional spaces\\
+	{\color{blue}$\bullet$} SVM is effective in cases where number of dimensions is greater than the number of samples\\
+	 {\color{blue}$\bullet$} SVM is relatively memory efficient\\
+\end{itemize}
+Disadvantages:
+\begin{itemize}
+ {\color{red}$\bullet$} SVM algorithm is not suitable for large data sets \\
+ {\color{red}$\bullet$} SVM does not perform very well, when the data set has more noise i.e. target classes are overlapping \\
+ {\color{red}$\bullet$} In cases where number of features for each data point exceeds the number of training data sample , the SVM will under perform \\
+ {\color{red}$\bullet$} As the support vector classifier works by putting data points, above and below the classifying hyper plane there is no probabilistic explanation for the classification \\
 \end{itemize}
 
-
-
-Figure example 
-
-$\ldots$ (see Figure \ref{swarmsize})
-
-\begin{figure}[htbp]
-	\centerline{\includegraphics{Fig/FitEvol.eps}}  
-	\caption{The evolution of the swarm size during the GA generations. This results were obtained for the $f_2$ test function with 5 dimensions.}
-	\label{swarmsize}
-\end{figure}
-
-
-Table example: (see Table \ref{tab3PSO})
-
-
-\begin{table}[htbp]
-	\caption{The parameters of the PSO algorithm (the micro level algorithm) used to compute the fitness of a GA chromosome.}
-	\label{tab3PSO}
-		\begin{center}
-			\begin{tabular}{p{220pt}c}
-
-				\textbf{Parameter}& \textbf{Value} \\
-				\hline\hline
- 				Number of generations& 50 \\
- 				Number of function evaluations/generation& 10 \\
- 				Number of dimensions of the function to be optimized& 5 \\
- 				Learning factor $c_{1}$& 2 \\
- 				Learning factor $c_{2}$ & 1.8\\
- 				Inertia weight& 0.5 + $\frac{rand()}{2}$\\
-		
-			\end{tabular}
-		\end{center}
-\end{table}
-
-Algorithm example 
-
-$\ldots$ (see Algorithm \ref{NGalg}).
-
-
-\algsetup{indent=1em, linenosize=\footnotesize}
-
-\begin{algorithm}
-	\caption{SGA - Spin based Genetic AQlgorithm}
-	\label{NGalg}
-		\begin{algorithmic}
-
-
-			\STATE \textbf{BEGIN}
-  		\STATE @ Randomly create the initial GA population.
-  		\STATE @ Compute the fitness of each individual.
-  		\FOR{i=1 TO NoOfGenerations}
-  			\FOR{j=1 TO PopulationSize}
-  				\STATE p $\leftarrow$ RandomlySelectParticleFromGrid();
-  				\STATE n $\leftarrow$ RandomlySelectParticleFromNeighbors(p);
-  				\STATE @ Crossover(p, n, off);
-  				\STATE @ Compute energy $\Delta H$
-  				\IF {$\Delta H$ satisfy the Ising condition}
-  					\STATE @ Replace(p,off);
-  				\ENDIF
-  			\ENDFOR
-  		\ENDFOR
-  		\STATE \textbf{END}
-\end{algorithmic}
-\end{algorithm}
 
 
 \chapter{State of art/Related work}
@@ -290,18 +237,12 @@ Useful tools:
 \begin{itemize}
 \item OpenCV (Open source computer vision) is a library of programming functions mainly aimed at real-time computer vision. With OpenCV we can detect landmarks of all the faces found in an image and use them further in emotion detection.
 \item Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN.
-\end{itemize}
-
-\textbf{Open Face}
-Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. Movements of individual facial muscles are encoded by FACS from slight different instant changes in facial appearance. Using FACS it is possible to code nearly any anatomically possible facial expression, deconstructing it into the specific Action Units (AU) that produced the expression. It is a common standard to objectively describe facial expressions.
-
-OpenFace is able to recognize a subset of AUs, specifically: 1, 2, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 20, 23, 25, 26, 28, and 45. \cite{Baltrusaitis18}
+\item \textbf{Open Face}Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. 
 
 \include{tableAU}
 
-\textbf{
-\section{Dataset}
-}
+\textbf{\section{Dataset}}
+{\subsection{Cohn-Kanade Dataset (CK+)}}
 We used for training the the Extended Cohn-Kanade Dataset (CK+).
 Facial behavior of 210 adults was recorded using two
 hardware synchronized Panasonic AG-7500 cameras. Participants
@@ -322,25 +263,49 @@ In this Phase there are 4 zipped up files. They relate to:
 3) The FACS coded files - for each sequence (593) there is only 1 FACS file, which is the last frame (the peak frame). Each line of the file corresponds to a specific AU and then the intensity. An example is given below.
 4) The Emotion coded files  - ONLY 327 of the 593 sequences have emotion sequences. This is because these are the only ones the fit the prototypic definition. Like the FACS files, there is only 1 Emotion file for each sequence which is the last frame (the peak frame). There should be only one entry and the number will range from 0-7 (i.e. 0=neutral, 1=anger, 2=contempt, 3=disgust, 4=fear, 5=happy, 6=sadness, 7=surprise).\cite{Lucey10}
 
-CAFE \cite{LoBue14}
+{\subsection{The Child Affective Facial Expression (CAFE) set}}
+CAFE database used for training.
+Participants: One hundred undergraduate students (half male, half female) from the Rutgers University-Newark campus participated (M =
+21.2 years). The sample was 17\% African
+American, 27\% Asian, 30\% White, and 17\% Latino (the remaining 9\% chose“Other” or did not indicate their race/ethnicity).
+\cite{LoBue14}
+The CAFE is a collection of photographs taken of 2 to 8 year-old children (M = 5.3 years; R = 2.7 – 8.7 years) posing for six emotional facial expressions based on Ekman and Friesen’s(1976) basic emotional expressions—sadness, happiness, surprise, anger, disgust, and fear—plus a neutral face. 
+In total, we had 154child-models (90 F, 64 M) pose each of these seven expressions. There was substantial variability across the faces, with a mean of 66\% accuracy across the 1192 photographs of the set, and a range of 0–98\% correct.
 
+{\subsection{EmoReact - video dataset}}
+EmoReact database used for testing.
+YouTube has become a significant source of video data where hundreds of hours of new videos are uploaded every minute . They have selected React channel from YouTube as the source from which we downloaded videos of children who are reacting to different subjects. These videos contain children between the ages of four to fourteen years old, from
+different races and both genders. They have downloaded videos of children reacting to 37 subjects that include food, technology, YouTube
+videos and gaming devices. 
+Dataset of 63 children from which 32 are female and 31 are male, total of 1254 video clips.\cite{Nojavanasghari16}
 
-\textbf{
-\section{Training}
-}
-Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN.
+ \begin{figure}
+    	\centerline{\includegraphics[width=12cm, height=4cm]{emoReact}}
+   		\caption{Number of videos containing each emotion
+and number of people who have expressed that emo-
+tion in EmoReact.\cite{Nojavanasghari16}}
+    \end{figure}
+   
 
-\subsection{Support vector machines
-}
-Using Scikit-learn's support vector machines.
+ \begin{figure}
+    	\centerline{\includegraphics[width=12cm, height=7cm]{emoReactRez}}
+   		\caption{Comparison between visual and acoustic models in predicting emotions.\cite{Nojavanasghari16}}
+    \end{figure}
+   
+  
+\textbf{\section{Training}}
+
+	Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. Movements of individual facial muscles are encoded by FACS from slight different instant changes in facial appearance. Using FACS it is possible to code nearly any anatomically possible facial expression, deconstructing it into the specific Action Units (AU) that produced the expression. It is a common standard to objectively describe facial expressions.
+OpenFace is able to recognize a subset of AUs, specifically: 1, 2, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 20, 23, 25, 26, 28, and 45. \cite{Baltrusaitis18} \\ \\Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN. \\
+\end{itemize}
 
 {
 \section{Testing and Results}
 }
-For an image give the emotion \\
-\includegraphics[width=6cm, height=5.5cm]{sad}
-SADNESS\\
 
+For videos from EmoReact 
+
+   
 
 
 \chapter{Application (numerical validation)}
