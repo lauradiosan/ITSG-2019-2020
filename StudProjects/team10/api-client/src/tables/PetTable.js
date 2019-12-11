@@ -7,6 +7,7 @@ const PetTable = props => (
         <th>Name</th>
         <th>Age</th>
         <th>Description</th>
+        <th>Adoptability</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -17,6 +18,11 @@ const PetTable = props => (
             <td>{pet.name}</td>
             <td>{pet.age}</td>
             <td>{pet.description}</td>
+            {pet.adoptabilityScore<2 ?
+            <td>HIGH ({pet.adoptabilityScore}) </td> : null}
+            {pet.adoptabilityScore>2 ?
+            <td>LOW ({pet.adoptabilityScore}) </td> :
+            <td>AVERAGE ({pet.adoptabilityScore}) </td>}
             <td>
               <button
                 onClick={() => {
