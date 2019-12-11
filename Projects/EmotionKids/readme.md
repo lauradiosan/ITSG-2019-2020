@@ -30,7 +30,7 @@ Succesul sau esecul unei aplicatii interactive este determinata de utilizabilita
 - FER https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/overview
 - CAFE (for kids) https://www.childstudycenter-rutgers.com/the-child-affective-facial-expression-se
 - EmoReact (for kids) [link spre date](http://www.cs.ubbcluj.ro/~lauras/test/docs/school/MIRPR/2019-2020/emoReact.zip) detalii despre date: Nojavanasghari, Behnaz, et al. "EmoReact: a multimodal approach and dataset for recognizing emotional responses in children." Proceedings of the 18th acm international conference on multimodal interaction. ACM, 2016.
-- UBB database [link spre date](http://www.cs.ubbcluj.ro/~lauras/test/docs/school/MIRPR/2019-2020/ubbKids.zip)
+- UBB database [link](http://www.cs.ubbcluj.ro/~lauras/test/docs/school/MIRPR/2019-2020/ubbKids.zip) [date noi](https://photos.app.goo.gl/sSPzhoBQF9n3Nm7cA)
 
 2. Recunoasterea fetei si emotii faciale 
 - http://www.consortium.ri.cmu.edu/index.php#projects
