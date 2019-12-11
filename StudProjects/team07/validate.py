@@ -1,30 +1,30 @@
 import subprocess
 
-import matplotlib.pyplot as plt
 from joblib import load
 
 from utils import *
 
-# clf = load('model/model_cafe')
-clf = load('model/model_ck')
+clf = load('model/model_cafe')
+# clf = load('model_ck')
 
 
-def generate_aus():
+def generate_aus(directory, file):
     out_dir = "./out/AUs"
-    out_file = "cam_vid"
-    program_bin = "./OpenFace/build/bin/FeatureExtraction"
+    out_file = os.path.join(directory, file) + ".csv"
+
+    programPath = "./OpenFace/build/bin/"
 
     # for windows users:
     # programPath = "OpenFace"
-    # cmdCommand = "cd "+programPath+" & "+"FaceLandmarkImg.exe -aus -out_dir ."+outDir+"  -f ."+imagePath +" > logs"
+    # cmdCommand = "cd "+programPath+" & "+"FaceLandmarkImg.exe -aus -out_dir ."+out_dir+"  -f ."+imagePath +" > logs"
 
-    subprocess.call([program_bin, '-aus', '-device', '0', '-out_dir', out_dir, '-of', out_file])
+    subprocess.call([programPath + 'FeatureExtraction', '-f', os.path.join(directory, file), '-out_dir', out_dir, '-of', out_file])
 
 
-def get_emotions():
+def get_emotions(directory, file):
     frame_emotions = []
     frame_timestamp = []
-    with open(os.path.join('./out/AUs/', "cam_vid.csv")) as fp:
+    with open(os.path.join('./out/AUs/', directory, file) + ".csv") as fp:
         column_names = fp.readline().split(", ")
         next(fp)
         for line in fp:
@@ -42,17 +42,14 @@ def get_emotions():
             predicted_emotion = clf.predict([aus])
             frame_emotions.append(predicted_emotion[0])
             frame_timestamp.append(float(column_values[2]))
-    last_second = np.ceil(frame_timestamp[-1])
-    plt.xticks(np.arange(0, last_second, last_second / 10))
-    plt.scatter(frame_timestamp[2:-1:20], frame_emotions[2:-1:20])
-    plt.show()
-    plt.hist(frame_emotions)
-    plt.show()
+    show_statistics(frame_timestamp, frame_emotions)
 
 
 def main():
-    generate_aus()
-    get_emotions()
+    directory = "data/emoreact/Data/Test"
+    file = "ANNOYING_ORANGE83_2.mp4"
+    generate_aus(directory, file)
+    get_emotions(directory, file)
 
 
 main()
