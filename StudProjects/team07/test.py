@@ -24,17 +24,12 @@ emoreact_emotion_names = [None, None, None, 'happy', 'surprise', 'disgust', 'fea
 def generate_aus(directory, file):
     out_dir = "./out/AUs"
     out_file = os.path.join(directory, file) + ".csv"
+    logs_file = open('./out/logs', 'w')
 
-    programPath = "./OpenFace/build/bin/"
-    logs_file = open('logs', 'w')
-    # for windows users:
-    # programPath = "OpenFace"
-    # cmdCommand = "cd "+programPath+" & "+"FaceLandmarkImg.exe -aus -out_dir ."+out_dir+"  -f ."+imagePath +" > logs"
-
-    subprocess.call([programPath + 'FeatureExtraction', '-aus', '-f', os.path.join(directory, file), '-out_dir', out_dir, '-of', out_file], stdout=logs_file)
+    subprocess.call([openface_path, '-aus', '-f', os.path.join(directory, file), '-out_dir', out_dir, '-of', out_file], stdout=logs_file)
 
 
-def get_emotions_from_video(directory, file, generate_statistics=False):
+def get_emotions_from_video(directory, file, clf, generate_statistics=False):
     frame_emotions = []
     frame_timestamp = []
     # generate_aus(directory, file)
@@ -53,7 +48,7 @@ def get_emotions_from_video(directory, file, generate_statistics=False):
                         if auStringNewFormat in all_aus:
                             index = all_aus.index(auStringNewFormat)
                             aus[index] = 1
-            predicted_emotion = ck_clf.predict([aus])
+            predicted_emotion = clf.predict([aus])
             frame_emotions.append(predicted_emotion[0])
             frame_timestamp.append(float(column_values[2]))
 
@@ -62,10 +57,10 @@ def get_emotions_from_video(directory, file, generate_statistics=False):
     return frame_emotions
 
 
-def get_top_emotions(file):
+def get_top_emotions(file, clf):
     directory = 'data/emoreact/Data/Train'
 
-    emotions = get_emotions_from_video(directory, file)
+    emotions = get_emotions_from_video(directory, file, clf)
     mode_top = max(set(emotions), key=emotions.count)
 
     emotions = list(filter(lambda x: x != mode_top, emotions))
@@ -85,7 +80,7 @@ def get_match(labeles, emotions):
     return match
 
 
-def test_on_emoreact(set):
+def test_on_emoreact(clf):
     matches = []
     labels_file_location = 'data/emoreact/Labels/train_labels.text'
     names_file_location = 'data/emoreact/Train_names.txt'
@@ -96,15 +91,13 @@ def test_on_emoreact(set):
     for index, line in enumerate(file_names_lines):
         file_name = line.replace('\'\'', '\'').replace('\n', '')[1:-1]
         print(file_name)
-        emotions = get_top_emotions(file_name)
+        emotions = get_top_emotions(file_name, clf)
         labels = labels_lines[index][0:15].split(',')
 
         match = get_match(labels, emotions)
         matches.append(match)
 
-    matches = [x if x != None else "None" for x in matches]
-    plt.hist(matches)
-    plt.show()
+    return ["Correct" if x == True else "Incorrect" if x == False else "N/A" for x in matches]
 
 
 def extract_emotion(path):
@@ -116,9 +109,9 @@ def extract_emotion(path):
 
 # S005_001_00000011_emotion.txt
 # S005_001_00000001.png
-def test_on_ck(path):
+def test_on_ck(clf):
     matches = []
-    for subdir, dirs, files in os.walk(path):
+    for subdir, dirs, files in os.walk('data/ck/Emotion/'):
         for file in files:
             emotion_path = os.path.join(subdir, file)
             emotion = ck_emotion_names[int(float(extract_emotion(emotion_path)))]
@@ -142,21 +135,17 @@ def test_on_ck(path):
                             if auStringNewFormat in all_aus:
                                 index = all_aus.index(auStringNewFormat)
                                 aus[index] = 1
-            predicted_emotion = ck_clf.predict([aus])[0]
+            predicted_emotion = clf.predict([aus])[0]
             match = predicted_emotion == emotion
-            matches.append(match)
-            if match == False:
-                print(emotion)
-                print(predicted_emotion)
-    print(matches.__len__())
-    print(matches.count(True))
-    print(matches.count(False))
+            matches.append(str(match))
+    return matches
 
 
-def main():
-    # ck_dir = 'data/ck/Emotion/'
-    # test_on_ck(ck_dir)
-    test_on_emoreact('')
+def test():
+    cafe_matches = test_on_emoreact(cafe_clf)
+    ck_matches = test_on_emoreact(ck_clf)
 
+    plt.hist([cafe_matches, ck_matches], label=['cafe', 'ck'])
 
-main()
+    plt.legend(loc='upper center')
+    plt.show()
