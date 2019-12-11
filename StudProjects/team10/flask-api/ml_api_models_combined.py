@@ -39,10 +39,14 @@ def predict():
     	clf_in[i] = data[col]
     	i += 1
     
-    pred_mlp = clf.predict([clf_in])
+    if (i<55):
+        prediction = int(pred_cnn)
+    else:
+        pred_mlp = clf.predict([clf_in])
 
-    # combine the model results
-    prediction = int((pred_cnn+pred_mlp)/2)
+        # combine the model results
+        prediction = int((pred_cnn+pred_mlp)/2)
+
     data = {'result': prediction}
     return Response(response=json.dumps(data), status=200, mimetype='application/json')
 
