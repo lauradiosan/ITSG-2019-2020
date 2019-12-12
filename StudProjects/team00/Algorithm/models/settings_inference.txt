@@ -1,4 +1,4 @@
-Input params at 2019-12-01 19:14:36.
+Input params at 2019-12-11 23:43:23.
 [CUSTOM]
 -- num_classes: 3
 -- output_prob: False
@@ -16,12 +16,12 @@ Input params at 2019-12-01 19:14:36.
 -- value: ()
 -- weight: ()
 -- sampler: ()
--- label: ('train-labels',)
 -- image: ('test-images',)
+-- label: ('train-labels',)
 -- inferred: ()
 -- name: net_segment
 [CONFIG_FILE]
--- path: C:\Users\Silviu\Desktop\HeartMRIValidationTraining\config.ini
+-- path: D:\ITSGFork\StudProjects\team00\Algorithm\inference-config.ini
 [TEST-IMAGES]
 -- csv_file: 
 -- csv_data_file: 
@@ -65,7 +65,7 @@ Input params at 2019-12-01 19:14:36.
 -- cuda_devices: 0
 -- num_threads: 2
 -- num_gpus: 1
--- model_dir: C:\Users\Silviu\Desktop\HeartMRIValidationTraining\models
+-- model_dir: D:\ITSGFork\StudProjects\team00\Algorithm\models
 -- dataset_split_file: ./models/dataset_split.csv
 -- event_handler: ('model_saver', 'model_restorer', 'sampler_threading', 'apply_gradients', 'output_interpreter', 'console_logger', 'tensorboard_logger', 'performance_logger')
 -- iteration_generator: iteration_generator
@@ -137,5 +137,5 @@ Input params at 2019-12-01 19:14:36.
 -- save_seg_dir: ./testing/
 -- output_postfix: _segmentation_niftynet
 -- output_interp_order: 0
--- border: (0, 0, 0)
+-- border: (30, 30, 30)
 -- fill_constant: 0.0
