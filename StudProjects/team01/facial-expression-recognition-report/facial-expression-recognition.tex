@@ -89,7 +89,13 @@ Face expression recognition for social good \\
 \end{center}
 
 
-\vspace{5cm}
+\vspace{4cm}
+
+\begin{flushleft}
+\Large{\textbf{Teacher}}\\
+Laura Dio\textcommabelow{s}an\\
+Intelligent Tools for Social Good
+\end{flushleft}
 
 \begin{flushright}
 \Large{\textbf{Author}}\\
@@ -97,7 +103,7 @@ Bogdan-Daniel B\u{a}l\u{a}nescu\\
 Software Engineering, 258-1
 \end{flushright}
 
-\vspace{4cm}
+\vspace{3cm}
 
 \begin{center}
 2019
@@ -108,7 +114,7 @@ Software Engineering, 258-1
 \pagenumbering{gobble}
 
 \begin{abstract}
-	This paper studies the problem of Face Expression Recognition (REC) in an attempt to build a tool that helps novice actors better analyze their performance and get real-time feedback to improve. Starting from the Convolutional Neural Network proposed in \cite{Arriaga17}, and trained on the FER-2013 emotion database, this paper attempts at improving the 66\% accuracy of the proposed algorithm. All the results and comparisons with other state of the art research will be presented in this paper, along with the implied conclusions. [\textbf{\emph{TODO}} - come back and revise the abstract after all the improvements are finished - real conclusions]
+	This paper studies the problem of Face Expression Recognition (REC) in an attempt to build a tool that helps novice actors better analyze their performance and get real-time feedback to improve. Starting from the Convolutional Neural Network proposed in \cite{Arriaga17}, and trained on the FER-2013 emotion database, this paper slightly improves the 66\% learning accuracy of the proposed algorithm to 68\%. An application, Acting Mirror, is proposed and presented in the last part of the paper, as well as all the results and comparisons with other state of the art research. In the conclusion, we see that the current study of FER is facing a few issues we raise from our study and we propose a few improvement action points that could be tackled in the future.
 \end{abstract}
 
 
@@ -210,8 +216,7 @@ Disadvantages of solving the problem with an intelligent algorithm:
 Short description of our initial approach:
 \begin{itemize}
 	\item From an existing dataset, FER-2013, which contains 35,887 48x48 pixel grayscale labeled images, 80\% of pictures were used for training, while the remaining 20\% were used for validation of the algorithm.
-	\item The model was trained locally using Keras on an i7-7500u and an NVIDIA Quadro M520 1GB. It took a little bit over 2 hours of training and the achieved validation accuracy was 65\%.
-	\item Another attempt at training the algorithm was made, using the CK+ dataset, which has only 327 emotion labeled pictures. We converted those pictures into 48x48 pixel grayscale format and passed them to the algorithm to train (with the same 80\%-20\% train-validation proportions) and the validation accuracy only reached 50\%. It was no wonder that it would be so low, but why not try? We decided that we would use the CK+ dataset only for validation, and not training.
+	\item The model was trained locally using Keras on an i7-7500u and an NVIDIA Quadro M520 1GB. It took a little bit over 2 hours of training and the achieved validation accuracy was 65\%. While doing the validation precision/accuracy test, it takes approximately 1 milliseconds for the model to analyze a 48x48 pixel grayscale image.
 \end{itemize}
 
 
@@ -226,9 +231,9 @@ In this section we present a few methods utilized in order to solve the Facial E
 
 \textbf{First}, we will take a look at \cite{Tarnowski17}, where the problem is solved using k-NN (Nearest Neighbors) and MLP (Multilayer Perceptron).
 \begin{itemize}
-	\item \textbf{\emph{What kind of data did they use?}} Coefficients describing elements of facial expressions (as features) and a range of seven emotional states (as labels). The emotional states detected are: neutral, joy, sadness, surprise, anger, fear, disgust.
+	\item \textbf{\emph{What kind of data did they use?}} Coefficients describing elements of facial expressions (as features) and a range of seven emotional states (as labels). The emotional states detected are: neutral, joy, sadness, surprise, anger, fear, disgust. The images they used were from the KDEF database.
 	\item \textbf{\emph{How does their model(s) work?}} Using Microsoft Kinect 3D for face modeling, they were able to extract 3D models of the face as 3D points, but Kinect 3D also can extract Action Units (AC) based on those points, which basically represent certain features of the face. Choosing 6 of those Action Units (upper lip raising, jaw lowering, lip stretching, lowering eyebrows, lip corner depressing, outer brow raising) they were able to train a 3-NN and an MLP classifier in order to solve the FER problem.
-	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%.\todo{please indicate the dataset used for obtaining these performances}
+	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%.
 \end{itemize}
 
 \textbf{Second}, let us look at \cite{Samadiani19}, where three significant challenges in FER are discussed: illumination variation, head pose and subject-dependence. We shall focus on the ones that target visual-only databases.
@@ -278,9 +283,9 @@ Starting from the Convolutional Neural Network proposed in \cite{Arriaga17} (and
 \end{center}
 \end{figure}
 
-We used the FER-2013 emotion database, which contains 35.887 48x48 pixel grayscale labeled images. 80\% of pictures were used for training, while the remaining 20\% were used for validation of the algorithm. The achieved results were a 65\% validation accuracy accros the proposed list of emotions: (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral).
-
-[\textbf{\emph{TODO}} - mention other results as well - like the CK+ validation result]
+We used the FER-2013 emotion database, which contains 35.887 48x48 pixel grayscale labeled images with the following emotions: (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral). Initially, we performed 7 training trials, one using original approach proposed in \cite{Arriaga17}, and then by changing the learning rate and the loss function during training.\\
+For the original approach proposed in \cite{Arriaga17}, we achieved a 65\% validation accuracy over the FER-2013 database (using all the 35.887 images), and a 76\% accuracy over the CK+ database using the same model trained on the FER-2013 database.\\
+From our other approaches, the fifth one achieved a 64\% validation accuracy over the FER-2013 dabase (using only 28.709 of the images), and a 79\% accuracy over the CK+ database using the same model trained on the FER-2013 database.
 
 
 \chapter{Application (numerical validation)}
@@ -294,11 +299,23 @@ In this chapter, we analyze the achieved results for the proposed algorithm usin
 The independent variables we are experimenting with are the learning rate, and the loss function.\\
 The dependent variables will be the weights of the model.\\
 For our first attempt, we have uesd the whole FER-2013 dataset, and obtained a validation accuracy of 65\%, and for the next attempts we shall only use the Training pictures from the FER-2013 dataset, and it will also enable us to compute the precision for the Public Test set nad Private Test set of the FER-2013 dataset.\\
-We also compute the precision against the CK+ emotion dataset and present the results here.\todo{here, the classifier was trained on FER and test on CK+ or it was trained from scratch by using CK+ data?}
+For comparison purposes between our models trained on the FER-2013 dataset, we also compute the precision for each model against the CK+ emotion dataset and present the results here.
 
 \section{Obtained results}
 \label{section:or}
-Our \textbf{\emph{first}} trial was using the whole FER-2013 database as training, split into 80\% training and 20\% validation sets. The result was a validation accuracy of 65\%, but a model that does not fair well against the CK+ dataset at all (well, except for the happy emotion). The learning rate was 0.1 (as proposed in the paper) and the loss function was the Categorical Crossentropy.
+\underline{\textbf{\emph{The first trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 35.887 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Categorical Crossentropy.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 65\%, and a 76\% accuracy on the CK+ dataset.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[scale=0.8]{Fig/fer_training_35k.pdf}
@@ -314,21 +331,33 @@ Our \textbf{\emph{first}} trial was using the whole FER-2013 database as trainin
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
 				\hline\hline
-				Angry& 0.16& 45 \\
-				Disgust& 0.00& 59 \\
-				Fear& 0.03& 25 \\
-				Happy& 0.68& 69 \\
-				Sad& 0.12& 28 \\
-				Surprise& 0.00& 83 \\
-				Neutral& 0.03& 1 \\
+				Angry& 0.30& 45 \\
+				Disgust& 0.91& 59 \\
+				Fear& 0.43& 25 \\
+				Happy& 0.94& 69 \\
+				Sad& 0.39& 28 \\
+				Surprise& 0.97& 83 \\
+				Neutral& 0.00& 1 \\
 				\hline
-				Weighted Average& 0.19
+				Weighted Average& 0.76& 310
 			\end{tabular}
 		\end{center}
 \end{table}
-\pagebreak
 
-Our \textbf{\emph{second}} attempt uses just the Training set of the FER-2013 dataset, split into 80\% training and 20\% validation sets. The result was a validation accuracy of 63\%, and a 43\% accuracy on the CK+ dataset (better ones for Happy and Surprise emotion). The learning rate was 0.1 (as proposed in the paper) and the loss function was the Categorical Crossentropy.
+\clearpage
+\underline{\textbf{\emph{The second trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Categorical Crossentropy.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 63\%, and a 76\% accuracy on the CK+ dataset.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[scale=0.8]{Fig/fer_training_28k_01.pdf}
@@ -344,15 +373,15 @@ Our \textbf{\emph{second}} attempt uses just the Training set of the FER-2013 da
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
 				\hline\hline
-				Angry& 0.19& 45 \\
-				Disgust& 0.00& 59 \\
-				Fear& 0.05& 25 \\
-				Happy& 0.52& 69 \\
-				Sad& 0.15& 28 \\
-				Surprise& 1.00& 83 \\
+				Angry& 0.21& 45 \\
+				Disgust& 1.00& 59 \\
+				Fear& 0.53& 25 \\
+				Happy& 0.91& 69 \\
+				Sad& 0.52& 28 \\
+				Surprise& 0.94& 83 \\
 				Neutral& 0.00& 1 \\
 				\hline
-				Weighted Average& 0.43
+				Weighted Average& 0.76& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -394,9 +423,21 @@ Our \textbf{\emph{second}} attempt uses just the Training set of the FER-2013 da
 			\end{tabular}
 		\end{center}
 \end{table}
-\pagebreak
 
-Our \textbf{\emph{third}} attempt uses just the Training set of the FER-2013 dataset, split into 80\% training and 20\% validation sets. The result was a validation accuracy of 63\%, and a 45\% accuracy on the CK+ dataset (better ones for Happy and Surprise emotion). The learning rate was 0.01 (smaller than proposed in the paper) and the loss function was the Categorical Crossentropy.
+\clearpage
+\underline{\textbf{\emph{The third trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Categorical Crossentropy.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.01.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a validation accuracy of 63\%, and a 60\% accuracy on the CK+ dataset.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[scale=0.8]{Fig/fer_training_28k_001.pdf}
@@ -412,15 +453,15 @@ Our \textbf{\emph{third}} attempt uses just the Training set of the FER-2013 dat
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
 				\hline\hline
-				Angry& 0.17& 45 \\
+				Angry& 0.25& 45 \\
 				Disgust& 0.00& 59 \\
-				Fear& 0.02& 25 \\
-				Happy& 0.62& 69 \\
-				Sad& 0.18& 28 \\
-				Surprise& 1.00& 83 \\
-				Neutral& 0.02& 1 \\
+				Fear& 0.80& 25 \\
+				Happy& 0.89& 69 \\
+				Sad& 0.54& 28 \\
+				Surprise& 0.95& 83 \\
+				Neutral& 0.00& 1 \\
 				\hline
-				Weighted Average& 0.45
+				Weighted Average& 0.60& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -462,10 +503,21 @@ Our \textbf{\emph{third}} attempt uses just the Training set of the FER-2013 dat
 			\end{tabular}
 		\end{center}
 \end{table}
-\pagebreak
 
-Seeing that our \textbf{\emph{third}} attempt was a little bit more successful than our \textbf{\emph{second}} attempt, for the \textbf{\emph{fourth}} attempt we decided to stick with the 0.01 learning rate, but to experiment with the loss function, changing it to the Mean Square Error. \\
-Our \textbf{\emph{fourth}} attempt still uses just the Training set of the FER-2013 dataset, split into 80\% training and 20\% validation sets. The result were a validation accuracy of 63\%, and a 42\% accuracy on the CK+ dataset (better ones for Happy and Surprise emotion). The learning rate was 0.01 (smaller than proposed in the paper) and the loss function was the Mean Squre Error.
+\clearpage
+\underline{\textbf{\emph{The fourth trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.01.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result were a validation accuracy of 63\%, and a 69\% accuracy on the CK+ dataset.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[scale=0.8]{Fig/fer_training_28k_001_mean_square.pdf}
@@ -481,15 +533,15 @@ Our \textbf{\emph{fourth}} attempt still uses just the Training set of the FER-2
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
 				\hline\hline
-				Angry& 0.13& 45 \\
-				Disgust& 0.00& 59 \\
-				Fear& 0.12& 25 \\
-				Happy& 0.49& 69 \\
-				Sad& 0.12& 28 \\
-				Surprise& 1.00& 83 \\
+				Angry& 0.23& 45 \\
+				Disgust& 0.67& 59 \\
+				Fear& 0.56& 25 \\
+				Happy& 0.85& 69 \\
+				Sad& 0.43& 28 \\
+				Surprise& 0.96& 83 \\
 				Neutral& 0.00& 1 \\
 				\hline
-				Weighted Average& 0.42
+				Weighted Average& 0.69& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -531,10 +583,21 @@ Our \textbf{\emph{fourth}} attempt still uses just the Training set of the FER-2
 			\end{tabular}
 		\end{center}
 \end{table}
-\pagebreak
 
-Since the model did not improve with our \textbf{\emph{fourth}} attempt, we decided to give it another go, and use the same Mean Square Error, but this time with a learning rate of 0.1. \\
-Out \textbf{\emph{fifth}} attempt still uses just the Training set of the FER-2013 dataset, split into 80\% training and 20\% validation sets. The result were a validation accuracy of 64\%, and a 37\% accuracy on the CK+ dataset (better ones for Happy, Surprise and Neutral emotion). The learning rate was 0.1 (as proposed in the paper) and the loss function was the Mean Squre Error.
+\clearpage
+\underline{\textbf{\emph{The fifth trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result were a validation accuracy of 64\%, and a 79\% accuracy on the CK+ dataset.
 \begin{figure}[htbp]
 \begin{center}
 	\includegraphics[scale=0.8]{Fig/fer_training_28k_01_mean_square.pdf}
@@ -550,15 +613,15 @@ Out \textbf{\emph{fifth}} attempt still uses just the Training set of the FER-20
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
 				\hline\hline
-				Angry& 0.16& 45 \\
-				Disgust& 0.00& 59 \\
-				Fear& 0.05& 25 \\
-				Happy& 0.52& 69 \\
-				Sad& 0.18& 28 \\
-				Surprise& 0.80& 83 \\
-				Neutral& 0.80& 1 \\
+				Angry& 0.21& 45 \\
+				Disgust& 1.00& 59 \\
+				Fear& 0.67& 25 \\
+				Happy& 0.94& 69 \\
+				Sad& 0.55& 28 \\
+				Surprise& 0.94& 83 \\
+				Neutral& 0.00& 1 \\
 				\hline
-				Weighted Average& 0.37
+				Weighted Average& 0.79& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -600,25 +663,750 @@ Out \textbf{\emph{fifth}} attempt still uses just the Training set of the FER-20
 			\end{tabular}
 		\end{center}
 \end{table}
-\pagebreak
 
+\clearpage
+\underline{\textbf{\emph{The sixth trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Squared Hinge Loss.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result were a validation accuracy of 63\%, and a 57\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/fer_training_28k_01_squared_hinge_loss.pdf}
+	\caption{Training results using 28.709 images from the FER-2013 emotion dataset}
+	\label{fer_training_28k_01_squared_hinge_loss}
+\end{center}
+\end{figure}
 
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the sixth training trial}
+	\label{fer_training_28k_01_squared_hinge_loss_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.23& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.60& 25 \\
+				Happy& 0.89& 69 \\
+				Sad& 0.41& 28 \\
+				Surprise& 0.95& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.57
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the sixth training trial}
+	\label{fer_training_28k_01_squared_hinge_loss_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.49& 467 \\
+				Disgust& 0.00& 56 \\
+				Fear& 0.51& 496 \\
+				Happy& 0.85& 895 \\
+				Sad& 0.54& 653 \\
+				Surprise& 0.73& 415 \\
+				Neutral& 0.53& 607 \\
+				\hline
+				Weighted Average& 0.62 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the sixth training trial}
+	\label{fer_training_28k_01_squared_hinge_loss_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.52& 467 \\
+				Disgust& 0.00& 56 \\
+				Fear& 0.50& 496 \\
+				Happy& 0.87& 895 \\
+				Sad& 0.50& 653 \\
+				Surprise& 0.72& 415 \\
+				Neutral& 0.59& 607 \\
+				\hline
+				Weighted Average& 0.63 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
 
-While the achieved results were not an improvement of the original approach proposed in \cite{Arriaga17}, we can definitely say that our efforts were not in vain. What we have gathered is that there are a few emotions that are dragging the overall average of the proposed model's accuracy. These emotions are: Disgust, Fear and Neutral.\\
-When testing the model against photos from the CK+ dataset, the ones we saw that have 0\% precision, like Disgust, we have seen that the model either misinterprets Disgust for Angry, thus yielding a 0\% precision, or sometimes, the labels for those pictures is just wrong. Even the CK+ dataset description recognizes this: that the emotion labels in their dataset are the labels of what was asked from the people to perform and not what they actually performed. Could this be a possibility for the FER-2013 dataset as well? If so, this would mean that the training cannot be successful with wrongly labeled pictures.
-Perhaps, a more valid dataset is needed in order to achieve true and better results.\\
+\clearpage
+\underline{\textbf{\emph{The seventh trial:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: FER-2013, 28.709 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Squared Hinge Loss.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.01.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result were a validation accuracy of 63\%, and a 58\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/fer_training_28k_001_squared_hinge_loss.pdf}
+	\caption{Training results using 28.709 images from the FER-2013 emotion dataset}
+	\label{fer_training_28k_001_squared_hinge_loss}
+\end{center}
+\end{figure}
+
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the seventh training trial}
+	\label{fer_training_28k_001_squared_hinge_loss_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.25& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.50& 25 \\
+				Happy& 0.92& 69 \\
+				Sad& 0.46& 28 \\
+				Surprise& 0.97& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.58& 310
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the seventh training trial}
+	\label{fer_training_28k_001_squared_hinge_loss_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.50& 467 \\
+				Disgust& 0.00& 56 \\
+				Fear& 0.46& 496 \\
+				Happy& 0.82& 895 \\
+				Sad& 0.53& 653 \\
+				Surprise& 0.71& 415 \\
+				Neutral& 0.51& 607 \\
+				\hline
+				Weighted Average& 0.60 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the seventh training trial}
+	\label{fer_training_28k_001_squared_hinge_loss_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.53& 467 \\
+				Disgust& 0.50& 56 \\
+				Fear& 0.48& 496 \\
+				Happy& 0.85& 895 \\
+				Sad& 0.49& 653 \\
+				Surprise& 0.71& 415 \\
+				Neutral& 0.57& 607 \\
+				\hline
+				Weighted Average& 0.62 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\clearpage
+\underline{\textbf{\emph{Analyzing the current situation:}}}\\
+While the achieved results were not a big improvements over the original approach, by changing the loss function from Categorical Crossentropy to Square Mean Error, we have managed to raise the accuracy of the model against the CK+ dataset from 76\% (accuracy that is obtained by training either on just 28.709 of the images or on all 35.887 images from the FER-2013 dataset) to 79\% (trained on just only 28.709 of the images from the FER-2013 datast). In the following attempts we aim to augment the dataset, so that it contains even more images and possibly achieve better results.\\
+After these 7 trials we have noticed that all the models encounter problems at identifying the Angry emotion over the CK+ database. A point for improvement could be to find out whether the Angry emotion from the FER-2013 dataset gets confused with another emotion. We could do this either by training the model for just the Angry emotion and another one (Fear, Sad), or by eliminating the Angry emotion from the dataset and see if the precision for emotions Fear and Sad improves.\\
+Another identified problem is that on certain trials, the emotion Disgust is not recognized at all within the CK+ dataset. Could it be that Disgust gets confused with another emotion, like Angry? Further investigation is needed.\\
 Another observation could be that training with a high learning rate from the beginning may cause the model to reach a plateau much sooner. Lowering the learning rate seems to delay that.\\
-Also, training with a different loss function, yielded improvements in the model later on (as in later epochs) as well, instead of stopping to learn since epoch 70-90, like with the proposed loss function. Experimentation with other different loss functions could prove useful.
+Also, chaning the loss function from Categorial Crossentropy to Mean Square Error yielded improvements in the model later on (as in later epochs) as well, instead of stopping to learn since epoch 70-90.\\
+Our best attempt was the fifth one: which uses Square Mean Error as the loss function and a learning rate of 0.1. Subsequent trials will use this setup.\\
 
-\todo{because you state about a real-time approach, some statistics about the average testing time (per image or per dataset) could be added}
+\clearpage
 
-\todo{you can try to train the model by using the square hinge loss}
+\section{Case for improvement}
+\label{section:cfi}
+\underline{\textbf{\emph{The eight trial - augmented dataset x6:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: Augmented FER-2013 x6, 172.254 images, split into 80\% training and 20\% validation sets. Each of the below points describes an operation made for 28.701 images from the FER-2013 dataset using a python library called imagaug, \cite{imgaug}:
+	\begin{itemize}
+		\item \textbf{Original}: 28.709 images from the original FER-2013 dataset.
+		\item \textbf{Additive Gaussian Noise}: with a scale of 0.07*255.
+		\item \textbf{Multiply}: with random values between 0.25 and 1.50.
+		\item \textbf{Salt and Pepper}: with a percentage value of 0.03.
+		\item \textbf{Gaussian Blur}: with a value of 0.50.
+		\item \textbf{Clouds}: for each image a cloud like mask was put over.
+	\end{itemize}
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 7] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 68\%, and a 71\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/fer_training_28k_01_mean_square_augmented_x6.pdf}
+	\caption{Training results using 172.254 augmented images from the FER-2013 emotion dataset}
+	\label{fer_training_28k_01_mean_square_augmented_x6}
+\end{center}
+\end{figure}
 
-\todo{you can try to augment the training data (by variuos operations)}
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the eight training trial}
+	\label{fer_training_28k_01_mean_square_augmented_x6_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.18& 45 \\
+				Disgust& 0.86& 59 \\
+				Fear& 0.33& 25 \\
+				Happy& 0.89& 69 \\
+				Sad& 0.38& 28 \\
+				Surprise& 0.96& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.71& 310
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the eight training trial}
+	\label{fer_training_28k_01_mean_square_augmented_x6_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.51& 467 \\
+				Disgust& 0.62& 56 \\
+				Fear& 0.51& 496 \\
+				Happy& 0.83& 895 \\
+				Sad& 0.56& 653 \\
+				Surprise& 0.74& 415 \\
+				Neutral& 0.57& 607 \\
+				\hline
+				Weighted Average& 0.64 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the eight training trial}
+	\label{fer_training_28k_01_mean_square_augmented_x6_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.55& 467 \\
+				Disgust& 0.57& 56 \\
+				Fear& 0.52& 496 \\
+				Happy& 0.85& 895 \\
+				Sad& 0.50& 653 \\
+				Surprise& 0.75& 415 \\
+				Neutral& 0.63& 607 \\
+				\hline
+				Weighted Average& 0.65 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
 
+\clearpage
+\underline{\textbf{\emph{Analyzing the current situation:}}}\\
+There does not seem to be much improvement, apart from the increase on the validation accuracy against FER-2013 from 64\% to 68\%, compared to our fifth and most successful trial. But this improvement comes with a cost on the validation accuracy against the CK+ dataset from 79\% to 71\%.\\
+From the observation that on the CK+ dataset emotions Angry, Fear and Sad have an unreliable precision, we decide to build a Confusion Matrix for the dataset we trained on, FER-2013.
+
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Public Test dataset for the eigth training trial}
+	\label{fer_training_28k_01_mean_square_augmented_x6_public_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Disgust}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.59}& 0.01& 0.09& 0.06& 0.10& 0.03& 0.10 \\
+				Disgust& 0.27& \textbf{0.41}& 0.09& 0.05& 0.11& 0.18& 0.05 \\
+				Fear& 0.12& 0.01& \textbf{0.43}& 0.04& 0.21& 0.09& 0.11 \\
+				Happy& 0.03& 0.01& 0.02& \textbf{0.85}& 0.02& 0.02& 0.05 \\
+				Sad& 0.15& 0.01& 0.09& 0.05& \textbf{0.51}& 0.02& 0.17 \\
+				Surprise& 0.03& 0.01& 0.08& 0.06& 0.02& \textbf{0.78}& 0.03 \\
+				Neutral& 0.08& 0.01& 0.07& 0.09& 0.14& 0.02& \textbf{0.61} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Private Test dataset for the eigth training trial}
+	\label{fer_training_28k_01_mean_square_augmented_x6_private_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Disgust}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.61}& 0.02& 0.09& 0.03& 0.15& 0.01& 0.09 \\
+				Disgust& 0.31& \textbf{0.45}& 0.07& 0.02& 0.13& 0.02& 0.00 \\
+				Fear& 0.15& 0.01& \textbf{0.43}& 0.04& 0.19& 0.10& 0.09 \\
+				Happy& 0.03& 0.01& 0.02& \textbf{0.88}& 0.02& 0.02& 0.03 \\
+				Sad& 0.11& 0.01& 0.11& 0.07& \textbf{0.52}& 0.01& 0.18 \\
+				Surprise& 0.05& 0.00& 0.10& 0.04& 0.03& \textbf{0.76}& 0.02 \\
+				Neutral& 0.06& 0.01& 0.05& 0.08& 0.16& 0.03& \textbf{0.63} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+
+From the confusion matrixes we observe that there is high confusion between Agnry and Disgust. We decide to investigate further, and what we find is that the distribution of data across the 7 emotions proposed in FER-2013 is uniform. In \ref{FER-2013-emotion-dataset-size} we observe that Disgust makes only 2\% of the FER-2013 dataset and that the other emotions each make an average of 16-17\% of the dataset. For this reason, we believe that excluding the Disgust emotion from our training dataset may improve the overall accuracy of the model. The following will be 2 trials training the model on the original, and respectively on the augmented version, of the FER-2013 dataset. The attempts will use the setup discussed in the fifth trial.
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/FER-2013-emotion-dataset-size.pdf}
+	\caption{FER-2013 emotion distribution in dataset for the training images}
+	\label{FER-2013-emotion-dataset-size}
+\end{center}
+\end{figure}
+
+\clearpage
+\underline{\textbf{\emph{The ninth trial - original dataset without the emotion "Disgust":}}}
+\begin{itemize}
+	\item \textbf{Dataset}: Original FER-2013 dataset, with the emotion "Disgust" removed, 28.273 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 6] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 65\%, and a 81\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/fer_training_28k_01_mean_square_filtered.pdf}
+	\caption{Training results using 28.273 images from the FER-2013 emotion dataset}
+	\label{fer_training_28k_01_mean_square_filtered}
+\end{center}
+\end{figure}
+
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the ninth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.84& 45 \\
+				Fear& 0.39& 25 \\
+				Happy& 0.93& 69 \\
+				Sad& 0.45& 28 \\
+				Surprise& 0.95& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.81& 251
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the ninth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.58& 467 \\
+				Fear& 0.49& 496 \\
+				Happy& 0.84& 895 \\
+				Sad& 0.53& 653 \\
+				Surprise& 0.76& 415 \\
+				Neutral& 0.52& 607 \\
+				\hline
+				Weighted Average& 0.64 &3533
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the ninth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.56& 467 \\
+				Fear& 0.49& 496 \\
+				Happy& 0.87& 895 \\
+				Sad& 0.50& 653 \\
+				Surprise& 0.74& 415 \\
+				Neutral& 0.58& 607 \\
+				\hline
+				Weighted Average& 0.64 &3533
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\clearpage
+\underline{\textbf{\emph{Analyzing the current situation:}}}\\
+There seems to be a slight improvement on the validation accuracy against FER-2013 from 64\% to 65\%, compared to our fifth and most successful trial. On the the CK+ dataset as well, from 79\% to 81\%, however, we decide to build the Confusion Matrix for the dataset we trained, on FER-2013, just to see if there are new confusions around.
+
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Public Test dataset for the ninth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_public_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.59}& 0.09& 0.04& 0.11& 0.03& 0.13 \\
+				Fear& 0.11& \textbf{0.38}& 0.04& 0.24& 0.08& 0.15 \\
+				Happy& 0.02& 0.02& \textbf{0.84}& 0.02& 0.02& 0.07 \\
+				Sad& 0.10& 0.11& 0.04& \textbf{0.52}& 0.02& 0.21 \\
+				Surprise& 0.05& 0.08& 0.05& 0.03& \textbf{0.77}& 0.02 \\
+				Neutral& 0.06& 0.05& 0.09& 0.16& 0.02& \textbf{0.62} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Private Test dataset for the ninth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_private_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.59}& 0.10& 0.02& 0.15& 0.02& 0.12 \\
+				Fear& 0.15& \textbf{0.38}& 0.03& 0.20& 0.11& 0.13 \\
+				Happy& 0.04& 0.02& \textbf{0.86}& 0.03& 0.02& 0.04 \\
+				Sad& 0.12& 0.09& 0.04& \textbf{0.52}& 0.02& 0.22 \\
+				Surprise& 0.03& 0.13& 0.06& 0.01& \textbf{0.73}& 0.04 \\
+				Neutral& 0.04& 0.05& 0.05& 0.16& 0.02& \textbf{0.67} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+
+From the confusion matrixes we observe that the only medium-high confusion left is between Fear and Sad. We continue with our tenth trial, and that means, training the on augmented FER-2013 dataset, but with the emotion Disgust removed, like here.
+
+\clearpage
+\underline{\textbf{\emph{The tenth trial - augmented dataset without the emotion "Disgust":}}}
+\begin{itemize}
+	\item \textbf{Dataset}: Augmented FER-2013 x6, with the emotion "Disgust" removed, 169.638 images, split into 80\% training and 20\% validation sets. Each of the below points describes an operation made for 28.273 images from the FER-2013 dataset using a python library called imagaug, \cite{imgaug}:
+	\begin{itemize}
+		\item \textbf{Original}: 28.273 images from the original FER-2013 dataset.
+		\item \textbf{Additive Gaussian Noise}: with a scale of 0.07*255.
+		\item \textbf{Multiply}: with random values between 0.25 and 1.50.
+		\item \textbf{Salt and Pepper}: with a percentage value of 0.03.
+		\item \textbf{Gaussian Blur}: with a value of 0.50.
+		\item \textbf{Clouds}: for each image a cloud like mask was put over.
+	\end{itemize}
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 6] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 68\%, and a 78\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/fer_training_28k_01_mean_square_filtered_augmented_x6.pdf}
+	\caption{Training results using 169.638 images from the FER-2013 emotion dataset}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6}
+\end{center}
+\end{figure}
+
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the tenth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.67& 45 \\
+				Fear& 0.35& 25 \\
+				Happy& 0.93& 69 \\
+				Sad& 0.44& 28 \\
+				Surprise& 0.97& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.78& 251
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the tenth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.58& 467 \\
+				Fear& 0.52& 496 \\
+				Happy& 0.85& 895 \\
+				Sad& 0.57& 653 \\
+				Surprise& 0.76& 415 \\
+				Neutral& 0.58& 607 \\
+				\hline
+				Weighted Average& 0.66 &3533
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the tenth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.59& 467 \\
+				Fear& 0.51& 496 \\
+				Happy& 0.85& 895 \\
+				Sad& 0.49& 653 \\
+				Surprise& 0.76& 415 \\
+				Neutral& 0.63& 607 \\
+				\hline
+				Weighted Average& 0.65 &3533
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\clearpage
+\underline{\textbf{\emph{Analyzing the current situation:}}}\\
+There seems to be a slight improvement on the validation accuracy against the ninth trial from 65\% to 68\%. On the the CK+ dataset as however, there is a slight decline from 81\% to 78\%. We decide to build the Confusion Matrix for the dataset we trained, on FER-2013 without the emotion Disgust, just to see the situation of confusions.
+
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Public Test dataset for the tenth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.63}& 0.11& 0.03& 0.11& 0.03& 0.09 \\
+				Fear& 0.12& \textbf{0.45}& 0.03& 0.21& 0.08& 0.11 \\
+				Happy& 0.02& 0.02& \textbf{0.87}& 0.01& 0.02& 0.05 \\
+				Sad& 0.11& 0.11& 0.05& \textbf{0.55}& 0.02& 0.16 \\
+				Surprise& 0.03& 0.09& 0.04& 0.03& \textbf{0.78}& 0.02 \\
+				Neutral& 0.08& 0.06& 0.10& 0.15& 0.02& \textbf{0.59} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Private Test dataset for the tenth training trial}
+	\label{fer_training_28k_01_mean_square_filtered_augmented_x6_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Angry}& \textbf{Fear}& \textbf{Happy}& \textbf{Sad}& \textbf{Surprise}& \textbf{Neutral} \\
+				\hline\hline
+				Angry& \textbf{0.61}& 0.09& 0.03& 0.16& 0.02& 0.10 \\
+				Fear& 0.14& \textbf{0.45}& 0.04& 0.18& 0.09& 0.10 \\
+				Happy& 0.04& 0.02& \textbf{0.87}& 0.03& 0.02& 0.03 \\
+				Sad& 0.10& 0.13& 0.06& \textbf{0.51}& 0.02& 0.17 \\
+				Surprise& 0.03& 0.12& 0.05& 0.02& \textbf{0.76}& 0.01 \\
+				Neutral& 0.05& 0.06& 0.07& 0.17& 0.02& \textbf{0.63} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+
+From the confusion matrixes we observe that the only medium confusion left is between Fear and Sad. Further investigation on this matter would imply a train for just Fear and Sad to see if the neural network can learn the difference between them or not.
+
+\clearpage
+\underline{\textbf{\emph{The eleventh trial - FER-2013 Sad and Fear:}}}
+\begin{itemize}
+	\item \textbf{Dataset}: Sad and Fear emotions from FER-2013 dataset, 9.927 images, split into 80\% training and 20\% validation.
+	\item \textbf{Input size}: [1, 48, 48, 1] grayscale pixel images. Each pixel, a value between [0, 255].
+	\item \textbf{Output size}: [1, 2] tensor containing the percentages for each label.
+	\item \textbf{Loss function}: Mean Square Error.
+	\item \textbf{Optimizer}: Adam.
+	\item \textbf{Learning rate}: 0.1.
+	\item \textbf{Batch size}: 32.
+	\item \textbf{Epochs}: 110.
+	\item \textbf{Training metric}: Accuracy.
+\end{itemize}
+The result was a training validation accuracy of 71\%, and a 74\% accuracy on the CK+ dataset.
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.8]{Fig/sad_and_fear_fer_2013_01_mean_square.pdf}
+	\caption{Training results using 9.927 sad and fear images from the FER-2013 emotion dataset}
+	\label{sad_and_fear_fer_2013_01_mean_square}
+\end{center}
+\end{figure}
+
+\begin{table}[htbp]
+	\caption{The precisin results against the CK+ dataset for the ninth training trial}
+	\label{sad_and_fear_fer_2013_01_mean_square_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Fear& 0.85& 25 \\
+				Sad& 0.65& 28 \\
+				\hline
+				Weighted Average& 0.74& 53
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Public Test dataset for the ninth eleventh trial}
+	\label{sad_and_fear_fer_2013_01_mean_square_public_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Fear& 0.70& 496 \\
+				Sad& 0.73& 653 \\
+				\hline
+				Weighted Average& 0.72 &1149
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the FER-2013 Private Test dataset for the eleventh training trial}
+	\label{sad_and_fear_fer_2013_01_mean_square_private_test}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Fear& 0.73& 496 \\
+				Sad& 0.72& 653 \\
+				\hline
+				Weighted Average& 0.72 &1149
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\clearpage
+\underline{\textbf{\emph{Analyzing the current situation:}}}\\
+Considering we trained for just two emotions, the results indicate there is indeed quite a lot of confusion between these two emotions. We decide to build the Confusion Matrix to investigate this.
+
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Public Test dataset for the eleventh training trial}
+	\label{sad_and_fear_fer_2013_01_mean_square_public_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Fear}& \textbf{Sad} \\
+				\hline\hline
+				Fear& \textbf{0.60}& 0.40 \\
+				Sad& 0.20& \textbf{0.80} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The confusion matrix for FER-2013 Private Test dataset for the eleventh training trial}
+	\label{sad_and_fear_fer_2013_01_mean_square_private_test_confusion_matrix}
+		\begin{center}
+			\begin{tabular}{p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}p{40pt}c}
+				\textbf{Emotions}& \textbf{Fear}& \textbf{Sad} \\
+				\hline\hline
+				Fear& \textbf{0.65}& 0.35 \\
+				Sad& 0.21& \textbf{0.79} \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+
+From the confusion matrixes the confusion between Fear and Sad is obvious. Since Sad is learned better than Fear, the next point of action could be removing the Fear emotion from the dataset. Other points for investigation could be training on different datasets and comparing the results with FER-2013.
+
+\chapter{Acting Mirror}
+\label{chapter:acting_mirror}
+
+Coming back to our main purpose of studying the FER problem, we will take a look at the application we have developed.
+Acting Mirror takes a video stream from the camera, from a file on the machine it runs on, or from a youtube video, and processes the video stream drawing rectangles around the face of people in the stream and labeling them with one of 7 emotions: "angry", "disgust", "scared", "happy", "sad", "surprised", "neutral".
+
+As illustrated in \ref{acting_mirror_architecture}, the app works by reading a video stream, and passing that stream to a the haarscade frontal face detector. For each detected face, an intelligent alogirthm parses the pixels of the face in the format of a 48x48 grayscale pixel matrix, and labels the face with one of 7 emotions. In the end, the processed output video stream is shown to the user and also saved in a file called "output.avi". 
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.57]{Fig/acting_mirror_architecture.pdf}
+	\caption{Acting Mirror Architecture}
+	\label{acting_mirror_architecture}
+\end{center}
+\end{figure}
+
+As illustrated in \ref{hotdog_not_hotdog_emotion}, Acting Mirror also presents a Graph with the percentage emotions over time of person 0 (the biggest person/face in the video stream) and a real-time percentage of each frame's emotion. All the details and options of running Acting Mirror can be found at our GitHub repository at \href{https://github.com/bogdanbalanescu/Intelligent-Tools-for-Social-Good}{Acting Mirror - Research and Development}.
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[angle=90, scale=0.47]{Fig/hotdog_not_hotdog_emotion.pdf}
+	\caption{Streaming the "Hotdog, not Hotdog" scene from Sillicon Valley Season 4}
+	\label{hotdog_not_hotdog_emotion}
+\end{center}
+\end{figure}
+
+\underline{\textbf{\emph{A few statistics about running Acting Mirror on our machine:}}}
+\begin{itemize}
+	\item \textbf{Machine description}: CPU i7-7500u and an NVIDIA Quadro M520 1GB.
+	\item \textbf{FPS} running the whole Acting Mirror either with Keras or TFLite Model:
+	\begin{itemize}
+		\item \textbf{0 People}: ~ 14.6
+		\item \textbf{1 Person}: ~ 11
+		\item \textbf{20 People}: ~ 3.5 
+	\end{itemize}
+	\item \textbf{Average time} to classify one face on \textbf{Keras} model: 0.00587 seconds / face
+	\item \textbf{Average time} to classify one face on \textbf{TFLite} model: 0.00374 seconds / face
+\end{itemize}
 
 \chapter{Conclusion and future work}
-\label{chapter:concl}
+\label{chapter:conclusions}
+
+\section{State of the Art Comparison}
+\label{section:soa_analysis}
+
+During our research, we have focused a lot on finding a better set of independent variables that would help the model from \cite{Arriaga17} reach a better accuracy on the FER-2013 dataset. On each trial we have tested the model against the FER-2013 test sets (public and private) and against the CK+ dataset. The best results we got were on the fifth trial, with 64\% accuracy on the FER-2013 dataset and 79\% accuracy on the CK+ dataset. After augmenting the dataset, on the eight trial, we got an accuracy of 68\% on the FER-2013 dataset, and just 71\% accuracy on the CK+ dataset. \\
+We decided to generate confusion matrixes in order to better analyze our situation, and what we found was that the FER-2013 dataset contains some confusions between emotions like Angry and Disgust, Sad and Fear, and between the aforementioned emotions and Neutral in smaller parts. We experimented with excluding the emotion Disgust from the dataset, but the improvements were not significant. We proposed 2 action points: either excluding the Fear emotion as well, which receives a big amount of confusion from Sad, or to train the model on a better dataset.\\
+Comparing other state of the art results that trained on the CK+ dataset against our achievements looks like we need a lot of improvement to do in order to catch up.
+
+\begin{table}[htbp]
+	\caption{Comparison between State of the Art results and our results}
+	\label{state_of_the_art_comparison}
+		\begin{center}
+			\begin{tabular}{p{100pt}p{100pt}p{60pt}p{60pt}c}
+				\textbf{State of the Art}& \textbf{Deep Networks \cite{Samadiani19}}& \textbf{SVM \cite{Samadiani19}}& \textbf{CNN \cite{Burkert16}}& \textbf{Our results - model \cite{Arriaga17}} \\
+				\hline\hline
+				CK+ Dataset& 48-96& 31-50& 93-99& 71-79 \\
+				\hline
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\section{Brief Ethical Discussion}
+\label{section:ethical}
+
+There are a few problems we see with regards to the FER problem. We believe it may be ok to use it, but just as long as it is not intrusive and misused. \\
+Understanding that the current approach to the problem is not perfect is also important with regards to using these tools. For instance, when a dataset labels a picture as "Happy", is that person really happy? Or are they just smiling, laughing or having an uncontrollable hysterical laughther? Not all laughter or smile should be associated with happiness, which is a state that can be manifested through a neutral, poker face, as well. \\
+The context where FER would be applied should be an accepted context by all its users and only manifested for as long as accepted by the people and only for as long as it brings a positive value to the people. In figure \ref{FER-MindMap} we propose a mind-map which describes 5 such applications.
+
+\begin{figure}[htbp]
+\begin{center}
+	\includegraphics[scale=0.77]{Fig/FER-MindMap.pdf}
+	\caption{Applications for FER - MindMap}
+	\label{FER-MindMap}
+\end{center}
+\end{figure}
+
+\clearpage
+\section{Acting Mirror and Future Work}
+\label{section:acting_mirror_and_future_work}
+
+Our practical contribution, Acting Mirorr is an applicaiton which takes a video stream from the camera, from a file on the machine it runs on, or from a youtube video, and processes the video stream drawing rectangles around the face of people in the stream and labeling them with one of 7 emotions: "angry", "disgust", "scared", "happy", "sad", "surprised", "neutral".\\
+Further development of Acting Mirror could mean bringing it to mobile devices, optimizing the stream of data in the application, or adding new features to it, such as the ability to parse a script and give real-time audio feedback to actors about their performance or tips that may help them further increase their acting skills.\\
+
+Other future work involving the FER problem could be creating and validating good face expression emotion datasets. One thing we learned was to search for confusion matrixes of the dataset we intend to use and study on before actually starting the work. It would have probably saved us a lot of trial and error time or enable us to achieve greater results.
+
+Studying the ethical issues related to the FER problem is something we need now more than ever. With tools that are already developed, or even better ones in development, is only a matter of times before we, as a human race, are in a situation of having tools we do not properly understand their intended use or value. Making sure we are prepared and education on how and when to use such tools is of utmost importance.\\
+
+In conclusion, we believe we are on the right track when it comes to developing tools that make use of intelligent algorithms, such as those capable of learning the FER problem, its just very important that we also become prepared and educated on how to use them. Experimenting, however, is part of the journey, which is why we propose the 5 applications from the MindMap at \ref{FER-MindMap} as a next stepping stone in applied FER.
 
 
 \bibliographystyle{plain}
