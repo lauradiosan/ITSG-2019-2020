@@ -8,6 +8,7 @@ import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import pafy
+import time
 
 import argparse
 parser = argparse.ArgumentParser(description='Acting mirror arguments.')
@@ -17,6 +18,7 @@ parser.add_argument('--youtube', action='store', dest="url", type=str, help='you
 parser.add_argument('--details', action='store_true', dest='details', default=False, help='flag to show the emotion details window, if missing, the emotion detials window will not show')
 parser.add_argument('--graph', action='store_true', dest='graph', default=False, help='flag to show a graph with the emotions percentage over time, if missing, the graph will not show')
 parser.add_argument('--disable_rectangles', action='store_false', dest='disable_rectangles', default=True, help='flag to disable showing the face rectangles on the acting mirror window, if missing, the face rectangles will show')
+parser.add_argument('--tflite', action='store_true', dest='tflite', default=False, help='floag to choose between keras and tflite. When this is missing, keras model will be used, otherwise tflite model will be used.')
 args = parser.parse_args()
 
 app_state = type('obj', (object,), {
@@ -34,21 +36,32 @@ details_window_name = 'Emotions for Person 0'
 
 # parameters for loading data and images
 detection_model_path = 'haarcascade_files/haarcascade_frontalface_default.xml'
-emotion_model_path = 'models/_mini_XCEPTION.97-0.65.hdf5'
+emotion_model_path = 'models/_mini_XCEPTION.110-0.68.hdf5'
 
 # hyper-parameters for bounding boxes shape
 # loading models
 face_detection = cv2.CascadeClassifier(detection_model_path)
-#emotion_classifier = load_model(emotion_model_path, compile=False)
+# loading emotion models
+emotion_classifier = load_model(emotion_model_path, compile=False)
+def classify_with_keras(roi):
+    return emotion_classifier.predict(roi)[0]
+
 interpreter = tf.lite.Interpreter(model_path="models/model.tflite")
 interpreter.allocate_tensors()
-EMOTIONS = ["angry" ,"disgust","scared", "happy", "sad", "surprised",
- "neutral"]
+def classify_with_tflite(roi):
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    interpreter.set_tensor(input_details[0]['index'], roi)
+    interpreter.invoke()
+    return interpreter.get_tensor(output_details[0]['index'])[0]
+
+#EMOTIONS = ["angry", "disgust", "scared", "happy", "sad", "surprised", "neutral"]
+EMOTIONS = ["angry", "scared", "happy", "sad", "surprised", "neutral"]
 
 def initial_emotions_count():
     return {
         "angry": 0 ,
-        "disgust": 0,
+        #"disgust": 0,
         "scared": 0, 
         "happy": 0, 
         "sad": 0, 
@@ -86,6 +99,11 @@ elif args.url is not None:
 else:
     camera = cv2.VideoCapture(0)
 
+startTime = time.time()
+frameNumber = 0
+totalPredictionTime = 0
+predictedFrames = 0
+framesHeadstart = 10
 while camera.isOpened():
     frame = camera.read()[1]
     #reading the frame
@@ -108,12 +126,19 @@ while camera.isOpened():
         roi = img_to_array(roi)
         roi = np.expand_dims(roi, axis=0)
         
-        #preds = emotion_classifier.predict(roi)[0]
-        input_details = interpreter.get_input_details()
-        output_details = interpreter.get_output_details()
-        interpreter.set_tensor(input_details[0]['index'], roi)
-        interpreter.invoke()
-        preds = interpreter.get_tensor(output_details[0]['index'])[0]
+        
+        predictStartTime = time.time()
+        if args.tflite:
+            preds = classify_with_tflite(roi)
+        else:
+            preds = classify_with_keras(roi)
+        predictEndTime = time.time()
+        predictedFrames += 1
+        if predictedFrames > framesHeadstart:
+            totalPredictionTime += (predictEndTime - predictStartTime)
+            averagePredictionTime = totalPredictionTime / (predictedFrames - framesHeadstart)
+            print("Predicted frames: {} -> Average prediction time: {}".format(predictedFrames, averagePredictionTime))
+
         emotion_probability = np.max(preds)
         label = EMOTIONS[preds.argmax()]
 
@@ -139,6 +164,16 @@ while camera.isOpened():
                     cv2.putText(frameClone, label, (fX, fY - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
                 cv2.rectangle(frameClone, (fX, fY), (fX + fW, fY + fH),
                                 (0, 0, 255), 2)
+                
+    # frames per second
+    frameNumber += 1
+    elapsedTime = time.time() - startTime
+    fps = frameNumber / elapsedTime
+    if elapsedTime > 15.0:
+        startTime = time.time()
+        frameNumber = 0
+    
+    cv2.putText(frameClone, 'FPS: {}'.format(fps), (25, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 0, 0), 1)
 
     cv2.imshow(acting_mirror_window_name, frameClone)
     outputFrame = cv2.resize(frameClone, (800,600), interpolation = cv2.INTER_AREA)

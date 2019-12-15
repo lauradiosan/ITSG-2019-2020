@@ -4,9 +4,17 @@ import cv2
 import numpy as np
 from sklearn.model_selection import train_test_split
  
-#dataset_path = 'fer2013/private_test_fer2013.csv'
-dataset_path = 'ck+-convertion/img_pixels.csv'
-#dataset_path = 'ck+-convertion/ck+64.csv'
+#dataset_path = 'datasets/fer2013/train_fer2013.csv'
+#dataset_path = 'datasets/ck+-convertion/img_pixels.csv'
+#dataset_path = 'datasets/augmented-dataset/augmented_dataset_fer2013_x6.csv'
+
+dataset_path = 'datasets/filtered-fer2013/filtered_private_test_fer2013.csv'
+#dataset_path = 'datasets/filtered-ck+-conversion/filtered_img_pixels.csv'
+#dataset_path = 'datasets/filtered-augmented-dataset/augmented_filtered_train_fer2013_x6.csv'
+
+#dataset_path = 'datasets/sad-fear-fer-2013/filtered_private_test_fer2013.csv'
+#dataset_path = 'datasets/sad-fear-fer-2013/filtered_img_pixels.csv'
+
 image_size=(48,48)
  
 def load_fer2013():

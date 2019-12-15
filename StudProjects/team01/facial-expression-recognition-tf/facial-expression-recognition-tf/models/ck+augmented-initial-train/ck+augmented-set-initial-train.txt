@@ -1,0 +1,590 @@
+Using TensorFlow backend.
+2019-12-08 01:43:54.831161: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
+C:\Users\Bogdan\Documents\GitHub\Intelligent-Tools-for-Social-Good\facial-expression-recognition-tf\facial-expression-recognition-tf\data_loader.py:25: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
+  emotions = pd.get_dummies(data['emotion']).as_matrix()
+WARNING:tensorflow:From C:\Users\Bogdan\AppData\Local\Programs\Python\Python37\lib\site-packages\tensorflow_core\python\ops\resource_variable_ops.py:1630: calling BaseResourceVariable.__init__ (from tensorflow.python.ops.resource_variable_ops) with constraint is deprecated and will be removed in a future version.
+Instructions for updating:
+If using Keras pass *_constraint arguments to layers.
+2019-12-08 01:44:02.952212: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library nvcuda.dll
+2019-12-08 01:44:03.463946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties:
+name: Quadro M520 major: 5 minor: 0 memoryClockRate(GHz): 1.176
+pciBusID: 0000:02:00.0
+2019-12-08 01:44:03.471464: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
+2019-12-08 01:44:03.483617: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_100.dll
+2019-12-08 01:44:03.498538: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cufft64_100.dll
+2019-12-08 01:44:03.507051: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library curand64_100.dll
+2019-12-08 01:44:03.526017: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusolver64_100.dll
+2019-12-08 01:44:03.538056: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusparse64_100.dll
+2019-12-08 01:44:03.579358: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudnn64_7.dll
+2019-12-08 01:44:03.585738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2019-12-08 01:44:03.590736: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2
+2019-12-08 01:44:03.598306: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1618] Found device 0 with properties:
+name: Quadro M520 major: 5 minor: 0 memoryClockRate(GHz): 1.176
+pciBusID: 0000:02:00.0
+2019-12-08 01:44:03.604867: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudart64_100.dll
+2019-12-08 01:44:03.610883: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_100.dll
+2019-12-08 01:44:03.615438: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cufft64_100.dll
+2019-12-08 01:44:03.620723: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library curand64_100.dll
+2019-12-08 01:44:03.626724: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusolver64_100.dll
+2019-12-08 01:44:03.631367: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cusparse64_100.dll
+2019-12-08 01:44:03.636431: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudnn64_7.dll
+2019-12-08 01:44:03.643014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1746] Adding visible gpu devices: 0
+2019-12-08 01:44:04.941477: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1159] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-12-08 01:44:04.946783: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1165]      0
+2019-12-08 01:44:04.949673: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1178] 0:   N
+2019-12-08 01:44:04.953828: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1304] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 1384 MB memory) -> physical GPU (device: 0, name: Quadro M520, pci bus id: 0000:02:00.0, compute capability: 5.0)
+WARNING:tensorflow:From C:\Users\Bogdan\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:4070: The name tf.nn.max_pool is deprecated. Please use tf.nn.max_pool2d instead.
+
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to
+==================================================================================================
+input_1 (InputLayer)            (None, 48, 48, 1)    0
+__________________________________________________________________________________________________
+conv2d_1 (Conv2D)               (None, 46, 46, 8)    72          input_1[0][0]
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 46, 46, 8)    32          conv2d_1[0][0]
+__________________________________________________________________________________________________
+activation_1 (Activation)       (None, 46, 46, 8)    0           batch_normalization_1[0][0]
+__________________________________________________________________________________________________
+conv2d_2 (Conv2D)               (None, 44, 44, 8)    576         activation_1[0][0]
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 44, 44, 8)    32          conv2d_2[0][0]
+__________________________________________________________________________________________________
+activation_2 (Activation)       (None, 44, 44, 8)    0           batch_normalization_2[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_1 (SeparableCo (None, 44, 44, 16)   200         activation_2[0][0]
+__________________________________________________________________________________________________
+batch_normalization_4 (BatchNor (None, 44, 44, 16)   64          separable_conv2d_1[0][0]
+__________________________________________________________________________________________________
+activation_3 (Activation)       (None, 44, 44, 16)   0           batch_normalization_4[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_2 (SeparableCo (None, 44, 44, 16)   400         activation_3[0][0]
+__________________________________________________________________________________________________
+batch_normalization_5 (BatchNor (None, 44, 44, 16)   64          separable_conv2d_2[0][0]
+__________________________________________________________________________________________________
+conv2d_3 (Conv2D)               (None, 22, 22, 16)   128         activation_2[0][0]
+__________________________________________________________________________________________________
+max_pooling2d_1 (MaxPooling2D)  (None, 22, 22, 16)   0           batch_normalization_5[0][0]
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 22, 22, 16)   64          conv2d_3[0][0]
+__________________________________________________________________________________________________
+add_1 (Add)                     (None, 22, 22, 16)   0           max_pooling2d_1[0][0]
+                                                                 batch_normalization_3[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_3 (SeparableCo (None, 22, 22, 32)   656         add_1[0][0]
+__________________________________________________________________________________________________
+batch_normalization_7 (BatchNor (None, 22, 22, 32)   128         separable_conv2d_3[0][0]
+__________________________________________________________________________________________________
+activation_4 (Activation)       (None, 22, 22, 32)   0           batch_normalization_7[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_4 (SeparableCo (None, 22, 22, 32)   1312        activation_4[0][0]
+__________________________________________________________________________________________________
+batch_normalization_8 (BatchNor (None, 22, 22, 32)   128         separable_conv2d_4[0][0]
+__________________________________________________________________________________________________
+conv2d_4 (Conv2D)               (None, 11, 11, 32)   512         add_1[0][0]
+__________________________________________________________________________________________________
+max_pooling2d_2 (MaxPooling2D)  (None, 11, 11, 32)   0           batch_normalization_8[0][0]
+__________________________________________________________________________________________________
+batch_normalization_6 (BatchNor (None, 11, 11, 32)   128         conv2d_4[0][0]
+__________________________________________________________________________________________________
+add_2 (Add)                     (None, 11, 11, 32)   0           max_pooling2d_2[0][0]
+                                                                 batch_normalization_6[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_5 (SeparableCo (None, 11, 11, 64)   2336        add_2[0][0]
+__________________________________________________________________________________________________
+batch_normalization_10 (BatchNo (None, 11, 11, 64)   256         separable_conv2d_5[0][0]
+__________________________________________________________________________________________________
+activation_5 (Activation)       (None, 11, 11, 64)   0           batch_normalization_10[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_6 (SeparableCo (None, 11, 11, 64)   4672        activation_5[0][0]
+__________________________________________________________________________________________________
+batch_normalization_11 (BatchNo (None, 11, 11, 64)   256         separable_conv2d_6[0][0]
+__________________________________________________________________________________________________
+conv2d_5 (Conv2D)               (None, 6, 6, 64)     2048        add_2[0][0]
+__________________________________________________________________________________________________
+max_pooling2d_3 (MaxPooling2D)  (None, 6, 6, 64)     0           batch_normalization_11[0][0]
+__________________________________________________________________________________________________
+batch_normalization_9 (BatchNor (None, 6, 6, 64)     256         conv2d_5[0][0]
+__________________________________________________________________________________________________
+add_3 (Add)                     (None, 6, 6, 64)     0           max_pooling2d_3[0][0]
+                                                                 batch_normalization_9[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_7 (SeparableCo (None, 6, 6, 128)    8768        add_3[0][0]
+__________________________________________________________________________________________________
+batch_normalization_13 (BatchNo (None, 6, 6, 128)    512         separable_conv2d_7[0][0]
+__________________________________________________________________________________________________
+activation_6 (Activation)       (None, 6, 6, 128)    0           batch_normalization_13[0][0]
+__________________________________________________________________________________________________
+separable_conv2d_8 (SeparableCo (None, 6, 6, 128)    17536       activation_6[0][0]
+__________________________________________________________________________________________________
+batch_normalization_14 (BatchNo (None, 6, 6, 128)    512         separable_conv2d_8[0][0]
+__________________________________________________________________________________________________
+conv2d_6 (Conv2D)               (None, 3, 3, 128)    8192        add_3[0][0]
+__________________________________________________________________________________________________
+max_pooling2d_4 (MaxPooling2D)  (None, 3, 3, 128)    0           batch_normalization_14[0][0]
+__________________________________________________________________________________________________
+batch_normalization_12 (BatchNo (None, 3, 3, 128)    512         conv2d_6[0][0]
+__________________________________________________________________________________________________
+add_4 (Add)                     (None, 3, 3, 128)    0           max_pooling2d_4[0][0]
+                                                                 batch_normalization_12[0][0]
+__________________________________________________________________________________________________
+conv2d_7 (Conv2D)               (None, 3, 3, 7)      8071        add_4[0][0]
+__________________________________________________________________________________________________
+global_average_pooling2d_1 (Glo (None, 7)            0           conv2d_7[0][0]
+__________________________________________________________________________________________________
+predictions (Activation)        (None, 7)            0           global_average_pooling2d_1[0][0]
+==================================================================================================
+Total params: 58,423
+Trainable params: 56,951
+Non-trainable params: 1,472
+__________________________________________________________________________________________________
+WARNING:tensorflow:From C:\Users\Bogdan\AppData\Local\Programs\Python\Python37\lib\site-packages\keras\backend\tensorflow_backend.py:422: The name tf.global_variables is deprecated. Please use tf.compat.v1.global_variables instead.
+
+Epoch 1/110
+2019-12-08 01:44:14.968859: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cudnn64_7.dll
+2019-12-08 01:44:15.987345: W tensorflow/stream_executor/cuda/redzone_allocator.cc:312] Internal: Invoking ptxas not supported on Windows
+Relying on driver to perform ptx compilation. This message will be only logged once.
+2019-12-08 01:44:16.046124: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library cublas64_100.dll
+109/108 [==============================] - 14s 125ms/step - loss: 0.1689 - accuracy: 0.4162 - val_loss: 0.1624 - val_accuracy: 0.2661
+
+Epoch 00001: val_loss improved from inf to 0.16238, saving model to models/_mini_XCEPTION.01-0.27.hdf5
+Epoch 2/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.1077 - accuracy: 0.5936 - val_loss: 0.1397 - val_accuracy: 0.2650
+
+Epoch 00002: val_loss improved from 0.16238 to 0.13970, saving model to models/_mini_XCEPTION.02-0.26.hdf5
+Epoch 3/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0776 - accuracy: 0.6918 - val_loss: 0.1214 - val_accuracy: 0.3641
+
+Epoch 00003: val_loss improved from 0.13970 to 0.12142, saving model to models/_mini_XCEPTION.03-0.36.hdf5
+Epoch 4/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0648 - accuracy: 0.7370 - val_loss: 0.0745 - val_accuracy: 0.6832
+
+Epoch 00004: val_loss improved from 0.12142 to 0.07453, saving model to models/_mini_XCEPTION.04-0.68.hdf5
+Epoch 5/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0540 - accuracy: 0.7791 - val_loss: 0.0481 - val_accuracy: 0.8122
+
+Epoch 00005: val_loss improved from 0.07453 to 0.04810, saving model to models/_mini_XCEPTION.05-0.81.hdf5
+Epoch 6/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0482 - accuracy: 0.8044 - val_loss: 0.0435 - val_accuracy: 0.8249
+
+Epoch 00006: val_loss improved from 0.04810 to 0.04350, saving model to models/_mini_XCEPTION.06-0.82.hdf5
+Epoch 7/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0446 - accuracy: 0.8162 - val_loss: 0.0396 - val_accuracy: 0.8433
+
+Epoch 00007: val_loss improved from 0.04350 to 0.03959, saving model to models/_mini_XCEPTION.07-0.84.hdf5
+Epoch 8/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0429 - accuracy: 0.8223 - val_loss: 0.0327 - val_accuracy: 0.8710
+
+Epoch 00008: val_loss improved from 0.03959 to 0.03273, saving model to models/_mini_XCEPTION.08-0.87.hdf5
+Epoch 9/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0395 - accuracy: 0.8370 - val_loss: 0.0510 - val_accuracy: 0.7765
+
+Epoch 00009: val_loss did not improve from 0.03273
+Epoch 10/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0349 - accuracy: 0.8551 - val_loss: 0.0506 - val_accuracy: 0.7857
+
+Epoch 00010: val_loss did not improve from 0.03273
+Epoch 11/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0340 - accuracy: 0.8638 - val_loss: 0.0344 - val_accuracy: 0.8675
+
+Epoch 00011: val_loss did not improve from 0.03273
+Epoch 12/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0338 - accuracy: 0.8626 - val_loss: 0.0286 - val_accuracy: 0.8894
+
+Epoch 00012: val_loss improved from 0.03273 to 0.02858, saving model to models/_mini_XCEPTION.12-0.89.hdf5
+Epoch 13/110
+109/108 [==============================] - 8s 78ms/step - loss: 0.0300 - accuracy: 0.8776 - val_loss: 0.0368 - val_accuracy: 0.8491
+
+Epoch 00013: val_loss did not improve from 0.02858
+Epoch 14/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0298 - accuracy: 0.8836 - val_loss: 0.0347 - val_accuracy: 0.8618
+
+Epoch 00014: val_loss did not improve from 0.02858
+Epoch 15/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0281 - accuracy: 0.8903 - val_loss: 0.0275 - val_accuracy: 0.8917
+
+Epoch 00015: val_loss improved from 0.02858 to 0.02747, saving model to models/_mini_XCEPTION.15-0.89.hdf5
+Epoch 16/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0290 - accuracy: 0.8828 - val_loss: 0.0256 - val_accuracy: 0.8998
+
+Epoch 00016: val_loss improved from 0.02747 to 0.02555, saving model to models/_mini_XCEPTION.16-0.90.hdf5
+Epoch 17/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0276 - accuracy: 0.8885 - val_loss: 0.0273 - val_accuracy: 0.8940
+
+Epoch 00017: val_loss did not improve from 0.02555
+Epoch 18/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0275 - accuracy: 0.8888 - val_loss: 0.0337 - val_accuracy: 0.8687
+
+Epoch 00018: val_loss did not improve from 0.02555
+Epoch 19/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0290 - accuracy: 0.8865 - val_loss: 0.0373 - val_accuracy: 0.8422
+
+Epoch 00019: val_loss did not improve from 0.02555
+Epoch 20/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0251 - accuracy: 0.9015 - val_loss: 0.0238 - val_accuracy: 0.9044
+
+Epoch 00020: val_loss improved from 0.02555 to 0.02380, saving model to models/_mini_XCEPTION.20-0.90.hdf5
+Epoch 21/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0253 - accuracy: 0.8946 - val_loss: 0.0217 - val_accuracy: 0.9171
+
+Epoch 00021: val_loss improved from 0.02380 to 0.02173, saving model to models/_mini_XCEPTION.21-0.92.hdf5
+Epoch 22/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0221 - accuracy: 0.9162 - val_loss: 0.0238 - val_accuracy: 0.9067
+
+Epoch 00022: val_loss did not improve from 0.02173
+Epoch 23/110
+109/108 [==============================] - 9s 78ms/step - loss: 0.0225 - accuracy: 0.9124 - val_loss: 0.0271 - val_accuracy: 0.8825
+
+Epoch 00023: val_loss did not improve from 0.02173
+Epoch 24/110
+109/108 [==============================] - 9s 79ms/step - loss: 0.0217 - accuracy: 0.9176 - val_loss: 0.0293 - val_accuracy: 0.8790
+
+Epoch 00024: val_loss did not improve from 0.02173
+Epoch 25/110
+109/108 [==============================] - 8s 78ms/step - loss: 0.0233 - accuracy: 0.9070 - val_loss: 0.0340 - val_accuracy: 0.8664
+
+Epoch 00025: val_loss did not improve from 0.02173
+Epoch 26/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0221 - accuracy: 0.9145 - val_loss: 0.0227 - val_accuracy: 0.9124
+
+Epoch 00026: val_loss did not improve from 0.02173
+Epoch 27/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0210 - accuracy: 0.9185 - val_loss: 0.0214 - val_accuracy: 0.9101
+
+Epoch 00027: val_loss improved from 0.02173 to 0.02137, saving model to models/_mini_XCEPTION.27-0.91.hdf5
+Epoch 28/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0205 - accuracy: 0.9219 - val_loss: 0.0189 - val_accuracy: 0.9251
+
+Epoch 00028: val_loss improved from 0.02137 to 0.01887, saving model to models/_mini_XCEPTION.28-0.93.hdf5
+Epoch 29/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0202 - accuracy: 0.9182 - val_loss: 0.0208 - val_accuracy: 0.9205
+
+Epoch 00029: val_loss did not improve from 0.01887
+Epoch 30/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0198 - accuracy: 0.9263 - val_loss: 0.0182 - val_accuracy: 0.9274
+
+Epoch 00030: val_loss improved from 0.01887 to 0.01818, saving model to models/_mini_XCEPTION.30-0.93.hdf5
+Epoch 31/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0185 - accuracy: 0.9329 - val_loss: 0.0263 - val_accuracy: 0.8917
+
+Epoch 00031: val_loss did not improve from 0.01818
+Epoch 32/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0196 - accuracy: 0.9231 - val_loss: 0.0183 - val_accuracy: 0.9297
+
+Epoch 00032: val_loss did not improve from 0.01818
+Epoch 33/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0203 - accuracy: 0.9219 - val_loss: 0.0206 - val_accuracy: 0.9194
+
+Epoch 00033: val_loss did not improve from 0.01818
+Epoch 34/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0185 - accuracy: 0.9286 - val_loss: 0.0289 - val_accuracy: 0.8756
+
+Epoch 00034: val_loss did not improve from 0.01818
+Epoch 35/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0190 - accuracy: 0.9251 - val_loss: 0.0217 - val_accuracy: 0.9124
+
+Epoch 00035: val_loss did not improve from 0.01818
+Epoch 36/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0189 - accuracy: 0.9257 - val_loss: 0.0194 - val_accuracy: 0.9274
+
+Epoch 00036: val_loss did not improve from 0.01818
+Epoch 37/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0191 - accuracy: 0.9268 - val_loss: 0.0317 - val_accuracy: 0.8698
+
+Epoch 00037: val_loss did not improve from 0.01818
+Epoch 38/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0186 - accuracy: 0.9271 - val_loss: 0.0220 - val_accuracy: 0.9171
+
+Epoch 00038: val_loss did not improve from 0.01818
+Epoch 39/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0179 - accuracy: 0.9309 - val_loss: 0.0173 - val_accuracy: 0.9366
+
+Epoch 00039: val_loss improved from 0.01818 to 0.01731, saving model to models/_mini_XCEPTION.39-0.94.hdf5
+Epoch 40/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0160 - accuracy: 0.9418 - val_loss: 0.0195 - val_accuracy: 0.9228
+
+Epoch 00040: val_loss did not improve from 0.01731
+Epoch 41/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0170 - accuracy: 0.9363 - val_loss: 0.0242 - val_accuracy: 0.9078
+
+Epoch 00041: val_loss did not improve from 0.01731
+Epoch 42/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0156 - accuracy: 0.9395 - val_loss: 0.0188 - val_accuracy: 0.9217
+
+Epoch 00042: val_loss did not improve from 0.01731
+Epoch 43/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0161 - accuracy: 0.9395 - val_loss: 0.0244 - val_accuracy: 0.9032
+
+Epoch 00043: val_loss did not improve from 0.01731
+Epoch 44/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0173 - accuracy: 0.9317 - val_loss: 0.0237 - val_accuracy: 0.9055
+
+Epoch 00044: val_loss did not improve from 0.01731
+Epoch 45/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0161 - accuracy: 0.9392 - val_loss: 0.0243 - val_accuracy: 0.9044
+
+Epoch 00045: val_loss did not improve from 0.01731
+Epoch 46/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0146 - accuracy: 0.9453 - val_loss: 0.0311 - val_accuracy: 0.8721
+
+Epoch 00046: val_loss did not improve from 0.01731
+Epoch 47/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0161 - accuracy: 0.9369 - val_loss: 0.0178 - val_accuracy: 0.9297
+
+Epoch 00047: val_loss did not improve from 0.01731
+Epoch 48/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0158 - accuracy: 0.9395 - val_loss: 0.0198 - val_accuracy: 0.9217
+
+Epoch 00048: val_loss did not improve from 0.01731
+Epoch 49/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0141 - accuracy: 0.9487 - val_loss: 0.0155 - val_accuracy: 0.9412
+
+Epoch 00049: val_loss improved from 0.01731 to 0.01553, saving model to models/_mini_XCEPTION.49-0.94.hdf5
+Epoch 50/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0151 - accuracy: 0.9441 - val_loss: 0.0199 - val_accuracy: 0.9205
+
+Epoch 00050: val_loss did not improve from 0.01553
+Epoch 51/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0148 - accuracy: 0.9427 - val_loss: 0.0211 - val_accuracy: 0.9194
+
+Epoch 00051: val_loss did not improve from 0.01553
+Epoch 52/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0139 - accuracy: 0.9487 - val_loss: 0.0165 - val_accuracy: 0.9366
+
+Epoch 00052: val_loss did not improve from 0.01553
+Epoch 53/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0151 - accuracy: 0.9421 - val_loss: 0.0204 - val_accuracy: 0.9194
+
+Epoch 00053: val_loss did not improve from 0.01553
+Epoch 54/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0147 - accuracy: 0.9412 - val_loss: 0.0227 - val_accuracy: 0.9090
+
+Epoch 00054: val_loss did not improve from 0.01553
+Epoch 55/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0153 - accuracy: 0.9418 - val_loss: 0.0235 - val_accuracy: 0.9101
+
+Epoch 00055: val_loss did not improve from 0.01553
+Epoch 56/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0158 - accuracy: 0.9410 - val_loss: 0.0198 - val_accuracy: 0.9171
+
+Epoch 00056: val_loss did not improve from 0.01553
+Epoch 57/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0133 - accuracy: 0.9513 - val_loss: 0.0252 - val_accuracy: 0.8940
+
+Epoch 00057: val_loss did not improve from 0.01553
+Epoch 58/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0128 - accuracy: 0.9525 - val_loss: 0.0144 - val_accuracy: 0.9470
+
+Epoch 00058: val_loss improved from 0.01553 to 0.01440, saving model to models/_mini_XCEPTION.58-0.95.hdf5
+Epoch 59/110
+109/108 [==============================] - 8s 78ms/step - loss: 0.0140 - accuracy: 0.9461 - val_loss: 0.0156 - val_accuracy: 0.9401
+
+Epoch 00059: val_loss did not improve from 0.01440
+Epoch 60/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0124 - accuracy: 0.9531 - val_loss: 0.0260 - val_accuracy: 0.8963
+
+Epoch 00060: val_loss did not improve from 0.01440
+Epoch 61/110
+109/108 [==============================] - 9s 80ms/step - loss: 0.0140 - accuracy: 0.9459 - val_loss: 0.0188 - val_accuracy: 0.9297
+
+Epoch 00061: val_loss did not improve from 0.01440
+Epoch 62/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0141 - accuracy: 0.9441 - val_loss: 0.0183 - val_accuracy: 0.9320
+
+Epoch 00062: val_loss did not improve from 0.01440
+Epoch 63/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0133 - accuracy: 0.9505 - val_loss: 0.0119 - val_accuracy: 0.9493
+
+Epoch 00063: val_loss improved from 0.01440 to 0.01189, saving model to models/_mini_XCEPTION.63-0.95.hdf5
+Epoch 64/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0129 - accuracy: 0.9482 - val_loss: 0.0161 - val_accuracy: 0.9366
+
+Epoch 00064: val_loss did not improve from 0.01189
+Epoch 65/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0143 - accuracy: 0.9433 - val_loss: 0.0179 - val_accuracy: 0.9343
+
+Epoch 00065: val_loss did not improve from 0.01189
+Epoch 66/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0119 - accuracy: 0.9579 - val_loss: 0.0166 - val_accuracy: 0.9343
+
+Epoch 00066: val_loss did not improve from 0.01189
+Epoch 67/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0119 - accuracy: 0.9565 - val_loss: 0.0339 - val_accuracy: 0.8594
+
+Epoch 00067: val_loss did not improve from 0.01189
+Epoch 68/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0127 - accuracy: 0.9542 - val_loss: 0.0183 - val_accuracy: 0.9263
+
+Epoch 00068: val_loss did not improve from 0.01189
+Epoch 69/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0123 - accuracy: 0.9545 - val_loss: 0.0179 - val_accuracy: 0.9320
+
+Epoch 00069: val_loss did not improve from 0.01189
+Epoch 70/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0122 - accuracy: 0.9536 - val_loss: 0.0157 - val_accuracy: 0.9412
+
+Epoch 00070: val_loss did not improve from 0.01189
+Epoch 71/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0119 - accuracy: 0.9536 - val_loss: 0.0192 - val_accuracy: 0.9240
+
+Epoch 00071: val_loss did not improve from 0.01189
+Epoch 72/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0116 - accuracy: 0.9588 - val_loss: 0.0136 - val_accuracy: 0.9516
+
+Epoch 00072: val_loss did not improve from 0.01189
+Epoch 73/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0129 - accuracy: 0.9519 - val_loss: 0.0174 - val_accuracy: 0.9343
+
+Epoch 00073: val_loss did not improve from 0.01189
+Epoch 74/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0127 - accuracy: 0.9533 - val_loss: 0.0130 - val_accuracy: 0.9505
+
+Epoch 00074: val_loss did not improve from 0.01189
+Epoch 75/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0103 - accuracy: 0.9637 - val_loss: 0.0151 - val_accuracy: 0.9459
+
+Epoch 00075: val_loss did not improve from 0.01189
+
+Epoch 00075: ReduceLROnPlateau reducing learning rate to 0.00010000000474974513.
+Epoch 76/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0099 - accuracy: 0.9637 - val_loss: 0.0105 - val_accuracy: 0.9608
+
+Epoch 00076: val_loss improved from 0.01189 to 0.01052, saving model to models/_mini_XCEPTION.76-0.96.hdf5
+Epoch 77/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0080 - accuracy: 0.9735 - val_loss: 0.0105 - val_accuracy: 0.9620
+
+Epoch 00077: val_loss did not improve from 0.01052
+Epoch 78/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0075 - accuracy: 0.9749 - val_loss: 0.0102 - val_accuracy: 0.9631
+
+Epoch 00078: val_loss improved from 0.01052 to 0.01022, saving model to models/_mini_XCEPTION.78-0.96.hdf5
+Epoch 79/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0072 - accuracy: 0.9755 - val_loss: 0.0108 - val_accuracy: 0.9620
+
+Epoch 00079: val_loss did not improve from 0.01022
+Epoch 80/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0071 - accuracy: 0.9761 - val_loss: 0.0109 - val_accuracy: 0.9608
+
+Epoch 00080: val_loss did not improve from 0.01022
+Epoch 81/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0065 - accuracy: 0.9804 - val_loss: 0.0104 - val_accuracy: 0.9620
+
+Epoch 00081: val_loss did not improve from 0.01022
+Epoch 82/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0066 - accuracy: 0.9807 - val_loss: 0.0113 - val_accuracy: 0.9574
+
+Epoch 00082: val_loss did not improve from 0.01022
+Epoch 83/110
+109/108 [==============================] - 9s 80ms/step - loss: 0.0065 - accuracy: 0.9775 - val_loss: 0.0100 - val_accuracy: 0.9585
+
+Epoch 00083: val_loss improved from 0.01022 to 0.01002, saving model to models/_mini_XCEPTION.83-0.96.hdf5
+Epoch 84/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0072 - accuracy: 0.9747 - val_loss: 0.0101 - val_accuracy: 0.9620
+
+Epoch 00084: val_loss did not improve from 0.01002
+Epoch 85/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0066 - accuracy: 0.9770 - val_loss: 0.0095 - val_accuracy: 0.9666
+
+Epoch 00085: val_loss improved from 0.01002 to 0.00952, saving model to models/_mini_XCEPTION.85-0.97.hdf5
+Epoch 86/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0063 - accuracy: 0.9781 - val_loss: 0.0102 - val_accuracy: 0.9620
+
+Epoch 00086: val_loss did not improve from 0.00952
+Epoch 87/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0058 - accuracy: 0.9801 - val_loss: 0.0101 - val_accuracy: 0.9631
+
+Epoch 00087: val_loss did not improve from 0.00952
+Epoch 88/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0066 - accuracy: 0.9770 - val_loss: 0.0096 - val_accuracy: 0.9620
+
+Epoch 00088: val_loss did not improve from 0.00952
+Epoch 89/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0058 - accuracy: 0.9821 - val_loss: 0.0100 - val_accuracy: 0.9643
+
+Epoch 00089: val_loss did not improve from 0.00952
+Epoch 90/110
+109/108 [==============================] - 9s 78ms/step - loss: 0.0064 - accuracy: 0.9798 - val_loss: 0.0114 - val_accuracy: 0.9551
+
+Epoch 00090: val_loss did not improve from 0.00952
+Epoch 91/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0060 - accuracy: 0.9810 - val_loss: 0.0106 - val_accuracy: 0.9585
+
+Epoch 00091: val_loss did not improve from 0.00952
+Epoch 92/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0063 - accuracy: 0.9790 - val_loss: 0.0108 - val_accuracy: 0.9574
+
+Epoch 00092: val_loss did not improve from 0.00952
+Epoch 93/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0055 - accuracy: 0.9821 - val_loss: 0.0094 - val_accuracy: 0.9608
+
+Epoch 00093: val_loss improved from 0.00952 to 0.00941, saving model to models/_mini_XCEPTION.93-0.96.hdf5
+Epoch 94/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0054 - accuracy: 0.9847 - val_loss: 0.0102 - val_accuracy: 0.9585
+
+Epoch 00094: val_loss did not improve from 0.00941
+Epoch 95/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0054 - accuracy: 0.9816 - val_loss: 0.0093 - val_accuracy: 0.9620
+
+Epoch 00095: val_loss improved from 0.00941 to 0.00932, saving model to models/_mini_XCEPTION.95-0.96.hdf5
+Epoch 96/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0059 - accuracy: 0.9801 - val_loss: 0.0105 - val_accuracy: 0.9585
+
+Epoch 00096: val_loss did not improve from 0.00932
+Epoch 97/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0056 - accuracy: 0.9807 - val_loss: 0.0098 - val_accuracy: 0.9608
+
+Epoch 00097: val_loss did not improve from 0.00932
+Epoch 98/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0052 - accuracy: 0.9839 - val_loss: 0.0101 - val_accuracy: 0.9597
+
+Epoch 00098: val_loss did not improve from 0.00932
+Epoch 99/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0054 - accuracy: 0.9816 - val_loss: 0.0101 - val_accuracy: 0.9597
+
+Epoch 00099: val_loss did not improve from 0.00932
+Epoch 100/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0061 - accuracy: 0.9781 - val_loss: 0.0098 - val_accuracy: 0.9574
+
+Epoch 00100: val_loss did not improve from 0.00932
+Epoch 101/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0053 - accuracy: 0.9824 - val_loss: 0.0097 - val_accuracy: 0.9620
+
+Epoch 00101: val_loss did not improve from 0.00932
+Epoch 102/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0048 - accuracy: 0.9842 - val_loss: 0.0092 - val_accuracy: 0.9631
+
+Epoch 00102: val_loss improved from 0.00932 to 0.00924, saving model to models/_mini_XCEPTION.102-0.96.hdf5
+Epoch 103/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0049 - accuracy: 0.9844 - val_loss: 0.0094 - val_accuracy: 0.9608
+
+Epoch 00103: val_loss did not improve from 0.00924
+Epoch 104/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0052 - accuracy: 0.9824 - val_loss: 0.0091 - val_accuracy: 0.9643
+
+Epoch 00104: val_loss improved from 0.00924 to 0.00910, saving model to models/_mini_XCEPTION.104-0.96.hdf5
+Epoch 105/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0045 - accuracy: 0.9853 - val_loss: 0.0100 - val_accuracy: 0.9585
+
+Epoch 00105: val_loss did not improve from 0.00910
+Epoch 106/110
+109/108 [==============================] - 8s 77ms/step - loss: 0.0054 - accuracy: 0.9813 - val_loss: 0.0088 - val_accuracy: 0.9654
+
+Epoch 00106: val_loss improved from 0.00910 to 0.00876, saving model to models/_mini_XCEPTION.106-0.97.hdf5
+Epoch 107/110
+109/108 [==============================] - 8s 76ms/step - loss: 0.0045 - accuracy: 0.9870 - val_loss: 0.0095 - val_accuracy: 0.9585
+
+Epoch 00107: val_loss did not improve from 0.00876
+Epoch 108/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0046 - accuracy: 0.9862 - val_loss: 0.0090 - val_accuracy: 0.9643
+
+Epoch 00108: val_loss did not improve from 0.00876
+Epoch 109/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0052 - accuracy: 0.9816 - val_loss: 0.0087 - val_accuracy: 0.9666
+
+Epoch 00109: val_loss improved from 0.00876 to 0.00875, saving model to models/_mini_XCEPTION.109-0.97.hdf5
+Epoch 110/110
+109/108 [==============================] - 8s 75ms/step - loss: 0.0047 - accuracy: 0.9856 - val_loss: 0.0084 - val_accuracy: 0.9666
+
+Epoch 00110: val_loss improved from 0.00875 to 0.00840, saving model to models/_mini_XCEPTION.110-0.97.hdf5
+Press any key to continue . . .

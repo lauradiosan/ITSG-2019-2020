@@ -10,7 +10,7 @@
 *.class
 
 # Dataset files
-ck+-convertion/
+datasets/
 
 # Generated files
 bin/

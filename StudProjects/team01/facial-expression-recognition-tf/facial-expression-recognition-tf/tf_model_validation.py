@@ -5,10 +5,11 @@ import cv2
 from keras.models import load_model
 import numpy as np
 from data_loader import *
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 
 
-emotion_model_path = 'models/_mini_XCEPTION.108-0.64.hdf5'
+#emotion_model_path = 'models/_mini_XCEPTION.49-0.71.hdf5'
+emotion_model_path = 'models/model.tflite'
 
 model = load_model(emotion_model_path, compile=True)
 #FER-2013 emotion labels: (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral)
@@ -25,3 +26,6 @@ y_pred_bool = np.argmax(y_pred, axis=1)
 y_rounded_train_labels = np.argmax(emotions, axis=1)
 
 print(classification_report(y_rounded_train_labels, y_pred_bool))
+cm = confusion_matrix(y_rounded_train_labels, y_pred_bool)
+cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+print(cm)

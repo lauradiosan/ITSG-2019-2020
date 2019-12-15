@@ -27,6 +27,9 @@
     <Compile Include="data_loader.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="keras_to_tflite_converter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="learning_plot.py">
       <SubType>Code</SubType>
     </Compile>
