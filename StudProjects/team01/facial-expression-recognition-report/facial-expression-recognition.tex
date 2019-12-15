@@ -233,7 +233,7 @@ In this section we present a few methods utilized in order to solve the Facial E
 \begin{itemize}
 	\item \textbf{\emph{What kind of data did they use?}} Coefficients describing elements of facial expressions (as features) and a range of seven emotional states (as labels). The emotional states detected are: neutral, joy, sadness, surprise, anger, fear, disgust. The images they used were from the KDEF database.
 	\item \textbf{\emph{How does their model(s) work?}} Using Microsoft Kinect 3D for face modeling, they were able to extract 3D models of the face as 3D points, but Kinect 3D also can extract Action Units (AC) based on those points, which basically represent certain features of the face. Choosing 6 of those Action Units (upper lip raising, jaw lowering, lip stretching, lowering eyebrows, lip corner depressing, outer brow raising) they were able to train a 3-NN and an MLP classifier in order to solve the FER problem.
-	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%.
+	\item \textbf{\emph{What were their results?}} They tested the models for two cases: a) subject-dependent and b) subject-independent. For the 3-NN classifier, they got around 95-96\% accuracy and for the MLP algorithms the results were around 75-76\%. \todo{please indicate the dataset used for obtaining these performances - SOLVED - KDEF}
 \end{itemize}
 
 \textbf{Second}, let us look at \cite{Samadiani19}, where three significant challenges in FER are discussed: illumination variation, head pose and subject-dependence. We shall focus on the ones that target visual-only databases.
@@ -298,7 +298,7 @@ For the proposed algorithm, our approach was to perform several training session
 In this chapter, we analyze the achieved results for the proposed algorithm using the following approach. We present the training dataset and independent variables, a plot of the achieved training results and how well it fairs against the CK+ dataset, presenting the precision for each emotion separately.\\
 The independent variables we are experimenting with are the learning rate, and the loss function.\\
 The dependent variables will be the weights of the model.\\
-For our first attempt, we have uesd the whole FER-2013 dataset, and obtained a validation accuracy of 65\%, and for the next attempts we shall only use the Training pictures from the FER-2013 dataset, and it will also enable us to compute the precision for the Public Test set nad Private Test set of the FER-2013 dataset.\\
+For our first attempt, we have used the whole FER-2013 dataset, and obtained a validation accuracy of 65\%, and for the next attempts we shall only use the Training pictures from the FER-2013 dataset, and it will also enable us to compute the precision for the Public Test set and Private Test set of the FER-2013 dataset.\\ \todo{here, the classifier was trained on FER and test on CK+ or it was trained from scratch by using CK+ data? - SOLVED - it was trained only on FER and tested on CK+}
 For comparison purposes between our models trained on the FER-2013 dataset, we also compute the precision for each model against the CK+ emotion dataset and present the results here.
 
 \section{Obtained results}
@@ -1317,6 +1317,11 @@ Considering we trained for just two emotions, the results indicate there is inde
 \end{table}
 
 From the confusion matrixes the confusion between Fear and Sad is obvious. Since Sad is learned better than Fear, the next point of action could be removing the Fear emotion from the dataset. Other points for investigation could be training on different datasets and comparing the results with FER-2013.
+
+\todo{because you state about a real-time approach, some statistics about the average testing time (per image or per dataset) could be added - SOLVED - FPS statistics in the following chapter}
+\todo{you can try to train the model by using the square hinge loss - SOLVED - trials 6 and 7}
+\todo{you can try to augment the training data (by variuos operations) - SOLVED - trials 8 and 10}
+
 
 \chapter{Acting Mirror}
 \label{chapter:acting_mirror}
