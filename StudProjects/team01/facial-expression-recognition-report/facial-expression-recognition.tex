@@ -299,7 +299,9 @@ In this chapter, we analyze the achieved results for the proposed algorithm usin
 The independent variables we are experimenting with are the learning rate, and the loss function.\\
 The dependent variables will be the weights of the model.\\
 For our first attempt, we have used the whole FER-2013 dataset, and obtained a validation accuracy of 65\%, and for the next attempts we shall only use the Training pictures from the FER-2013 dataset, and it will also enable us to compute the precision for the Public Test set and Private Test set of the FER-2013 dataset.\\ \todo{here, the classifier was trained on FER and test on CK+ or it was trained from scratch by using CK+ data? - SOLVED - it was trained only on FER and tested on CK+}
-For comparison purposes between our models trained on the FER-2013 dataset, we also compute the precision for each model against the CK+ emotion dataset and present the results here.
+For comparison purposes between our models trained on the FER-2013 dataset, we also compute the precision for each model against the CK+ emotion dataset and present the results here. \\
+\textbf{Side note:} for the first five trials, we test the model on the CK+ dataset as it is, but after that, we realised we forgot to filter the CK+ dataset through the Haarscade Frontal Face Detector model provided by OpenCV. We came back, and redid the tests on the as such \textbf{processed} CK+ dataset.\\
+\textbf{Note:} From here on, when we refer to testing our model against the CK+ dataset, we mean to test it against the processed CK+ dataset, unless stated otherwise.
 
 \section{Obtained results}
 \label{section:or}
@@ -327,6 +329,26 @@ The result was a training validation accuracy of 65\%, and a 76\% accuracy on th
 \begin{table}[htbp]
 	\caption{The precisin results against the CK+ dataset for the first training trial}
 	\label{fer_training_35k_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.16& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.03& 25 \\
+				Happy& 0.68& 69 \\
+				Sad& 0.12& 28 \\
+				Surprise& 0.00& 83 \\
+				Neutral& 0.03& 1 \\
+				\hline
+				Weighted Average& 0.19& 310
+			\end{tabular}
+		\end{center}
+\end{table}
+
+\begin{table}[htbp]
+	\caption{The precisin results against the \textbf{unprocessed} CK+ dataset for the first training trial}
+	\label{fer_training_35k_unprocessed_ckp}
 		\begin{center}
 			\begin{tabular}{p{110pt}p{110pt}c}
 				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
@@ -423,6 +445,24 @@ The result was a training validation accuracy of 63\%, and a 76\% accuracy on th
 			\end{tabular}
 		\end{center}
 \end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the \textbf{unprocessed} CK+ dataset for the second training trial}
+	\label{fer_training_28k_01_unprocessed_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.19& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.05& 25 \\
+				Happy& 0.52& 69 \\
+				Sad& 0.15& 28 \\
+				Surprise& 1.00& 83 \\
+				\hline
+				Weighted Average& 0.43& 310
+			\end{tabular}
+		\end{center}
+\end{table}
 
 \clearpage
 \underline{\textbf{\emph{The third trial:}}}
@@ -447,7 +487,7 @@ The result was a validation accuracy of 63\%, and a 60\% accuracy on the CK+ dat
 \end{figure}
 
 \begin{table}[htbp]
-	\caption{The precisin results against the CK+ dataset for the second training trial}
+	\caption{The precisin results against the CK+ dataset for the third training trial}
 	\label{fer_training_28k_001_ckp}
 		\begin{center}
 			\begin{tabular}{p{110pt}p{110pt}c}
@@ -500,6 +540,25 @@ The result was a validation accuracy of 63\%, and a 60\% accuracy on the CK+ dat
 				Neutral& 0.59& 607 \\
 				\hline
 				Weighted Average& 0.64 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the \textbf{unprocessed} CK+ dataset for the third training trial}
+	\label{fer_training_28k_001_unprocessed_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.17& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.02& 25 \\
+				Happy& 0.62& 69 \\
+				Sad& 0.18& 28 \\
+				Surprise& 1.00& 83 \\
+				Neutral& 0.02& 1 \\
+				\hline
+				Weighted Average& 0.45& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -583,6 +642,25 @@ The result were a validation accuracy of 63\%, and a 69\% accuracy on the CK+ da
 			\end{tabular}
 		\end{center}
 \end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the \textbf{unprocessed} CK+ dataset for the fourth training trial}
+	\label{fer_training_28k_001_mean_square_unprocessed_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.13& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.12& 25 \\
+				Happy& 0.49& 69 \\
+				Sad& 0.12& 28 \\
+				Surprise& 1.00& 83 \\
+				Neutral& 0.00& 1 \\
+				\hline
+				Weighted Average& 0.42& 310
+			\end{tabular}
+		\end{center}
+\end{table}
 
 \clearpage
 \underline{\textbf{\emph{The fifth trial:}}}
@@ -660,6 +738,25 @@ The result were a validation accuracy of 64\%, and a 79\% accuracy on the CK+ da
 				Neutral& 0.58& 607 \\
 				\hline
 				Weighted Average& 0.64 &3589
+			\end{tabular}
+		\end{center}
+\end{table}
+\begin{table}[htbp]
+	\caption{The precisin results against the \textbf{unprocessed} CK+ dataset for the fifth training trial}
+	\label{fer_training_28k_01_mean_square_unprocessed_ckp}
+		\begin{center}
+			\begin{tabular}{p{110pt}p{110pt}c}
+				\textbf{Emotion}& \textbf{Precision}& \textbf{No. of pictures} \\
+				\hline\hline
+				Angry& 0.16& 45 \\
+				Disgust& 0.00& 59 \\
+				Fear& 0.05& 25 \\
+				Happy& 0.52& 69 \\
+				Sad& 0.18& 28 \\
+				Surprise& 0.80& 83 \\
+				Neutral& 0.80& 1 \\
+				\hline
+				Weighted Average& 0.37& 310
 			\end{tabular}
 		\end{center}
 \end{table}
@@ -1370,7 +1467,8 @@ As illustrated in \ref{hotdog_not_hotdog_emotion}, Acting Mirror also presents a
 
 During our research, we have focused a lot on finding a better set of independent variables that would help the model from \cite{Arriaga17} reach a better accuracy on the FER-2013 dataset. On each trial we have tested the model against the FER-2013 test sets (public and private) and against the CK+ dataset. The best results we got were on the fifth trial, with 64\% accuracy on the FER-2013 dataset and 79\% accuracy on the CK+ dataset. After augmenting the dataset, on the eight trial, we got an accuracy of 68\% on the FER-2013 dataset, and just 71\% accuracy on the CK+ dataset. \\
 We decided to generate confusion matrixes in order to better analyze our situation, and what we found was that the FER-2013 dataset contains some confusions between emotions like Angry and Disgust, Sad and Fear, and between the aforementioned emotions and Neutral in smaller parts. We experimented with excluding the emotion Disgust from the dataset, but the improvements were not significant. We proposed 2 action points: either excluding the Fear emotion as well, which receives a big amount of confusion from Sad, or to train the model on a better dataset.\\
-Comparing other state of the art results that trained on the CK+ dataset against our achievements looks like we need a lot of improvement to do in order to catch up.
+Comparing other state of the art results that trained on the CK+ dataset against our achievements looks like we need a lot of improvement to do in order to catch up.\\
+\textbf{Side note:} while the attempts using Deep Networks \cite{Samadiani19} and CNN \cite{Burkert16} extract their own features directly from the images, the SVM \cite{Samadiani19} and our model from \cite{Arriaga17} use features provided by another a different program. In our case, those features come from the Haarscade Frontal Face Detector provided by OpenCV \cite{opencv} under the form of a 48x48 grayscale pixel roi. So while we show a comparison between these 4 state of the art models, we believe that this side note should also be kept in mind.
 
 \begin{table}[htbp]
 	\caption{Comparison between State of the Art results and our results}
@@ -1379,7 +1477,7 @@ Comparing other state of the art results that trained on the CK+ dataset against
 			\begin{tabular}{p{100pt}p{100pt}p{60pt}p{60pt}c}
 				\textbf{State of the Art}& \textbf{Deep Networks \cite{Samadiani19}}& \textbf{SVM \cite{Samadiani19}}& \textbf{CNN \cite{Burkert16}}& \textbf{Our results - model \cite{Arriaga17}} \\
 				\hline\hline
-				CK+ Dataset& 48-96& 31-50& 93-99& 71-79 \\
+				CK+ Dataset& [48, 96]& [31, 50]& [93, 99]& [71, 79] \\
 				\hline
 			\end{tabular}
 		\end{center}
