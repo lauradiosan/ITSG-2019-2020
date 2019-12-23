@@ -9,7 +9,6 @@ def get_data():
         aus_path = os.path.join(cafe_path, emotion, 'out', emotion + '.csv')
         with open(aus_path) as fp:
             column_names = fp.readline().split(", ")
-            next(fp)
             for line in fp:
                 aus = [0] * len(all_aus)
                 column_values = line.split(", ")

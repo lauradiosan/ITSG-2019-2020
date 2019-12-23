@@ -18,7 +18,7 @@ def generate_aus(directory, file):
     # programPath = "OpenFace"
     # cmdCommand = "cd "+programPath+" & "+"FaceLandmarkImg.exe -aus -out_dir ."+out_dir+"  -f ."+imagePath +" > logs"
 
-    subprocess.call([programPath + 'FeatureExtraction', '-f', os.path.join(directory, file), '-out_dir', out_dir, '-of', out_file])
+    subprocess.call([programPath + 'FeatureExtraction', '-aus', '-f', os.path.join(directory, file), '-out_dir', out_dir, '-of', out_file])
 
 
 def get_emotions(directory, file):
@@ -26,7 +26,6 @@ def get_emotions(directory, file):
     frame_timestamp = []
     with open(os.path.join('./out/AUs/', directory, file) + ".csv") as fp:
         column_names = fp.readline().split(", ")
-        next(fp)
         for line in fp:
             aus = [0] * len(all_aus)
             column_values = line.split(", ")
@@ -40,14 +39,16 @@ def get_emotions(directory, file):
                             index = all_aus.index(auStringNewFormat)
                             aus[index] = 1
             predicted_emotion = clf.predict([aus])
+            #print(predicted_emotion[0])
             frame_emotions.append(predicted_emotion[0])
             frame_timestamp.append(float(column_values[2]))
     show_statistics(frame_timestamp, frame_emotions)
 
 
 def main():
-    directory = "data/emoreact/Data/Test"
-    file = "ANNOYING_ORANGE83_2.mp4"
+    generate_cafe_aus()
+    directory = "data/ubbkids/kids-emotions"
+    file = "kid01_02.mp4"
     generate_aus(directory, file)
     get_emotions(directory, file)
 

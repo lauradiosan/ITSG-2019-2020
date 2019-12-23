@@ -35,7 +35,7 @@ def get_emotions_from_video(directory, file, clf, generate_statistics=False):
     # generate_aus(directory, file)
     with open(os.path.join('./out/AUs/', directory, file) + ".csv") as fp:
         column_names = fp.readline().split(", ")
-        next(fp)
+        #next(fp)
         for line in fp:
             aus = [0] * len(all_aus)
             column_values = line.split(", ")

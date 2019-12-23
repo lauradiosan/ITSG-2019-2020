@@ -1,5 +1,5 @@
 import os
-
+import subprocess
 import matplotlib.pyplot as plt
 import numpy as np
 from joblib import dump
@@ -27,13 +27,17 @@ def train(data, model_name):
 
 def generate_cafe_aus():
     open_face_path = "./OpenFace/build/bin/"
-    base_path = './CAFEdataset/dataset'
+    base_path = './data/cafe'
     for folder in os.listdir(base_path):
         print("Starting extracting data for emotion: " + folder)
         emotion_folder_path = os.path.join(base_path, folder)
         outDir = os.path.join(emotion_folder_path, 'out')
-        open_face_command = open_face_path + "FeatureExtraction -aus -out_dir " + outDir + " -fdir " + emotion_folder_path + " > logs"
-        os.system(open_face_command)
+        logs_file = open('./out/logs', 'w')
+
+        subprocess.call([openface_path, '-aus', '-out_dir', outDir, '-fdir', emotion_folder_path], stdout=logs_file)
+
+        #open_face_command = open_face_path + "FeatureExtraction -aus -out_dir " + outDir + " -fdir " + emotion_folder_path + " > logs"
+        #os.system(open_face_command)
         print("Ended extracting data for emotion: " + folder)
 
 

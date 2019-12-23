@@ -1,7 +1,7 @@
 from test import *
 
-# cafe_clf = load('model/model_cafe')
-ck_clf = load('model/model_ck')
+cafe_clf = load('model/model_cafe')
+# ck_clf = load('model/model_ck')
 
 
 def generate_aus():
@@ -17,7 +17,7 @@ def get_emotions(clf):
     frame_timestamp = []
     with open(os.path.join('./out/AUs/', "cam_vid.csv")) as fp:
         column_names = fp.readline().split(", ")
-        next(fp)
+        #next(fp)
         for line in fp:
             aus = [0] * len(all_aus)
             column_values = line.split(", ")
