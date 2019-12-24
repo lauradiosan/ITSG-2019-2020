@@ -17,36 +17,47 @@ clf = joblib.load('pets_mlp.pkl')
 @app.route('/cnnclassifier/predict', methods=['POST'])
 def predict():
     data = request.get_json(force=True)
-	# run CNN Prediction
-    img_path = data['imgPath']
-    img_path = 'D:/Master/Sem3/ITSG/' + img_path
-    image = Image.open(img_path).convert('RGB')
-    resized_image = image.resize((64, 64))
-    resized_image = np.asarray(resized_image)
-    resized_image.shape = (1, 64, 64, 3)
-
-    # Required because of a bug in Keras when using tensorflow graph cross threads    
-    pred_cnn = np.argmax(cnn.predict(resized_image))
-
-    # run MLP Prediction
-    if 'imgPath' in data: 
-    	del data['imgPath']
-
-	# the clf model takes 55 parameters (55 pet features)
-    clf_in = np.zeros((55))
-    i = 0
-    for col in data:
-    	clf_in[i] = data[col]
-    	i += 1
+    pred_mlp = -1
+    pred_cnn = -1
     
-    if (i<55):
-        prediction = int(pred_cnn)
-    else:
+    if 'imgPath' in data: 
+        # run CNN Prediction
+        img_path = data['imgPath']
+        img_path = 'D:/Master/Sem3/ITSG/' + img_path
+        image = Image.open(img_path).convert('RGB')
+        resized_image = image.resize((64, 64))
+        resized_image = np.asarray(resized_image)
+        resized_image.shape = (1, 64, 64, 3)
+
+        # Required because of a bug in Keras when using tensorflow graph cross threads    
+        pred_cnn = np.argmax(cnn.predict(resized_image))
+        
+    del data['imgPath']
+        
+    # run MLP Prediction
+	# the clf model takes 55 parameters (55 pet features)
+    i = 0
+    if (len(data) > 0):
+        clf_in = np.zeros((55))
+        for col in data:
+            clf_in[i] = data[col]
+            i += 1
+    
+    # MLP classifier requires all the textual features as input (55 features)
+    if (i==55):
         pred_mlp = clf.predict([clf_in])
-
-        # combine the model results
+    
+    if (pred_mlp > 0 and pred_cnn > 0):
+        # combine the model predictions
         prediction = int((pred_cnn+pred_mlp)/2)
-
+    else:
+        if (pred_mlp > 0):
+            # return MLP classifier prediction
+            prediction = int(pred_mlp)
+        else:
+            # return CNN classifier prediction
+            prediction = int(pred_cnn)
+    
     data = {'result': prediction}
     return Response(response=json.dumps(data), status=200, mimetype='application/json')
 
