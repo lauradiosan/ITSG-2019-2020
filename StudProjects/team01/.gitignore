@@ -9,6 +9,9 @@
 # Java class files
 *.class
 
+# Avi files
+*.avi
+
 # Dataset files
 datasets/
 
