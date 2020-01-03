@@ -1,15 +1,15 @@
-from PIL import Image
-import numpy as np
 import sys
 import os
 import csv
 import glob
-import pandas as pd
 import cv2
+import pandas as pd
+import numpy as np
+from PIL import Image
 
 dataset_path = 'img_pixels.csv'
 
-image_size=(48,48)
+image_size = (48, 48)
 
 def load_fer2013():
     data = pd.read_csv(dataset_path)

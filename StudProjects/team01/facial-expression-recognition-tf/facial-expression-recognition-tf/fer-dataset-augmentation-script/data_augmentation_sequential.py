@@ -1,6 +1,9 @@
-import pandas as pd
+"""
+Augments a FER-2013 like dataset with several kind of noise.
+"""
 import cv2
 import csv
+import pandas as pd
 import numpy as np
 from PIL import Image
 from keras.preprocessing.image import img_to_array
@@ -9,7 +12,7 @@ import imgaug.augmenters as iaa
 
 dataset_path = 'train_fer2013.csv'
 #dataset_path = 'img_pixels.csv'
-image_size=(48,48)
+image_size = (48, 48)
  
 def load_fer2013():
     data = pd.read_csv(dataset_path)

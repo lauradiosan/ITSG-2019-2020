@@ -1,14 +1,17 @@
-from PIL import Image
-import numpy as np
+"""
+Converts the CK+ dataset to FER-2013 .csv style dataset.
+Each line would have (label, 2304 grayscale pixels).
+"""
 import sys
 import os
 import csv
 import glob
+from PIL import Image
 
 from keras.preprocessing.image import img_to_array
+from keras.models import load_model
 import imutils
 import cv2
-from keras.models import load_model
 import numpy as np
 import tensorflow as tf
 
@@ -57,11 +60,11 @@ ckpToFER2013EmotionConvertor = [
 for picture, label in zip(myPicturePaths, myLabelsPaths):
     print(picture, label)
     frame = cv2.imread(picture)
-    frame = imutils.resize(frame,width=800)
+    frame = imutils.resize(frame, width=800)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    faces = face_detection.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=5,minSize=(30,30),flags=cv2.CASCADE_SCALE_IMAGE)
-    faces = sorted(faces, reverse=True,
-        key=lambda x: (x[2] - x[0]) * (x[3] - x[1]))
+    faces = face_detection.detectMultiScale(
+        gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
+    faces = sorted(faces, reverse=True, key=lambda x: (x[2] - x[0]) * (x[3] - x[1]))
     if len(faces) > 0:
         (fX, fY, fW, fH) = faces[0]
         # Extract the ROI of the face from the grayscale image, resize it to a fixed 48x48 pixels, and then prepare
