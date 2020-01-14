@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students Internship Platform</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Lato"
+          rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat"
+          rel="stylesheet" type="text/css"/>
+    <link
+            href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+            media="screen"
+            rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+    <script src="../static/js/bootstrap.min.js"
+            th:src="@{~/js/bootstrap.min.js}"></script>
+    <link href="../static/css/hms.css" media="screen" rel="stylesheet"
+          th:href="@{/css/hms.css}" type="text/css"/>
+    <style>
+        #container {
+            margin: 0px auto;
+            width: 500px;
+            height: 375px;
+            border: 10px #333 solid;
+        }
+
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
+        .center {
+            width: 80%;
+            height: 80%;
+            position: absolute;
+            margin:auto;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+        }
+        #center img {
+            display:block;
+            margin:auto;
+        }
+
+    </style>
+    <script type="text/javascript">
+        function setInputs() {
+            var input1 = document.getElementById('data');
+
+            var input2 = document.getElementById('username');
+            input2.value = input1.value;
+
+            var input3 = document.getElementById('password');
+            input3.value = input1.value;
+        }
+        function submitLogin() {
+            console.log(document.getElementById('username').value);
+            console.log(document.getElementById('password').value);
+            //document.getElementById("loginForm").submit();
+        }
+        function encodePhoto(data) {
+            console.log("javascript");
+            document.getElementById("data").setAttribute("value", data);
+            console.log(data);
+            setInputs();
+            document.getElementById("loginForm").submit();
+            //document.getElementById("loginButton").click();
+            document.getElementById("photoForm").submit();
+        }
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            setInputs();
+            console.log(document.getElementById('username').value);
+            console.log(document.getElementById('password').value);
+            if (document.getElementById('username').value != '') {
+                if (document.getElementById('password').value != '') {
+                    document.getElementById("loginForm").submit();
+                }
+            }
+            setTimeout(function() {
+                document.getElementById("snap").click();
+            }, 3000);
+        });
+
+    </script>
+</head>
+
+<body id="#homepage">
+<div th:include="fragments/header :: header"></div>
+<div sec:authorize="!isAuthenticated()">
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+
+        </video>
+    </div>
+    <script>
+        var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then(function (stream) {
+                    video.srcObject = stream;
+                })
+                .catch(function (err0r) {
+                    console.log("Something went wrong!");
+                });
+        }
+
+    </script>
+    <script th:inline="javascript">
+
+    </script>
+</div>
+
+<div sec:authorize="!isAuthenticated()">
+    <form class="col-md-4" hidden="true" id="photoForm" method="POST"
+          style="height: 75px;width: 75px;" th:action="@{/}" th:object="${loginPurposes}">
+        <input class="form-control" id="data" name="data" onkeyup="setInputs()" th:field="*{data}"
+               th:onkeyup="'javascript:setInputs();'"
+               type="text" value=""/>
+        <button id="snap" onclick="">Snap Photo</button>
+    </form>
+</div>
+<div sec:authorize="!isAuthenticated()">
+    <canvas height="375" hidden="true" id="canvas" width="500"></canvas>
+</div>
+<div id="img">
+    <img class="top" hidden="true" id="newimg"/>
+</div>
+<script th:inline="javascript">
+        // Elements for taking the snapshot
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var video = document.getElementById('videoElement');
+        var data = canvas.toDataURL('image/jpeg', 1.0);
+        const Url='http://0.0.0.0:5000/login';
+
+        // Trigger photo take
+        document.getElementById("snap").addEventListener("click", function() {
+            console.log("aiciii");
+            context.drawImage(video, 0, 0, 500, 375);
+            var data = canvas.toDataURL();
+            console.log("video:");
+            console.log(data)
+            var image = document.getElementById('newimg');
+            image.src = data;
+            encodePhoto(data);
+        });
+
+</script>
+<audio autoplay="true"
+       sec:authorize="!isAuthenticated()" src="../static/audio/salut_prescolarule.mp3"
+       th:src="@{audio/salut_prescolarule.mp3}">
+</audio>
+<audio autoplay="true"
+       sec:authorize="hasAuthority('PRESCHOOLAR')" src="../static/audio/sa_inceapa_jocul.mp3"
+       th:src="@{audio/sa_inceapa_jocul.mp3}">
+</audio>
+<div class="center" id="center" sec:authorize="hasAuthority('PRESCHOOLAR')">
+    <img src="../static/images/game.gif" th:src="@{images/game.gif}"/>
+</div>
+
+<div class="container text-center" id="band">
+    <div style="margin-bottom:0px">
+
+        <div sec:authorize="!isAuthenticated()">
+            <p hidden="true">
+                <em>Please login.</em>
+            </p>
+            <div th:if="${param.error}">
+                Invalid username or password.
+            </div>
+            <form class="form-horizontal" hidden="true" id="loginForm" method="post" th:action="@{/login}">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="username">Username:</label>
+                    <div class="col-sm-10">
+                        <input autofocus="autofocus" class="form-control" id="username" name="username"
+                               placeholder="username"
+                               th:required="required"
+                               th:value="${username}" type="text"/> <br/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="password">Password:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="password" name="password" onkeyup="'javascript:submitLogin();'"
+                               placeholder="password" th:value="${password}"
+                               type="password"/>
+                    </div>
+                </div>
+                <br/>
+                <button class="btn btn-primary btn-lg btn-success" data-target="#myModalTest"
+                        data-toggle="modal" id="loginButton" type="submit">Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

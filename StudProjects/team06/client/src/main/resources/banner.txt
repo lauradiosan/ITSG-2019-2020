@@ -1,0 +1,19 @@
+
+
+
+${AnsiColor.BLUE}HHHHHHHHH     HHHHHHHHHMMMMMMMM               MMMMMMMM   SSSSSSSSSSSSSSSS
+${AnsiColor.BLUE}H:::::::H     H:::::::HM:::::::M             M:::::::M SS:::::::::::::::S
+${AnsiColor.BLUE}H:::::::H     H:::::::HM::::::::M           M::::::::MS:::::SSSSSS::::::S
+${AnsiColor.BLUE}HH::::::H     H::::::HHM:::::::::M         M:::::::::MS:::::S     SSSSSSS
+  ${AnsiColor.BLUE}H:::::H     H:::::H  M::::::::::M       M::::::::::MS:::::S
+  ${AnsiColor.BLUE}H:::::H     H:::::H  M:::::::::::M     M:::::::::::MS:::::S
+  ${AnsiColor.BLUE}H::::::HHHHH::::::H  M:::::::M::::M   M::::M:::::::M S::::SSSS
+  ${AnsiColor.BLUE}H:::::::::::::::::H  M::::::M M::::M M::::M M::::::M  SS::::::SSSSS
+  ${AnsiColor.BLUE}H:::::::::::::::::H  M::::::M  M::::M::::M  M::::::M    SSS::::::::SS
+  ${AnsiColor.BLUE}H::::::HHHHH::::::H  M::::::M   M:::::::M   M::::::M       SSSSSS::::S
+  ${AnsiColor.BLUE}H:::::H     H:::::H  M::::::M    M:::::M    M::::::M            S:::::S
+  ${AnsiColor.BLUE}H:::::H     H:::::H  M::::::M     MMMMM     M::::::M            S:::::S
+${AnsiColor.BLUE}HH::::::H     H::::::HHM::::::M               M::::::MSSSSSSS     S:::::S
+${AnsiColor.BLUE}H:::::::H     H:::::::HM::::::M               M::::::MS::::::SSSSSS:::::S
+${AnsiColor.BLUE}H:::::::H     H:::::::HM::::::M               M::::::MS:::::::::::::::SS
+${AnsiColor.BLUE}HHHHHHHHH     HHHHHHHHHMMMMMMMM               MMMMMMMM SSSSSSSSSSSSSSS
