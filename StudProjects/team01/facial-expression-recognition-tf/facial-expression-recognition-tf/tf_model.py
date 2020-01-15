@@ -12,6 +12,7 @@ from keras.layers import Input
 from keras.layers import MaxPooling2D
 from keras.layers import SeparableConv2D
 from keras import layers
+from keras import losses
 from keras.regularizers import l2
 import pandas as pd
 import cv2
@@ -20,7 +21,7 @@ from data_loader import *
  
 # parameters
 batch_size = 32
-num_epochs = 110
+num_epochs = 10187
 input_shape = (48, 48, 1)
 verbose = 1
 num_classes = 7
@@ -98,18 +99,21 @@ x = GlobalAveragePooling2D()(x)
 output = Activation('softmax',name='predictions')(x)
  
 model = Model(img_input, output)
-model.compile(optimizer='adam', loss='categorical_crossentropy',metrics=['accuracy'])
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+#model.compile(optimizer='adam', loss=losses.MeanSquaredError(), metrics=['accuracy'])
 model.summary()
  
 # callbacks
 log_file_path = base_path + '_emotion_training.log'
 csv_logger = CSVLogger(log_file_path, append=False)
 early_stop = EarlyStopping('val_loss', patience=patience)
+#reduce_lr = ReduceLROnPlateau('val_loss', factor=0.1, patience=int(patience/4), verbose=1)
 reduce_lr = ReduceLROnPlateau('val_loss', factor=0.1, patience=int(patience/4), verbose=1)
 trained_models_path = base_path + '_mini_XCEPTION'
 model_names = trained_models_path + '.{epoch:02d}-{val_accuracy:.2f}.hdf5'
 model_checkpoint = ModelCheckpoint(model_names, 'val_loss', verbose=1,save_best_only=True)
-callbacks = [model_checkpoint, csv_logger, early_stop, reduce_lr]
+#callbacks = [model_checkpoint, csv_logger, early_stop, reduce_lr]
+callbacks = [model_checkpoint, csv_logger, reduce_lr]
  
 model.fit_generator(data_generator.flow(xtrain, ytrain,batch_size),
                         steps_per_epoch=len(xtrain) / batch_size,
