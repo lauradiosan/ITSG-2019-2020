@@ -385,3 +385,122 @@ INFO:niftynet:2019-12-12 00:14:35,579: Image reader: loading 10 subjects from se
 INFO:niftynet:2019-12-12 00:14:35,580: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
 INFO:niftynet:2019-12-12 00:14:37,963: Cleaning up...
 INFO:niftynet:2019-12-12 00:14:37,963: SegmentationApplication stopped (time in second 2.37).
+INFO:niftynet:2020-01-15 19:36:10,684: starting segmentation application
+INFO:niftynet:2020-01-15 19:36:10,693: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 19:36:10,700: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 19:36:10,704: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 19:36:10,726: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 19:36:10,727: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 19:36:10,734: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 19:36:10,767: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 19:36:10,782: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 19:36:11,053: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 19:36:11,054: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 19:36:14,762: Cleaning up...
+INFO:niftynet:2020-01-15 19:36:14,808: SegmentationApplication stopped (time in second 3.74).
+INFO:niftynet:2020-01-15 20:36:13,792: starting segmentation application
+INFO:niftynet:2020-01-15 20:36:13,843: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 20:36:13,850: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 20:36:13,852: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 20:36:13,869: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 20:36:13,871: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 20:36:13,874: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 20:36:13,914: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 20:36:13,926: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 20:36:14,088: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 20:36:14,088: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 20:36:23,243: Cleaning up...
+INFO:niftynet:2020-01-15 20:36:23,249: SegmentationApplication stopped (time in second 9.14).
+INFO:niftynet:2020-01-15 20:45:29,039: starting segmentation application
+INFO:niftynet:2020-01-15 20:45:29,085: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 20:45:29,095: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 20:45:29,096: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 20:45:29,112: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 20:45:29,112: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 20:45:29,116: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 20:45:29,140: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 20:45:29,158: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 20:45:29,265: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 20:45:29,266: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 20:45:59,402: Cleaning up...
+INFO:niftynet:2020-01-15 20:45:59,407: SegmentationApplication stopped (time in second 30.12).
+INFO:niftynet:2020-01-15 20:47:04,636: starting segmentation application
+INFO:niftynet:2020-01-15 20:47:04,646: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 20:47:04,651: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 20:47:04,660: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 20:47:04,680: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 20:47:04,681: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 20:47:04,681: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 20:47:04,709: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 20:47:04,718: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 20:47:04,955: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 20:47:04,956: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 20:47:57,739: Cleaning up...
+INFO:niftynet:2020-01-15 20:47:57,741: SegmentationApplication stopped (time in second 52.77).
+INFO:niftynet:2020-01-15 20:53:57,544: starting segmentation application
+INFO:niftynet:2020-01-15 20:53:57,545: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 20:53:57,546: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 20:53:57,561: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 20:53:57,576: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 20:53:57,576: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 20:53:57,577: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 20:53:57,605: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 20:53:57,619: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 20:53:57,826: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 20:53:57,827: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 20:54:54,437: Cleaning up...
+INFO:niftynet:2020-01-15 20:54:54,439: SegmentationApplication stopped (time in second 56.59).
+INFO:niftynet:2020-01-15 21:23:08,693: starting segmentation application
+INFO:niftynet:2020-01-15 21:23:08,706: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 21:23:08,718: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 21:23:08,722: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 21:23:08,743: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 21:23:08,744: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 21:23:08,748: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 21:23:08,764: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 21:23:08,775: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 21:23:09,020: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 21:23:09,021: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 21:25:34,382: Cleaning up...
+INFO:niftynet:2020-01-15 21:25:34,383: SegmentationApplication stopped (time in second 145.35).
+INFO:niftynet:2020-01-15 21:28:29,670: starting segmentation application
+INFO:niftynet:2020-01-15 21:28:29,682: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-15 21:28:29,688: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-15 21:28:29,694: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-15 21:28:29,716: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-15 21:28:29,717: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-15 21:28:29,718: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-15 21:28:29,738: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-15 21:28:29,755: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-15 21:28:30,247: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-15 21:28:30,248: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-15 21:29:25,262: Cleaning up...
+INFO:niftynet:2020-01-15 21:29:25,263: SegmentationApplication stopped (time in second 55.00).

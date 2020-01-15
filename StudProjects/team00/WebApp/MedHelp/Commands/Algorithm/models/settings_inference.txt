@@ -1,4 +1,4 @@
-Input params at 2019-12-12 03:16:39.
+Input params at 2019-12-12 09:00:38.
 [CUSTOM]
 -- num_classes: 3
 -- output_prob: False
@@ -14,11 +14,11 @@ Input params at 2019-12-12 03:16:39.
 -- mixup_alpha: 0.2
 -- mix_match: False
 -- weight: ()
--- sampler: ()
--- label: ('train-labels',)
 -- value: ()
--- inferred: ()
+-- sampler: ()
 -- image: ('test-images',)
+-- label: ('train-labels',)
+-- inferred: ()
 -- name: net_segment
 [CONFIG_FILE]
 -- path: D:\ITSGFork\StudProjects\team00\WebApp\MedHelp\Commands\Algorithm\inference-config.ini

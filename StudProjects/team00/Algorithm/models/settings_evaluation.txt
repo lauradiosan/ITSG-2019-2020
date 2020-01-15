@@ -1,4 +1,4 @@
-Input params at 2019-12-12 00:14:35.
+Input params at 2020-01-15 21:28:29.
 [CUSTOM]
 -- num_classes: 3
 -- output_prob: False
@@ -13,12 +13,12 @@ Input params at 2019-12-12 00:14:35.
 -- do_mixup: False
 -- mixup_alpha: 0.2
 -- mix_match: False
--- image: ()
--- label: ('i-labels',)
--- weight: ()
 -- sampler: ()
 -- inferred: ('infered-images',)
+-- weight: ()
 -- value: ()
+-- label: ('i-labels',)
+-- image: ()
 -- name: net_segment
 [CONFIG_FILE]
 -- path: D:\ITSGFork\StudProjects\team00\Algorithm\evaluation-config.ini
@@ -30,7 +30,7 @@ Input params at 2019-12-12 00:14:35.
 -- filename_contains: ('window_seg_', '__segmentation_niftynet')
 -- filename_not_contains: ()
 -- filename_removefromid: 
--- interp_order: 0
+-- interp_order: 3
 -- loader: None
 -- pixdim: ()
 -- axcodes: ()
@@ -43,7 +43,7 @@ Input params at 2019-12-12 00:14:35.
 -- filename_contains: ('training_axial_full_', '_label_A')
 -- filename_not_contains: ()
 -- filename_removefromid: 
--- interp_order: 0
+-- interp_order: 3
 -- loader: None
 -- pixdim: ()
 -- axcodes: ()
