@@ -1,0 +1,13 @@
+Benchmark
+Dataset: Labeled Faces in the Wild
+Algorithm: hog - no alignment
+Persons:276
+Total images:4910
+Accuracy:64.74
+
+Algorithm: hog -  face aligned
+Persons:276
+Total images:4910
+Accuracy:70
+
+Test with one image for every person

@@ -1,0 +1,13 @@
+ro/ubbcluj/entity/Person.class
+ro/ubbcluj/repository/PersonRepository.class
+ro/ubbcluj/entity/Account$AccountBuilder.class
+ro/ubbcluj/repository/AccountRepository.class
+ro/ubbcluj/entity/Person$PersonBuilder.class
+ro/ubbcluj/entity/QRole.class
+ro/ubbcluj/entity/QAccount.class
+ro/ubbcluj/entity/QPerson.class
+ro/ubbcluj/enums/RoleEnum.class
+ro/ubbcluj/entity/Role.class
+ro/ubbcluj/repository/RoleRepository.class
+ro/ubbcluj/entity/Account.class
+ro/ubbcluj/enums/GenderEnum.class

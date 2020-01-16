@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Students Internship Platform</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+    <link href="http://fonts.googleapis.com/css?family=Lato"
+          rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat"
+          rel="stylesheet" type="text/css"/>
+    <link
+            href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+            media="screen"
+            rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"/>
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+
+    <script src="../static/js/bootstrap.min.js"
+            th:src="@{~/js/bootstrap.min.js}"></script>
+    <link href="../static/css/hms.css" media="screen" rel="stylesheet"
+          th:href="@{/css/hms.css}" type="text/css"/>
+</head>
+
+<body class="bg-1" style="height: 100%;">
+<div class="bg-1" id="tour" style="height: 100%">
+    <div class="container text-center" id="band">
+        <h3>There is already a user with this username!</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <br></br>
+                <div class="text-center">
+                    <span class="label label-danger"><strong>Code 403.</strong></span>
+
+                </div>
+                <br></br> <a data-toggle="collapse" href="#demo"> <img
+                    alt="Error"
+                    class="img-circle person" height="255"
+                    src="../static/images/error/errorLegend.png" th:src="@{~/images/error/errorLegend.png}"
+                    width="255"/>
+            </a>
+                <div class="collapse" id="demo">
+                    <p>HTTP return codes cheat sheet</p>
+                    <div class="text-left"><span class="label label-danger "> 1** </span> &nbsp;&nbsp;&nbsp; Hold on
+                    </div>
+                    <div class="text-left"><span class="label label-danger "> 2** </span> &nbsp;&nbsp;&nbsp; Here you go
+                    </div>
+                    <div class="text-left"><span class="label label-danger "> 3** </span> &nbsp;&nbsp;&nbsp; Go away
+                    </div>
+                    <div class="text-left"><span class="label label-danger "> 4** </span> &nbsp;&nbsp;&nbsp; You fucked
+                        up
+                    </div>
+                    <div class="text-left"><span class="label label-danger "> 5** </span> &nbsp;&nbsp;&nbsp; I fucked up
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="text-center">
+    <h3>
+        <a class="up-arrow" data-toggle="tooltip" href="/"
+           title="Home"> <span class="glyphicon glyphicon-home"> </span> Go back home
+        </a>
+    </h3>
+</footer>
+</body>
+</html>

@@ -1,0 +1,2 @@
+DROP ALL OBJECTS;
+DROP DATABASE preschoolar;
