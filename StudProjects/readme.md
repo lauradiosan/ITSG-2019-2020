@@ -30,3 +30,6 @@
 |        |   | Dinga         | Madalina        | 258 |                     ||
 |        |   | Bumbar        | Ioana           | 258 |                     ||
 |        |   | Bumbar        | Samuel          | 258 |                     ||
+| team 11|   | Raicu         | Robert          | 258 | emotions            ||
+| team 12|   | Moldovan      | Marc            | 258 | auto                ||
+|        |   | Maier         | Tudor           | 258 |                     ||
