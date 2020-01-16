@@ -1,0 +1,600 @@
+\documentclass[runningheads,a4paper,11pt]{report}
+
+\usepackage{algorithmic}
+\usepackage{algorithm} 
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{caption}
+\usepackage{comment} 
+\usepackage{epsfig} 
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{geometry} 
+\usepackage{graphicx}
+\usepackage[colorlinks]{hyperref} 
+\usepackage[latin1]{inputenc}
+\usepackage{multicol}
+\usepackage{multirow} 
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{xcolor}
+\usepackage{lscape} 
+\graphicspath{ {./img/} }
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\pgfplotsset{compat=1.14}
+
+\geometry{a4paper,top=3cm,left=2cm,right=2cm,bottom=3cm}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{%
+  \color{lime}\leaders\hrule height \footrulewidth\hfill}}
+
+\hypersetup{
+pdftitle={artTitle},
+pdfauthor={name},
+pdfkeywords={pdf, latex, tex, ps2pdf, dvipdfm, pdflatex},
+bookmarksnumbered,
+pdfstartview={FitH},
+urlcolor=cyan,
+colorlinks=true,
+linkcolor=red,
+citecolor=green,
+}
+% \pagestyle{plain}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\linespread{1}
+
+% \pagestyle{myheadings}
+
+\makeindex
+\begin{filecontents}{thu2.dat}
+X Time  	Part1  	
+1 1	4.2588
+2 2	2.88972
+3 3	2.42234
+4 4	2.20074
+5 5	2.06985
+6 6	1.98126
+7 7	1.91674
+8 8	1.86652
+9 9	1.82595
+
+
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+\sloppy
+\begin{center}
+BABE\c S BOLYAI UNIVERSITY, CLUJ NAPOCA, ROM\^ ANIA
+
+FACULTY OF MATHEMATICS AND COMPUTER SCIENCE
+
+\vspace{6cm}
+
+\Huge \textbf{Traffic Signs Recognition}
+
+\vspace{1cm}
+
+\normalsize -- ITSG report --
+
+\end{center}
+
+
+\vspace{4cm}
+
+\begin{flushright}
+\Large{\textbf{Team members}}\\
+Brici Robert
+
+Hojda Catalin
+
+Oncioiu Costin
+
+Onisor Ioana
+
+Software Engineering, 258
+\end{flushright}
+
+\vspace{4cm}
+
+\begin{center}
+2019
+\end{center}
+
+\end{titlepage}
+
+\pagenumbering{gobble}
+
+\begin{abstract}
+	According to statistics, Romania ranks highest in the whole European Union when it comes to the number of fatal car crashes. [CE 2018] Given this issue, we believe that intelligent software system designed for the automotive industry have the potential to provide significant improvements when it comes to this tragic pattern that our country is following. 
+One main focus point when it comes to the AI development in this industry is the recognition of the traffic signs, which are the key factor by which traffic is regulated. They control its flow, provide information regarding how drivers should behave, inform a driver about the directions and distances along with guides to a destination, or warn him/her about specific dangerous places. Given the increasing a number of drivers, a need to make a road more safe arises.
+\end{abstract}
+
+
+\tableofcontents
+
+\newpage
+
+\listofalgorithms
+
+\newpage
+
+\setstretch{1.5}
+
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+
+ 
+
+
+\chapter{Introduction}
+\label{chapter:introduction}
+
+\section{What? Why? How?}
+\label{section:what}
+
+One main focus point when it comes to the AI development in this industry is the recognition of the traffic signs, which are the key factor by which traffic is regulated. They control its flow, provide information regarding how drivers should behave, inform a driver about the directions and distances along with guides to a destination, or warn him/her about specific dangerous places. Given the increasing a number of drivers, a need to make a road more safe arises. An unnoticed sign board can cause fatal accidents. The reasons why they go unnoticed varies from actual intention to Wavering concentration, tiredness or sleep deprivation or even factors non-imputable to the driver, like poor street illumination, an influence of the exterior environment and weather conditions. All these become threats, especially when driving alone. 
+Given the information presented prior, we put forward an idea of developing an AI-based application that is built on top of algorithms that ‘learn’ to recognize traffic signs and other threats that might appear when driving. The reason for that is to provide warning for careless drivers. Intelligent Transport Systems have a great potential to save time, money and ultimately lives, and to improve our overall driving experience, making it more safe. Camera-based traffic-sign recognition systems identify signs in real-time by processing the videos/ pictures that are captured through a camera. They help the driver by providing warnings, commands and, if further developed, sometimes by taking control of the vehicle itself. A traffic sign recognition system based on vision will have 2 main modules  the detection module and the recognition module. The detection phase consists of pre-processing the image, along with enhancing and segmenting it according to its original properties such as color or shape, as described by law. The output is a segmented image containing potential regions which are considered candidates to be labeled as road signs. The efficiency and speed of the detection are important factors which play a strong role in the whole process. In the recognition step, the candidates are tested against a pattern to decide whether it is an actual road sign or not. After this analysis the classification is made. These patterns are chosen so as to emphasize the differences between each sign. 
+
+
+\section{Paper structure and original contribution(s)}
+\label{section:structure}
+
+The research presented in this paper advances the theory, design, and implementation of several particular models. 
+
+The main contribution of this report is to present an intelligent algorithm for solving the problem of traffic sign recognition.
+
+The second contribution of this report consists of building an intuitive, easy-to-use and user
+friendly software application. Our aim is to use an algorithm that will help identifying if a traffic sign is present in a picture and also that it is.
+
+
+\chapter{Scientific Problem}
+\label{section:scientificProblem}
+
+
+\section{Main functionalities of the application}
+\label{section:problemDefinition}
+
+Training Mechanism
+The training functionality serves as an information provider. By analyzing a large number of pictures/ videos, the application is able to learn through its algorithm all the traffic signs and their meaning and establish a pattern, which the recognition feature will be able to use in order to provide warnings in real time use. The workflow of this feature is presented in Figure 1.
+
+\begin{figure}[h]
+\includegraphics[scale=1.0]{img/1.png}
+\centering
+\end{figure}
+
+
+The steps of the process involved in using this feature are the following:
+\begin{enumerate}
+  \item Selecting the feature: from the main menu, the user has to click the button dedicated to entering this section of the application
+  \item Image uploading: the user should upload a file from its own device; the process can only continue if the upload finishes successfully
+  \item  Image upload success: the user is notified that the uploading of the picture to the application s training mechanism occurred successfully and the application is able to further process it
+  \item Instructions providing: the user is asked to give details/ tags that the application will further associate to other pictures, by comparison
+  \item Learning: the application stores the instructions and is now able to accept new requests
+\end{enumerate}
+
+Recognition Mechanism
+Based on the information provided by uploading a large number of files to the training mechanism, the application should be able to apply the stored information and use it to identify similarities between images taken in real time and legacy data. The main goal is to be able to deliver warnings based on the conflicts identified between the driver s behavior and the laws behind each sign. The first step in achieving this is to make the application identify the signs correctly though. 
+The first park of the recognition flow is taking a picture that the application can process and take information from. This process is described in Figure 2.
+
+\begin{figure}[h]
+\includegraphics[scale=1.0]{img/2.png}
+\centering
+\end{figure}
+
+The steps of the process involved in going through the first flow of the feature are the following:
+\begin{enumerate}
+  \item Accepting the permissions: the users should let the application user the camera for taking the photos and they have the option to refuse, but the process can t continue then, so it is not even marked in the diagram
+  \item The taking of the picture:  this is a process that should happen automatically or manually and the picture is then submitted for review
+  \item Picture review: the application reviews the picture if it has any segments that can be marked as candidates for being traffic signs and if there are no such segments or the picture has a bad quality, then it is rejected
+  \item Candidate review: each candidates is tested against the the training data and the application determines if it is a traffic sign and if it is, the process continues with phase 2
+\end{enumerate}
+
+The second part of the flow concerns identifying if the reviewed candidates makes ending warning signs a necessity and if yes, doing so, as described in Figure 3.
+
+\begin{figure}[h]
+\includegraphics[scale=1.0]{img/3.png}
+\centering
+\end{figure}
+
+The steps of the process involved in going through final flow are the following:
+\begin{enumerate}
+  \item Threat Analysis: check whether the identified issue/ sign is work sending a signal; if it is not, it processes the next picture
+  \item Warning: if the applications identifies a threat, it warns the driver
+\end{enumerate}
+
+
+\chapter{State of art/Related work}
+\label{chapter:stateOfArt}
+
+Traffic assistants are one of the main focus points when it comes to artificial intelligence research and development. Such mechanisms have also been applied to other fields such as Military Decision Making Cycle, Biomedical Engineering, Power Electronic, e-Health, Cybersecurity. 
+
+From all the research papers done on this issue, we mention the following:
+
+\begin{enumerate}
+  \item \textbf{Research Article: }Intelligent Driving System Using Artificial Intelligence 
+  
+  \textbf{Author: } Chetan Bulla
+  
+  \textbf{Presented At: } INTERNATIONAL JOURNAL OF RESEARCH IN ELECTRONICS AND COMPUTER ENGINEERING (IJRECE), June 2019
+  
+  \textbf{Algoritms and Modules: }
+  \begin{itemize}
+     \item Modules: Raspberry PI 3 model B+,Arduino UNO MEGA 3, PI Camera, System
+     \item Algoritm: Cascade Classifier (HaaropenCV): This algorithm mentioned above deals with adjacent rectangular areas at a certain location in a detection window. It adds up the pixel intensities in each area and calculates the difference between these sums. This difference is then used to differentiate subsections of an image.  
+   \end{itemize}
+   
+   \textbf{Results: } The prediction on the testing samples returns an accuracy of
+0.85
+
+    \textbf{Link: } \href{https://www.researchgate.net/publication/286509832_A_Review_of_Intelligent_Driving_Style_Analysis_Systems_and_Related_Artificial_Intelligence_Algorithms}{ResearchGate}.
+    
+    \item \textbf{Research Article: }Traffic signs recognition for driving assistance
+  
+  \textbf{Authors: } Yatham Sai Sangram Reddy, Devareddy Karthik, Nikunj Rana, Jasmine Pemeena Priyadarsini,G K Rajini, Shaik Naseera
+  
+  \textbf{Algoritms and Modules: }
+  \begin{itemize}
+     \item Algoritm: HAAR Cascade Training
+   \end{itemize}
+   
+   \textbf{Results: } For the traffic sign boards with single contour, the nearest neighbour is found and the output is
+obtained from the response returned by the classifier. For the traffic sign boards with multiple
+contours, the respective nearest neighbours are found and the responses returned by the classifier are
+sorted based on their x-positions.
+
+    \textbf{Link: } \href{https://www.researchgate.net/publication/321478937_Traffic_signs_recognition_for_driving_assistance}{ResearchGate}.
+    
+  \item \textbf{Research Article: }A Review of Intelligent Driving Style Analysis
+Systems and Related Artificial Intelligence Algorithms
+  
+  \textbf{Author: } Herman Myburgh
+  
+  \textbf{Presented At: } Department of Electrical, Electronic and Computer Engineering, University of Pretoria, South Africa, December 2015 
+  
+  \textbf{Algorithms: } Artificial Neural Networks, Fast Fourier Transform, State Machines, Hidden Markov Models, Bayesian Networks,k-Nearest Neighbour Classifiers, Fuzzy Logic
+  
+    \textbf{Goal: }To have a risk score for each driver according to their ehaviour in traffic. the averrage score would be around 75.
+
+    \textbf{Link: } \href{https://www.researchgate.net/publication/286509832_A_Review_of_Intelligent_Driving_Style_Analysis_Systems_and_Related_Artificial_Intelligence_Algorithms}{ResearchGate}.
+    
+    \item \textbf{Research Article: }Driving Situation-based Real-Time Interaction with Intelligent Driving Assistance Agent
+  
+  \textbf{Author: } Young-Hoon Nho
+  
+  \textbf{Presented At: } Conference: Robot and Human Interactive Communication (RO-MAN), August 2015
+  
+  \textbf{Algorithm: }  hidden Markov models (HMMs) 
+  
+    \textbf{Goal: } To analyze driving patterns and identify driving situations based on ow the functionalities of the car are used, as such: Speed Bump, Corner, Downhill, Crowded Area, Parking Space, Straight, Uphill 
+
+   \textbf{Results: } the system correctly recognized 408 of 430 (or 94.9 percent) driving situations
+
+    \textbf{Link: } \href{https://www.researchgate.net/publication/308025588_Driving_Situation-based_Real-Time_Interaction_with_Intelligent_Driving_Assistance_Agent}{ResearchGate}.
+\end{enumerate}
+
+
+\chapter{Proposed approach}
+\label{chapter:proposedApproach}
+
+
+The tool of choice for implementing the system described in the chapters before is TesnorFlow, which is essentially a framework for building Deep Learning Neural Networks. TensorFlow can train and run deep neural networks for handwritten digit classification, image recognition, word embeddings, recurrent neural networks, sequence-to-sequence models for machine translation, natural language processing, and PDE (partial differential equation) based simulations. Best of all, TensorFlow supports production prediction at scale, with the same models used for training.
+
+TensorFlow allows developers to create dataflow graphs, which are structures that describe how data moves through a graph, or a series of processing nodes. Each node in the graph represents a mathematical operation, and each connection or edge between nodes is a multidimensional data array, or tensor.
+
+TensorFlow has a built-in API for: 
+\begin{itemize}
+  \item Linear regression: tf.estimator.LinearRegressor 
+  \item Classification:tf.estimator.LinearClassifier 
+  \item Deep learning classification: tf.estimator.DNNClassifier (which is of main concern for us)
+  \item Deep learning wipe and deep: tf.estimator.DNNLinearCombinedClassifier 
+  \item Booster tree regression: tf.estimator.BoostedTreesRegressor 
+  \item Boosted tree classification: tf.estimator.BoostedTreesClassifier 
+\end{itemize}
+
+In order to set up the data that TensorFlow will use in image recognition, we have 2 options:
+
+\begin{enumerate}
+  \item Load data directly in memory: usable for small data sets, as in our project
+  \item Load data through TensorFlow pipeline: usable for big data sets, as a live version of this application would use. The pipeline will load the data in batch, or small chunk. Each batch will be pushed to the pipeline and be ready for the training. Building a pipeline is an excellent solution because it allows you to use parallel computing. It means TensorFlow will train the model across multiple CPUs. 
+\end{enumerate}
+
+\textbf{Steps undertaken to create a functional TensorFlow sample: }
+
+\begin{enumerate}
+  \item Crate a Minimum Viable computational Model , represented as a dataflow graph, as follows
+  
+  \begin{algorithm} 
+\caption{$Building the TensorFlow Graph$} 
+\begin{algorithmic}
+\STATE \textbf{BEGIN}
+    \REQUIRE $graph \Leftarrow tf.Graph()$
+    \ENSURE $graph.as_default()$
+    \COMMENT{Placeholders for inputs and labels.} 
+    \STATE @ $images_ph = tf.placeholder(tf.float32, [None, 32, 32, 3])$
+    \STATE @ $labels_ph = tf.placeholder(tf.int32, [None])$
+
+    \COMMENT{Flatten input from: [None, height, width, channels]} 
+    
+    \STATE @ $images_flat = tf.contrib.layers.flatten(images_ph)$
+
+    \COMMENT{Fully connected layer Generates logits of size [None, SignTypes]} 
+    
+    \STATE @ $logits = tf.contrib.layers.fully_connected(images_flat, SignTypes, tf.nn.relu)$
+    
+    \STATE @ $predicted_labels = tf.argmax(logits, 1)$
+
+    \COMMENT{Define the loss function}  
+    
+    \STATE @ $loss = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(logits=logits, labels=labels_ph))$
+
+    \COMMENT{ Create training op}
+    
+    \STATE @ $train = tf.train.AdamOptimizer(learning_rate=0.001).minimize(loss)$
+\STATE \textbf{END}
+\end{algorithmic}
+\end{algorithm}
+  
+  \item Training the graph
+  \begin{algorithm} 
+\caption{Create a session and run the graph we created} 
+\begin{algorithmic}
+\STATE \textbf{BEGIN}
+    \REQUIRE $session \Leftarrow tf.Session(graph \Leftarrow graph)$
+    \ENSURE $_ = session.run([init]$
+    \FOR{i=1 TO PhotoCount}
+  				\STATE _, lossValue $\leftarrow$  session.run([train, loss], 
+                                feed_dict={images_ph: images_a, labels_ph: labels_a}) RandomlySelectParticleFromGrid();
+  	
+  				\IF {i divided by 10 $\leftarrow$ 0}
+  					\STATE print lossValue
+  				\ENDIF
+  			\ENDFOR
+\STATE \textbf{END}
+\end{algorithmic}
+\end{algorithm}
+
+Note! We use a loss function to determine how far the predicted values deviate from the actual values in the training data. We change the model weights to make the loss minimum, and that is what training is all about.
+
+ \item Usage of the trained model on other data
+ Now we obtained a trained model stored in the Session object. We can now call session.run() on other data. The predicted labels operator returns the output of the argmax() function. The goal now is to run it on a set of pictures and compare the label expected by our recognition mechanism to the real one and print both values.
+ 
+ \begin{algorithm}
+	\caption{Using the Model}
+		\begin{algorithmic}
+			\STATE \textbf{BEGIN}
+		\COMMENT{Pick some random images}
+  		\STATE sampleIndexes $\leftarrow$ random.sample(range(len(images32)), NoOfNewImages)
+        \STATE sampleImages $\leftarrow$ [images32[i] for i in sampleIndexes]
+        \STATE sampleLabels $\leftarrow$ [labels[i] for i in sampleIndexes]
+        
+        \COMMENT{Run the predictedLabels operator and print results}
+        \STATE predicted $\leftarrow$ session.run(predictedLabels, sampleImages)
+        \STATE print sampleLabels
+        \STATE print predictedLabels
+  		\STATE \textbf{END}
+\end{algorithmic}
+\end{algorithm}
+
+The result of the above algorithm is a display of the expected label and the presumed one, and if the values match, they are displayed in green and if not, in red.
+
+\includegraphics[scale=1.0]{img/sample.PNG}
+ 
+  \item Evaluation of the application's accuracy
+  The outcome of this step is to evaluate the precision of the algorithm by comparing the number of labels that match to the ones that do not. Given the fact that, at this point the application has not undergone training, the average scores here tend to be low.
+  
+\end{enumerate}
+
+ 
+
+
+
+
+\chapter{Application (numerical validation)}
+\label{chapter:application}
+
+\section{Methodology}
+\label{section:methodology}
+
+\begin{itemize}
+	\item What are criteria you are using to evaluate your method? 
+\end{itemize}
+	Evaluation of the application s accuracy is done by comparing the number of labels that match to the ones that do not, as described in the previous chapter. 
+
+\begin{itemize}
+	\item What specific hypotheses does your experiment test?
+\end{itemize}
+
+The project was organized according to the mind map diagram, which focuses on the following items
+\begin{enumerate}
+  \item Why? - the premise of this research is the assumption that some traffic signs are easy to be missed for various reasons.
+  \item How? - the need for a way to avoid such problems can be fulfilled with an application based on a neural network which is trained with real examples
+  \item Steps - the projects started with choosing a framework and suitable algorithm whihs we trained and then integrating it with an application which is later tested in the real world.
+\end{enumerate}
+
+\begin{landscape}
+	\includegraphics[scale=1.0]{img/mindmap.png}
+\end{landscape}
+
+
+	
+\begin{itemize}
+	\item What are the dependent and independent variables? 
+\end{itemize}
+
+
+\begin{center}
+ \begin{tabular}{||c | c||} 
+ \hline
+ Independent variables & Dependent variables \\ [0.5ex] 
+ \hline\hline
+ The Core-system & - \\ 
+ \hline
+ The environment in which the system operates & Analyzed photos \\
+ \hline
+ The input data (training photos) & Loss value \\
+ \hline
+ Label List & Truth variables \\
+ \hline
+ AI Algorithm & AI Analysis results \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+	\item What is the training/test data that was used, and why is it realistic or interesting?
+\end{itemize}
+The training/test data that was used is a list of photos that contain traffic signs. The photos are taken from the real world so they serves as a good example on how such an application would run if it was integrated in a driving assistant system.
+
+
+\section{Data}
+\label{section:data}
+
+The training data consisted of a set of photos containing traffic signs which was ran through the algorithm many times, in order to iteratively train the model to minimize the loss function.
+
+The loss function has an important job in that it must faithfully distill all aspects of the model down into a single number in such a way that improvements in that number are a sign of a better model. 
+
+The results calculated by the loss function though each iteration are described in the graph bellow (the first 9 iterations) and show that the value (which was printed after each iteration, for reference) keeps decreasing after each one of them.
+
+\begin{figure}[H]
+\begin{tikzpicture}
+\begin{axis}[
+axis lines=middle,
+ymin=0,
+x label style={at={(current axis.right of origin)},anchor=north, below=10mm},
+title={\textit{\textbf{Loss Graph}}},
+    xlabel=Run,
+  ylabel=Loss,
+  xticklabel style = {rotate=30,anchor=east},
+   enlargelimits = false,
+  xticklabels from table={thu2.dat}{Time},xtick=data]
+\addplot[orange,thick,mark=square*] table [y=Part1,x=X]{thu2.dat};
+\addlegendentry{Loss Evolution}
+\end{axis}
+\end{tikzpicture}
+
+\end{figure}
+
+\section{Results}
+
+The Accuracy we got when running the algorithm for different sets of data was around 0.6. While analyzing the falkyness of the system, we noticed certain patterns on what the system is able or not to identify .  We were able to narrow the issues that the application has to the following types
+
+\begin{itemize}
+  \item Traffic signs confusion makes the application mistaking one sign for another
+  \item The application being unable to identify different patterns of similar signs
+  \item The application crashes in certain situations - mainly when the input photo contained more that one traffic sign
+\end{itemize}
+
+
+Some examples of confusions are the following
+\begin{center}
+ \begin{tabular}{||c | c | p{7cm}||} 
+ \hline
+ Error Sample & Mistaken for & Details \\ [0.5ex] 
+ \hline\hline
+ \includegraphics[scale=1.0]{img/sig1.PNG} & \includegraphics[scale=1.0]{img/sig2.jpg} & The mistake might have arisen due to the fact that this traffic sin is unique in both shape and color display. \\ 
+ \hline
+  \includegraphics[scale=1.0]{img/sig2.PNG} &  \includegraphics[scale=1.0]{img/sig3.png} & This mistake might arise from the fact that the residential area sign has too many elements inside it. \\
+ \hline
+
+\end{tabular}
+\end{center}
+
+The most common failure in identifying subtile differences was in the case of traffic signs with similar shape and color, but with different meaning, such as those depicting different speed limits. As it can be seen, the cause of this is lack of training, since they are marked as correctly identified with the same label.
+
+\begin{center}
+ \begin{tabular}{||c | c||} 
+ \hline\hline
+ \includegraphics[scale=1.0]{img/sig4.PNG} & \includegraphics[scale=1.0]{img/sig5.PNG} \\ 
+ \hline
+
+\end{tabular}
+\end{center}
+
+\section{Discussion}
+\label{section:discussion}
+
+\begin{itemize}
+	\item Is your hypothesis supported? 
+\end{itemize}
+
+Given the fact that the application fulfills its intended purpose, the hypothesis is supported. Any errors and issues regarding its way of working or any lacking features at his time can be subjected to further improvement or implementation in order for it to fully fulfil its projected usage. It has benn proven that such an application can indeed assist a driver.
+
+\begin{itemize}
+	\item What conclusions do the results support about the strengths and weaknesses of your method compared to other methods? 
+\end{itemize}
+
+The biggest threat for the driver when working with such an assistant is having one traffic sign mistaken for another. In our case study, the result were weaker than the ones got by the professionals mentioned in the sate of art. 
+
+Given the experience of the team in the field, the fact that we were able to use tensor flow, a 3rd party application, can be considered a strength, since the algorithm was already implemented and tested and we had to adapt it to our area of concern.
+
+\begin{itemize}
+	\item How can the results be explained in terms of the underlying properties of the algorithm and/or the data. 
+\end{itemize}
+
+Many of the errors thrown by the application can be blamed on the lack of proper training. Running the algorithm though more of examples can help improving its accuracy.
+
+\chapter{Conclusion and future work}
+\label{chapter:concl}
+
+In conclusion, we believe that we were able to demonstrate with our approach, first, that creating an application that is able to recognise traffic signs is possible. This was considered to be the main goal of this project. 
+
+During our work we ran TensorFlow with its recognition algorithms algorithms on a few sets of pictures containing traffic signs and based on the accuracy of it, managed to identify a set of strengths and weaknesses of this approach. 
+
+We believe that developing a fully functional application that is able to deliver real-time will become a focus point of the A.I. development in the future and the motives are the following
+
+\begin{itemize}
+	\item The existence of such an application can provide aid to drivers, which as human beings, tend to easily lose focus sometimes or be absolutely reckless when behind the steering wheel 
+	\item The application can either be a stand alone product or be embedded inside a GPS System
+	\item Test data is abundant 
+\end{itemize}
+
+When developing our attempt of creating such an application, we believe that our main strongholds are as follows
+\begin{itemize}
+	\item Tensor Flow is a solution that was already developed and tested by professionals
+	\item Tensor Flow is better documented than other A.I. tools
+	\item Tensor Flow can be used to a certain degree free of charge
+\end{itemize}
+
+When trying to run the algorithm for a given set of data, the accuracy of our results was lower than the ones obtained by the researchers mentioned at Chapter 3. Many of the problems we faced at this level were, however, caused by the lack of rigorous training. The main threats of a running system of this type that we identified are listed bellow
+
+\begin{itemize}
+	\item The application tends to mistake some traffic signs for others, particularly when they are similar in shape, but different in color.
+	\item The application tends to crash when there is more than 1 traffic sign inside a given photo, which is often the case in real life
+	\item The application can not prioritize traffic signs, which would be a big problem if we want to also deliver warnings to drivers, as it is the case, for example, in the situation in which we have both traffic lights and priority signs, the traffic light having power over the sign
+	\item Such an application would hardly be able to identify a policeman making specific gestures that can influence the traffic
+	\item It would be hard for the system to identify traffic signs that have more than two components, as it is the case, for example, with the arrows placed bellow a sign marking a no parking zone
+\end{itemize}
+
+Regarding any future development in this area, we believe that development in this area should stop at the given concept and do not go further. We only want a system that gives plain warnings when a driver encounters a sign an nothing more. The application should not keep notes on whether or not the driver respects the warning whatsoever. We strongly disagree with keeping track of the behaviour of the drivers, as we consider that this is against the laws grating human liberty. Keeping aside the fact that driving conditions might differ from time to time and from place to place, making judging someone by whether or not he or she respects all signs in irrelevant, we believe that such data can be used for malicious interest, such as increasing insurance rates for some drivers, regardless of the fact that ignoring certain signs does not lead to any inconvenience at all for anyone.
+
+
+\bibliographystyle{plain}
+\bibliography{BibAll}
+
+\end{document}
