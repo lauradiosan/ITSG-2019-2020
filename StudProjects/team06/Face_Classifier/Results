@@ -11,3 +11,26 @@ Total images:4910
 Accuracy:70
 
 Test with one image for every person
+
+Kids -
+Total images:50
+Persons:10
+Algorithm: cnn - with alignment
+matching tolerance: 0.5
+Accuracy: 90.0
+
+Kids -
+Total images:50
+Persons:10
+Algorithm: cnn - with alignment
+matching tolerance: 0.6
+Accuracy: 30.0
+
+Kids -
+Total images:50
+Persons:10
+Algorithm: cnn - with alignment
+matching tolerance: 0.45
+Accuracy: 100
+
+

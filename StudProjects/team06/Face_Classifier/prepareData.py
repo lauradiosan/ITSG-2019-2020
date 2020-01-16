@@ -4,19 +4,26 @@ import glob
 
 import os
 
-for subdir, dirs, files in os.walk("dataset/lfw_home/lfw_funneled"):
+for subdir, dirs, files in os.walk("datasetkids"):
     print()
-    if(len(files)==0):
-        continue
+
     if(files[0][0] == '.'):
         continue
     test = True
     once = True
-    if subdir.split(os.sep)[-1] == "train":
-        if len(files)<5:
-            print(subdir)
-            shutil.rmtree(os.path.abspath("dataset/lfw_home/lfw_funneled/"+subdir.split(os.sep)[-2]))
+    # if len(files)<5:
+    #     shutil.rmtree(subdir)
 
+    for file in files:
+        if test:
+            os.mkdir(os.path.abspath(subdir)+"/test/")
+            shutil.move(os.path.abspath(subdir)+"/"+file,os.path.abspath(subdir)+"/test/")
+            test = False
+        else:
+            if once:
+                os.mkdir(os.path.abspath(subdir) + "/train/")
+                once = False
+            shutil.move(os.path.abspath(subdir) + "/"+ file, os.path.abspath(subdir) + "/train/")
 test = False
 # for file in files:
 #     if file[0]!='.':

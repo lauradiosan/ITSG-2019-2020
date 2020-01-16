@@ -3,9 +3,10 @@ import cv2
 import pickle
 from imutils import paths
 import os
+import imutils
 import shutil
 
-data = pickle.loads(open("encodingUnalignedBenchmarkHog.pickle", "rb").read())
+data = pickle.loads(open("encodingAligned.pickle", "rb").read())
 
 # detect the (x, y)-coordinates of the bounding boxes corresponding
 # to each face in the input image, then compute the facial embeddings
@@ -15,7 +16,7 @@ print("[INFO] recognizing faces...")
 cnt = 0
 trues = 0
 falses = 0
-imagePaths = list(paths.list_images("dataset/lfw_home/lfw_funneled"))
+imagePaths = list(paths.list_images("datasetkids"))
 for (i, imagePath) in enumerate(imagePaths):
     if imagePath.split(os.path.sep)[-2] == "train":
         continue
@@ -25,6 +26,7 @@ for (i, imagePath) in enumerate(imagePaths):
     name = imagePath.split(os.path.sep)[-3]
 
     image = cv2.imread(imagePath)
+    image = imutils.resize(image, width=800)
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     boxes = face_recognition.face_locations(rgb,model="hog")
@@ -38,7 +40,7 @@ for (i, imagePath) in enumerate(imagePaths):
         # attempt to match each face in the input image to our known
         # encodings
         matches = face_recognition.compare_faces(data["encodings"],
-                                                 encoding)
+                                                 encoding,tolerance=0.45)
         guess = "Unknown"
 
         # check to see if we have found a match
@@ -62,11 +64,11 @@ for (i, imagePath) in enumerate(imagePaths):
 
         # update the list of names
         names.append(guess)
-    if len(names) > 1:
-        cnt-=1
-        shutil.rmtree(os.path.abspath("dataset/lfw_home/lfw_funneled/"+name))
-        print("Too many faces.Image:{0} name:{1}".format(cnt,name))
-        continue
+    # if len(names) > 1:
+    #     cnt-=1
+    #     shutil.rmtree(os.path.abspath("dataset/lfw_home/lfw_funneled/"+name))
+    #     print("Too many faces.Image:{0} name:{1}".format(cnt,name))
+    #     continue
     if len(names) == 0:
         cnt-=1
         continue

@@ -15,13 +15,13 @@ import cv2
 
 # grab the paths to the input images in our dataset
 print("[INFO] quantifying faces...")
-imagePaths = list(paths.list_images("dataset/lfw_home/lfw_funneled"))
+imagePaths = list(paths.list_images("datasetkids"))
 
 # initialize the list of known encodings and known names
 knownEncodings = []
 knownNames = []
 
-print("Nr. of images trained:%d".format(len(imagePaths)))
+print("Nr. of images trained:{0}".format(len(imagePaths)))
 # loop over the image paths
 for (i, imagePath) in enumerate(imagePaths):
     if imagePath.split(os.path.sep)[-2] == "test":
@@ -35,6 +35,7 @@ for (i, imagePath) in enumerate(imagePaths):
         # load the input image and convert it from BGR (OpenCV ordering)
         # to dlib ordering (RGB)
         image = cv2.imread(imagePath)
+        image = imutils.resize(image, width=800)
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     except:
         continue
@@ -56,6 +57,6 @@ for (i, imagePath) in enumerate(imagePaths):
 # dump the facial encodings + names to disk
 print("[INFO] serializing encodings...")
 data = {"encodings": knownEncodings, "names": knownNames}
-f = open("encodingUnalignedBenchmarkCnn.pickle", "wb")
+f = open("unalignedKids.pickle", "wb")
 f.write(pickle.dumps(data))
 f.close()
