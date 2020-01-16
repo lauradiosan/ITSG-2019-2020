@@ -1,0 +1,57 @@
+INFO:niftynet:2019-12-11 23:43:24,022: set CUDA_VISIBLE_DEVICES to 0
+INFO:niftynet:2019-12-11 23:43:24,050: set initial_iter to 383 based on checkpoints
+INFO:niftynet:2019-12-11 23:43:24,052: starting segmentation application
+INFO:niftynet:2019-12-11 23:43:24,056: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\test-images.csv" instead.
+INFO:niftynet:2019-12-11 23:43:24,057: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\test-images.csv".
+INFO:niftynet:2019-12-11 23:43:24,059: [test-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\models\test-images.csv
+INFO:niftynet:2019-12-11 23:43:24,068: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-images.csv" instead.
+INFO:niftynet:2019-12-11 23:43:24,069: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-images.csv".
+INFO:niftynet:2019-12-11 23:43:24,070: [train-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-images.csv
+INFO:niftynet:2019-12-11 23:43:24,083: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-labels.csv" instead.
+INFO:niftynet:2019-12-11 23:43:24,084: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-labels.csv".
+INFO:niftynet:2019-12-11 23:43:24,086: [train-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\models\train-labels.csv
+WARNING:niftynet:2019-12-11 23:43:24,098: Loading from existing partitioning file D:\ITSGFork\StudProjects\team00\Algorithm\models\models\dataset_split.csv, ignoring partitioning ratios.
+INFO:niftynet:2019-12-11 23:43:24,101: 
+
+Number of subjects 20, input section names: ['subject_id', 'test-images', 'train-images', 'train-labels']
+Dataset partitioning:
+-- training 10 cases (50.00%),
+-- validation 0 cases (0.00%),
+-- inference 10 cases (50.00%).
+
+INFO:niftynet:2019-12-11 23:43:24,250: Image reader: loading 10 subjects from sections ('test-images',) as input [image]
+INFO:niftynet:2019-12-11 23:43:24,253: training normalisation histogram references for image:{'test-images'}, using 10 subjects
+INFO:niftynet:2019-12-11 23:44:14,331: reading size of preprocessed images
+WARNING:niftynet:2019-12-11 23:44:14,333: sampler queue_length should be larger than batch_size, defaulting to batch_size * 5.0 (10).
+INFO:niftynet:2019-12-11 23:44:14,337: initialised resize sampler {'image': (1, 144, 144, 144, 1, 1), 'image_location': (1, 7)} 
+INFO:niftynet:2019-12-11 23:44:14,350: using DenseVNet
+INFO:niftynet:2019-12-11 23:44:14,415: Initialising Dataset from 10 subjects...
+INFO:niftynet:2019-12-11 23:44:18,355: Restoring parameters from D:\ITSGFork\StudProjects\team00\Algorithm\models\models\model.ckpt-383
+INFO:niftynet:2019-12-11 23:44:51,253: inference iter 0,  (32.006495s)
+WARNING:niftynet:2019-12-11 23:44:52,608: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat10__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:44:53,638: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat10__segmentation_niftynet.nii.gz
+WARNING:niftynet:2019-12-11 23:44:55,956: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat11__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:44:57,054: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat11__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-11 23:45:02,358: inference iter 1,  (5.300858s)
+WARNING:niftynet:2019-12-11 23:45:03,390: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat12__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:04,182: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat12__segmentation_niftynet.nii.gz
+WARNING:niftynet:2019-12-11 23:45:06,186: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat13__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:07,826: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat13__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-11 23:45:32,209: inference iter 2,  (24.368333s)
+WARNING:niftynet:2019-12-11 23:45:33,626: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat14__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:34,249: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat14__segmentation_niftynet.nii.gz
+WARNING:niftynet:2019-12-11 23:45:36,803: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat15__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:38,875: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat15__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-11 23:45:49,873: inference iter 3,  (10.994601s)
+WARNING:niftynet:2019-12-11 23:45:50,865: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat16__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:51,606: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat16__segmentation_niftynet.nii.gz
+WARNING:niftynet:2019-12-11 23:45:52,940: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat17__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:45:53,932: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat17__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-11 23:46:12,394: inference iter 4,  (18.459626s)
+WARNING:niftynet:2019-12-11 23:46:13,713: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat18__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:46:14,683: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat18__segmentation_niftynet.nii.gz
+WARNING:niftynet:2019-12-11 23:46:16,383: File D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat19__segmentation_niftynet.nii.gz exists, overwriting the file.
+INFO:niftynet:2019-12-11 23:46:17,377: Saved D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\window_seg_pat19__segmentation_niftynet.nii.gz
+INFO:niftynet:2019-12-11 23:46:17,445: cleaning up...
+INFO:niftynet:2019-12-11 23:46:17,446: stopping sampling threads
+INFO:niftynet:2019-12-11 23:46:17,649: SegmentationApplication stopped (time in second 119.81).
