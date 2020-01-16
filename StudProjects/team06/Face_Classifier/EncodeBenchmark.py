@@ -15,7 +15,7 @@ import cv2
 
 # grab the paths to the input images in our dataset
 print("[INFO] quantifying faces...")
-imagePaths = list(paths.list_images("dataset/lfw_home/lfw_funneled"))
+imagePaths = list(paths.list_images("datasetkids"))
 
 # initialize the list of known encodings and known names
 knownEncodings = []
@@ -67,6 +67,6 @@ for (i, imagePath) in enumerate(imagePaths):
 # dump the facial encodings + names to disk
 print("[INFO] serializing encodings...")
 data = {"encodings": knownEncodings, "names": knownNames}
-f = open("encodingAlignedBenchmark.pickle", "wb")
+f = open("alignedKids.pickle", "wb")
 f.write(pickle.dumps(data))
 f.close()

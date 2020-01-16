@@ -2,8 +2,8 @@ import face_recognition
 import cv2
 import pickle
 
-data = pickle.loads(open("encodingAligned.pickle", "rb").read())
-image = cv2.imread("examples/colegi.png")
+data = pickle.loads(open("encodings2.pickle", "rb").read())
+image = cv2.imread("test/Screenshot 2020-01-15 at 20.28.43.png")
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 # detect the (x, y)-coordinates of the bounding boxes corresponding
