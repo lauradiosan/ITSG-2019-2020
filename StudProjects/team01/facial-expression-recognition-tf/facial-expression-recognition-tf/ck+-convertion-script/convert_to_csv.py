@@ -1,13 +1,24 @@
-from PIL import Image
-import numpy as np
+"""
+Converts the CK+ dataset to FER-2013 .csv style dataset.
+Each line would have (label, 2304 grayscale pixels).
+"""
 import sys
 import os
 import csv
 import glob
+from PIL import Image
 
-# from the ck+ dataset, which is placed under path "ck+-original/Emotion",
-# this script takes the paths of all the labeled images and converts
-# the labeled images and labes into a csv file named "img_pixels.csv"
+from keras.preprocessing.image import img_to_array
+from keras.models import load_model
+import imutils
+import cv2
+import numpy as np
+import tensorflow as tf
+
+# parameters for loading data and images
+detection_model_path = 'haarcascade_files/haarcascade_frontalface_default.xml'
+# loading models
+face_detection = cv2.CascadeClassifier(detection_model_path)
 
 #Useful function
 def createFileList(myDir, format='.txt'):
@@ -48,40 +59,36 @@ ckpToFER2013EmotionConvertor = [
 
 for picture, label in zip(myPicturePaths, myLabelsPaths):
     print(picture, label)
-    img_file = Image.open(picture)
-    img_file = img_file.resize((48, 48), Image.ANTIALIAS)
-    #img_file.show()
-
-    # get original image parameters...
-    width, height = img_file.size
-    format = img_file.format
-    mode = img_file.mode
-
-    # Make image Greyscale
-    img_grey = img_file.convert('L')
-    #img_grey.save('result.png')
-    #img_grey.show()
-
-    # Save Greyscale values
-    value = np.asarray(img_grey.getdata(), dtype=np.int).reshape((img_grey.size[1], img_grey.size[0]))
-    value = value.flatten()
-    string_representation = ' '.join(str(x) for x in value)
-    #print(string_representation)
-    
-    # Read emotion label
-    label_file = open(label)
-    emotion = label_file.read().strip()
-    emotion_number = int(eval(emotion))
-    print(emotion_number)
-    
-    if emotion_number == 2:
-        continue
-    else:
-        #if emotion_number != 5:
-        #    continue
-        new_emotion_number = ckpToFER2013EmotionConvertor[emotion_number][0]
-        print(new_emotion_number)
-        row = [new_emotion_number, string_representation, '']    
-        with open("img_pixels.csv", 'a', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow(row)
+    frame = cv2.imread(picture)
+    frame = imutils.resize(frame, width=800)
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    faces = face_detection.detectMultiScale(
+        gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
+    faces = sorted(faces, reverse=True, key=lambda x: (x[2] - x[0]) * (x[3] - x[1]))
+    if len(faces) > 0:
+        (fX, fY, fW, fH) = faces[0]
+        # Extract the ROI of the face from the grayscale image, resize it to a fixed 48x48 pixels, and then prepare
+        # the ROI for classification via the CNN
+        roi = gray[fY:fY + fH, fX:fX + fW]
+        roi = cv2.resize(roi, (48, 48))
+        roi = img_to_array(roi)
+        roi = roi.astype("int")
+        roi = roi.flatten()
+        string_representation = ' '.join(str(x) for x in roi)
+        #print(string_representation)
+        
+        # Read emotion label
+        label_file = open(label)
+        emotion = label_file.read().strip()
+        emotion_number = int(eval(emotion))
+        print(emotion_number)
+        
+        if emotion_number == 2:
+            continue
+        else:
+            new_emotion_number = ckpToFER2013EmotionConvertor[emotion_number][0]
+            print(new_emotion_number)
+            row = [new_emotion_number, string_representation, '']    
+            with open("img_pixels.csv", 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(row)

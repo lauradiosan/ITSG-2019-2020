@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>1133cc00-04c6-4b94-af04-b90fb1cd4f15</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>acting_mirror.py</StartupFile>
+    <StartupFile>tf_model_validation.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,19 +27,13 @@
     <Compile Include="data_loader.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="keras_to_tflite_converter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="learning_plot.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="test_for_camera.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="tf_model.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tf_model_server.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="tf_model_to_tflite_model_converter.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="tf_model_validation.py">

@@ -1,4 +1,6 @@
-import numpy as np
+"""
+Draws the learning plot of a model's training based on the _emotion_training.log file.
+"""
 import matplotlib.pyplot as plt
 
 file_path = 'models/fer_training_0.1_lr_square_loss/_emotion_training.log'
