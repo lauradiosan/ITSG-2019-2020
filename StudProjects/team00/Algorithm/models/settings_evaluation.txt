@@ -1,4 +1,4 @@
-Input params at 2020-01-15 21:28:29.
+Input params at 2020-01-16 01:38:16.
 [CUSTOM]
 -- num_classes: 3
 -- output_prob: False
@@ -14,11 +14,11 @@ Input params at 2020-01-15 21:28:29.
 -- mixup_alpha: 0.2
 -- mix_match: False
 -- sampler: ()
+-- label: ('i-labels',)
+-- value: ()
+-- image: ()
 -- inferred: ('infered-images',)
 -- weight: ()
--- value: ()
--- label: ('i-labels',)
--- image: ()
 -- name: net_segment
 [CONFIG_FILE]
 -- path: D:\ITSGFork\StudProjects\team00\Algorithm\evaluation-config.ini
@@ -123,10 +123,10 @@ Input params at 2020-01-15 21:28:29.
 -- dataset_to_infer: 
 -- save_seg_dir: ./testing/
 -- output_postfix: _niftynet_out
--- output_interp_order: 0
+-- output_interp_order: 3
 -- border: (0, 0, 0)
 -- fill_constant: 0.0
 [EVALUATION]
--- evaluations: dice,jaccard
+-- evaluations: dice,jaccard,false_positive_rate,positive_predictive_values,n_pos_ref,n_pos_seg
 -- save_csv_dir: ./evaluation-result
 -- evaluation_units: label

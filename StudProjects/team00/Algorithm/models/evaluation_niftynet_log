@@ -504,3 +504,20 @@ INFO:niftynet:2020-01-15 21:28:30,247: Image reader: loading 10 subjects from se
 INFO:niftynet:2020-01-15 21:28:30,248: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
 INFO:niftynet:2020-01-15 21:29:25,262: Cleaning up...
 INFO:niftynet:2020-01-15 21:29:25,263: SegmentationApplication stopped (time in second 55.00).
+INFO:niftynet:2020-01-16 01:38:16,984: starting segmentation application
+INFO:niftynet:2020-01-16 01:38:16,999: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv" instead.
+INFO:niftynet:2020-01-16 01:38:16,999: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv".
+INFO:niftynet:2020-01-16 01:38:17,001: [infered-images] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\infered-images.csv
+INFO:niftynet:2020-01-16 01:38:17,010: `csv_file = ` not found, writing to "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv" instead.
+INFO:niftynet:2020-01-16 01:38:17,011: Overwriting existing: "D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv".
+INFO:niftynet:2020-01-16 01:38:17,012: [i-labels] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\i-labels.csv
+INFO:niftynet:2020-01-16 01:38:17,042: [inferred] search file folders, writing csv file D:\ITSGFork\StudProjects\team00\Algorithm\models\testing\inferred.csv
+INFO:niftynet:2020-01-16 01:38:17,050: 
+
+Number of subjects 10, input section names: ['subject_id', 'infered-images', 'i-labels', 'inferred']
+-- using all subjects (without data partitioning).
+
+INFO:niftynet:2020-01-16 01:38:17,326: Image reader: loading 10 subjects from sections ('i-labels',) as input [label]
+INFO:niftynet:2020-01-16 01:38:17,327: Image reader: loading 10 subjects from sections ('infered-images',) as input [inferred]
+INFO:niftynet:2020-01-16 01:40:07,987: Cleaning up...
+INFO:niftynet:2020-01-16 01:40:07,988: SegmentationApplication stopped (time in second 110.65).
