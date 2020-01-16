@@ -1,32 +1,23 @@
-import subprocess
+from test import *
 
-import matplotlib.pyplot as plt
-from joblib import load
-
-from utils import *
-
-# clf = load('model/model_cafe')
-clf = load('model/model_ck')
+cafe_clf = load('model/model_cafe')
+# ck_clf = load('model/model_ck')
 
 
 def generate_aus():
     out_dir = "./out/AUs"
     out_file = "cam_vid"
-    program_bin = "./OpenFace/build/bin/FeatureExtraction"
+    logs_file = open('./out/logs', 'w')
 
-    # for windows users:
-    # programPath = "OpenFace"
-    # cmdCommand = "cd "+programPath+" & "+"FaceLandmarkImg.exe -aus -out_dir ."+outDir+"  -f ."+imagePath +" > logs"
-
-    subprocess.call([program_bin, '-aus', '-device', '0', '-out_dir', out_dir, '-of', out_file])
+    subprocess.call([openface_path, '-aus', '-device', '0', '-out_dir', out_dir, '-of', out_file], stdout=logs_file)
 
 
-def get_emotions():
+def get_emotions(clf):
     frame_emotions = []
     frame_timestamp = []
     with open(os.path.join('./out/AUs/', "cam_vid.csv")) as fp:
         column_names = fp.readline().split(", ")
-        next(fp)
+        #next(fp)
         for line in fp:
             aus = [0] * len(all_aus)
             column_values = line.split(", ")
@@ -42,17 +33,33 @@ def get_emotions():
             predicted_emotion = clf.predict([aus])
             frame_emotions.append(predicted_emotion[0])
             frame_timestamp.append(float(column_values[2]))
-    last_second = np.ceil(frame_timestamp[-1])
-    plt.xticks(np.arange(0, last_second, last_second / 10))
-    plt.scatter(frame_timestamp[2:-1:20], frame_emotions[2:-1:20])
-    plt.show()
-    plt.hist(frame_emotions)
-    plt.show()
+    show_statistics(frame_timestamp, frame_emotions)
+
+
+def printMenu():
+    print("Select mode: ")
+    print("1. Test")
+    print("2. Run")
+
+    print("\n")
 
 
 def main():
-    generate_aus()
-    get_emotions()
+    while (True):
+        printMenu()
+        mode = input("Mode: ")
+
+        if mode == "1":
+            test()
+        elif mode == "2":
+            generate_aus()
+            get_emotions(ck_clf)
+        elif mode == "q":
+            break
+        else:
+            print("Not a valid option")
+
+        print("Finished! \n")
 
 
 main()

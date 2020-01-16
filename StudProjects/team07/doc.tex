@@ -29,6 +29,7 @@
 \usepackage{url}
 \usepackage{verbatim}
 \usepackage{xcolor}
+\usepackage{pdfpages}
 
 \geometry{a4paper,top=3cm,left=2cm,right=2cm,bottom=3cm}
 
@@ -108,7 +109,7 @@ Pirvu Alexandru, SDI, 254
 \pagenumbering{gobble}
 
 \begin{abstract}
-	Text of abstract. Short info about: project relevance/importance, inteligent methods used for solving, data involved in the numerical experiments; conclude by the the results obtained.
+    One can evaluate the satisfaction level of an adult easily, by questionnaires, forms, live interviews after the reviewed activity or even self analysis techniques. This cannot be applied to preschoolers as they have a limited means or capacity for submitting forms or objectively answering questions. This project addresses the issue of automatic satisfaction level detection by the means of face feature analysis techniques. Machine learning has proven itself to be capable of automated complicated task. The proposed approach uses AI and machine learning to do real time analysis and emotion prediction to give comprehensive information about the satisfaction level relative to the performed task. Two support vector classifier models based on different type of data are created and compared. Test results show high integration potential right away, with minimum requirements and few teacher briefing information.
 \end{abstract}
 
 
@@ -118,7 +119,6 @@ Pirvu Alexandru, SDI, 254
 
 \listoftables
 \listoffigures
-\listofalgorithms
 
 \newpage
 
@@ -131,7 +131,7 @@ Pirvu Alexandru, SDI, 254
 \pagenumbering{arabic}
 
 
- 
+
 
 
 \chapter{Introduction}
@@ -141,7 +141,7 @@ Pirvu Alexandru, SDI, 254
 \label{section:what}
 
 We want an objective measurement of the emotions that children experience during the interaction. This requires the development of an application that allows the identification of the emotional states of a preschooler during the course of an activity. We need to associate tasks that children do and the frequency of an emotion.
-We want to detect emotions through facial expressions. For this association we need artificial intelligence algorithms. 
+We want to detect emotions through facial expressions. For this association we need artificial intelligence algorithms.
 
 We then use support vector machines to classify the facial expressions and emotions.
 Support vector machines have been proven useful in a number of pattern recognition tasks including face and facial action recognition.
@@ -149,24 +149,25 @@ Support vector machines have been proven useful in a number of pattern recogniti
 \section{Paper structure and original contribution(s)}
 \label{section:structure}
 
-The research presented in this paper advances the theory, design, and implementation of several particular models. 
+The research presented in this paper advances the theory, design, and implementation of several particular models.
 
-The main contribution of this report is to present an intelligent algorithm for solving the problem of $\ldots$.
+The main contribution of this report is to present an intelligent algorithm for solving the problem of emotion recognition for kids.
 
-The second contribution of this report consists of building an intuitive, easy-to-use and user
-friendly software application. Our aim is to build an algorithm that will help $\ldots$.
+The second contribution of this report consists of building an intuitive, easy-to-use and user friendly software application. Our aim is to build an algorithm that will help teachers to anaylize the kids emotions during different activities.
 
-The third contribution of this thesis consists of $\ldots$.
+The present work contains 6 bibliographical references and is structured in five chapters as follows.
 
+The first chapter/section is a short introduction in the main problem, emotion recognition for children, and why it is important.
 
-The present work contains $xyz$ bibliographical references and is structured in five chapters as follows.
+The second chapter describes the need for analyzing emotions for kids.
 
-The first chapter/section is a short introduction in $\ldots$.
+The chapter \ref{chapter:stateOfArt} describes 2 research papers's approach for emotion recognition, their datasets and their results.
 
-The second chapter/section describes $\ldots$.
+The chapter \ref{chapter:proposedApproach} details our approach for the given problem.
 
-The chapter/section \ref{chapter:proposedApproach} details $\ldots$.
+The chapter  \ref{chapter:application} describes our results and algorithms.
 
+The last chapter lists some conclusions and ideas for future work.
 
 
 \chapter{Scientific Problem}
@@ -176,17 +177,75 @@ The chapter/section \ref{chapter:proposedApproach} details $\ldots$.
 \section{Problem definition}
 \label{section:problemDefinition}
 
+    It can be hard to extract objective, relevant information regarding a specific task from a fully grown, schooled adult, which is capable of self evaluation, introspection and has a bigger experience to compare certain feelings to. With children, a lot of the helping factors are not present. They can loose focus and interest very fast, can be unpredictable and easily influenced. As in every field in the present day, machine learning and AI can be integrated and prove itself useful. The main goal is to automatically extract facial features as the children are performing a certain task, compute the emotion at small intervals of time and analyze those prediction in order to give an overall impression of the satisfaction level while performing the task.
+    It can immediately be seen that an intelligent algorithm will make possible a fast feedback mechanism with just a frontal camera. Depending of the used algorithms and the needed precision and performance, there can be limitations in terms of performance or ambiance. The variations are not significant and in average conditions, the performance of the system is satisfactory.
+    The workload of the project can be split in few different tasks as follows:
+
+\begin{itemize}
+    \item train and validate a model to predict an emotion based on facial features
+    \item extract real time facial features using the camera in from of the monitor
+    \item predict emotions and analyze the result in order to give relevant information to the teacher
+\end{itemize}
+
+
+\chapter{State of art/Related work}
+\label{chapter:stateOfArt}
+
+Automatically detecting facial expressions has become an increasingly important research area.
+
+In 2000, the Cohn-Kanade database was released for the purpose of promoting research into automatically detecting individual facial expressions. \cite{Lucey10}
+They recorded facial behavior of 210 adults. Participants were 18 to 50 years of age, 69\% female, 81\%, Euro-American, 13\% Afro-American, and 6\% other groups. For the CK+ distribution, they have augmented the dataset further to include 593 sequences from 123 subjects.
+They identified 7 basic emotion categories: Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise.
+They uses support vector machines to classify the facial expressions and emotions.
+
+Their results were considerable and the hit rates for each emotion were : Angry - 75.00\%, Disgust - 94.74\%, Fear - 65.22\%, Happy - 100\%, Sadness - 68.00\%, Surprised - 77.09\%, Neutral - 100\%. \cite{Lucey10}
+
+
+Tarnowski et. al in their article presented the results of recognition of seven emotional states. Facial expressions registered for six men aged 26-50, were used.
+Each subject participated in two sessions. A participant mimicked all seven examined emotional states. As a result, 42 5-second sessions were registered for each user. The database contained a total of 252 facial expressions. \cite{Tarnowski17}
+They used nearest neighbor classifier (3-NN) and two-layer neural network classifier (MLP) with 7 neurons in the hidden layer.
+The input of the network were six AU, and the output was one of the seven emotional states.
+
+They tested two ways to recognize emotions: a) subject-dependent - for each user separately and b) subject-independent - for all users together. In both cases, for 3-NN classifier, data were randomly divided on the teaching part (70\%) and the testing part (30\%) and for MLP into three groups: teaching (70\%), testing (15\%) and validation (15\%).
+In subject-independent approach, the classifier accuracies (CA) for 3-NN and MLP algorithms were respectively 95.5\% and 75.9\%.
+For user-independent classification the highest classification accuracy (73\%) was achieved for MLP neural network. \cite{Tarnowski17}
+
+
+
+
+\chapter{Proposed approach}
+\label{chapter:proposedApproach}
+
+The project was build upon three conceptual technical parts, solved using either existing tools or by implementing simple AI algorithms:
+
+\begin{enumerate}
+\item Previous experiments arose the need to have facial feature extraction tools which were made public and open source by their contributors. One of the most comprehensive and well documented tool is Open face. It has multiple utility functions to extract various information from various sources. It can process batch files, recorded videos or real time video using the camera device connected to the computer. For the described tasks addressed by this project, there will be two uses of OpenFace:
+    \begin{itemize}
+        \item for validation and testing purposes: extracting AUs from each frame of every test video; this can be done just once and the results be used after each validation step
+        \item end result integration: start the camera device and make computations on the real time frames in order to deliver the action units to the next processing phase as early in time as possible
+    \end{itemize}
+\item Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN. We used the given SVM implementation, which has a simple interface to configure and use the classifier.
+\item This module accomplished data collection, training the classifier and appliying the result on the tast data and finally on the running end software. Collecting the data from the different datasets described bellow proved to be a difficult task. Datasets were very different, most notably the given labels did not fully coincide, which made cross testing and validation hard and necessitated the exclusion of almost 30\% of the data in order to make the comparison possible.
+\end{enumerate}
+\section{Feature extraction}
+Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. Movements of individual facial muscles are encoded by FACS from slight different instant changes in facial appearance. Using FACS it is possible to code nearly any anatomically possible facial expression, deconstructing it into the specific Action Units (AU) that produced the expression. It is a common standard to objectively describe facial expressions.
+\include{tableAU}
+
+\textbf{\section{Training}}
+
+\subsection{Choosing the right tool}
+
 	For emotion recognition there is necessary to use different supervised machine learning algorithms in which a large set of annotated data is fed into the algorithms for the system to learn and predict the appropriate emotion types.  Machine learning algorithms generally provide more reasonable classification accuracy compared to other approaches, but one of the challenges in achieving good results in the classification process, is the need to have a sufficiently large training set.
-    
+
 	The intelligent algorithm we used is SVM (Support Vector Machine).
     SVM is a supervised machine learning algorithm which can be used for both classification or regression challenges. However,  it is mostly used in classification problems. In this algorithm, we plot each data item as a point in n-dimensional space with the value of each feature being the value of a particular coordinate. Then, we perform classification by finding the hyper-plane that differentiate the two classes very well.
-    
+
     In SVM, it is easy to have a linear hyper-plane between these two classes.  SVM has a technique called the kernel trick. These are functions which takes low dimensional input space and transform it to a higher dimensional space i.e. it converts not separable problem to separable problem, these functions are called kernels. It is mostly useful in non-linear separation problem. Simply put, it does some extremely complex data transformations, then find out the process to separate the data based on the labels or outputs you’ve defined. \cite{Ray17}
     \begin{figure}
     	\centerline{\includegraphics[width=8cm, height=8cm]{SVM}}
    		\caption{Optimal Hyperplane using the SVM algorithm}
     \end{figure}
-    
+
 
 Advantages:
 \begin{itemize}
@@ -204,46 +263,30 @@ Disadvantages:
 \end{itemize}
 
 
-
-\chapter{State of art/Related work}
-\label{chapter:stateOfArt}
-
-Automatically detecting facial expressions has become an increasingly important research area.
-
-In 2000, the Cohn-Kanade database was released for the purpose of promoting research into automatically detecting individual facial expressions. \cite{Lucey10}
-They recorded facial behavior of 210 adults. Participants were 18 to 50 years of age, 69\% female, 81\%, Euro-American, 13\% Afro-American, and 6\% other groups. For the CK+ distribution, they have augmented the dataset further to include 593 sequences from 123 subjects.
-They identified 7 basic emotion categories: Anger, Contempt, Disgust, Fear, Happy, Sadness and Surprise.
-They uses support vector machines to classify the facial expressions and emotions.
-
-Their results were considerable and the hit rates for each emotion were : Angry - 75.00\%, Disgust - 94.74\%, Fear - 65.22\%, Happy - 100\%, Sadness - 68.00\%, Surprised - 77.09\%, Neutral - 100\%. \cite{Lucey10}
+\chapter{Application (numerical validation)}
+\label{chapter:application}
 
 
-Tarnowski et. al in their article presented the results of recognition of seven emotional states. Coefficients describing elements of facial expressions, registered for six men aged 26-50, were used.
-Each subject participated in two sessions. A participant mimicked all seven examined emotional states. As a result, 42 5-second sessions were registered for each user. The entire database contained a total of 252 facial expressions. \cite{Tarnowski17}
-They used nearest neighbor classifier (3-NN) and two-layer neural network classifier (MLP) with 7 neurons in the hidden layer.
-The input of the network were six AU, and the output was one of the seven emotional states.
+\section{Methodology}
+\label{section:methodology}
 
-They tested two ways to recognize emotions: a) subject-dependent - for each user separately and b) subject-independent - for all users together. In both cases, for 3-NN classifier, data were randomly divided on the teaching part (70\%) and the testing part (30\%) and for MLP into three groups: teaching (70\%), testing (15\%) and validation (15\%).
-In subject-independent approach, the classifier accuracies (CA) for 3-NN and MLP algorithms were respectively 95.5\% and 75.9\%.
-For user-independent classification the highest classification accuracy (73\%) was achieved for MLP neural network. \cite{Tarnowski17}
+OpenFace is able to recognize a subset of AUs, specifically: 1, 2, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 20, 23, 25, 26, 28, and 45. \cite{Baltrusaitis18}
 
-
-
-
-\chapter{Proposed approach}
-\label{chapter:proposedApproach}
-
-Useful tools: 
+We trained two models for the Cohn Kanade dataset and CAFE. Due to different data structures and labels, the data gathering was split:
 \begin{itemize}
-\item OpenCV (Open source computer vision) is a library of programming functions mainly aimed at real-time computer vision. With OpenCV we can detect landmarks of all the faces found in an image and use them further in emotion detection.
-\item Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN.
-\item \textbf{Open Face}Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. 
+    \item CK: the action units were already extracted for each final image from the data set; the already given AUs were used and attributed as training data to the given label
+    \item CAFE: for each emotion label, we extracted with OpenFace the AUs in order to build the training data
+\end{itemize}
 
-\include{tableAU}
+The resulting models were saved for later used in validation, testing and execution.
 
-\textbf{\section{Dataset}}
+\end{itemize}
+
+\section{Data}
+\label{section:data}
+
 {\subsection{Cohn-Kanade Dataset (CK+)}}
-We used for training the the Extended Cohn-Kanade Dataset (CK+).
+We used for training the the Extended Cohn-Kanade Dataset (CK+) for training.
 Facial behavior of 210 adults was recorded using two
 hardware synchronized Panasonic AG-7500 cameras. Participants
 were 18 to 50 years of age, 69\% female, 81\%,
@@ -258,26 +301,28 @@ in duration (i.e. 10 to 60 frames) and incorporate the onset
 facial expressions.
 In this Phase there are 4 zipped up files. They relate to:
 
-1) The Images -  there are 593 sequences across 123 subjects which are FACS coded at the peak frame. All sequences are from the neutral face to the peak expression.
-2) The Landmarks - All sequences are AAM tracked with 68points landmarks for each image. 
-3) The FACS coded files - for each sequence (593) there is only 1 FACS file, which is the last frame (the peak frame). Each line of the file corresponds to a specific AU and then the intensity. An example is given below.
+1) The Images -  there are 593 sequences across 123 subjects which are FACS coded at the peak frame. All sequences are from the neutral face to the peak expression. \\
+2) The Landmarks - All sequences are AAM tracked with 68points landmarks for each image. \\
+3) The FACS coded files - for each sequence (593) there is only 1 FACS file, which is the last frame (the peak frame). Each line of the file corresponds to a specific AU and then the intensity. An example is given below. \\
 4) The Emotion coded files  - ONLY 327 of the 593 sequences have emotion sequences. This is because these are the only ones the fit the prototypic definition. Like the FACS files, there is only 1 Emotion file for each sequence which is the last frame (the peak frame). There should be only one entry and the number will range from 0-7 (i.e. 0=neutral, 1=anger, 2=contempt, 3=disgust, 4=fear, 5=happy, 6=sadness, 7=surprise).\cite{Lucey10}
 
 {\subsection{The Child Affective Facial Expression (CAFE) set}}
-CAFE database used for training.
+CAFE database is also used for training.
 Participants: One hundred undergraduate students (half male, half female) from the Rutgers University-Newark campus participated (M =
 21.2 years). The sample was 17\% African
 American, 27\% Asian, 30\% White, and 17\% Latino (the remaining 9\% chose“Other” or did not indicate their race/ethnicity).
 \cite{LoBue14}
-The CAFE is a collection of photographs taken of 2 to 8 year-old children (M = 5.3 years; R = 2.7 – 8.7 years) posing for six emotional facial expressions based on Ekman and Friesen’s(1976) basic emotional expressions—sadness, happiness, surprise, anger, disgust, and fear—plus a neutral face. 
+The CAFE is a collection of photographs taken of 2 to 8 year-old children (M = 5.3 years; R = 2.7 – 8.7 years) posing for six emotional facial expressions based on Ekman and Friesen’s(1976) basic emotional expressions—sadness, happiness, surprise, anger, disgust, and fear—plus a neutral face.
 In total, we had 154child-models (90 F, 64 M) pose each of these seven expressions. There was substantial variability across the faces, with a mean of 66\% accuracy across the 1192 photographs of the set, and a range of 0–98\% correct.
+
 
 {\subsection{EmoReact - video dataset}}
 EmoReact database used for testing.
 YouTube has become a significant source of video data where hundreds of hours of new videos are uploaded every minute . They have selected React channel from YouTube as the source from which we downloaded videos of children who are reacting to different subjects. These videos contain children between the ages of four to fourteen years old, from
 different races and both genders. They have downloaded videos of children reacting to 37 subjects that include food, technology, YouTube
-videos and gaming devices. 
+videos and gaming devices.
 Dataset of 63 children from which 32 are female and 31 are male, total of 1254 video clips.\cite{Nojavanasghari16}
+Due to the nature of the data, labels were given differently than the other two datasets which used images rather than videos. Each video was assigned a list of emotions present int he video. Also, different labels were used from which only half can be exactly mapped to previous datasets labels.
 
  \begin{figure}
     	\centerline{\includegraphics[width=12cm, height=4cm]{emoReact}}
@@ -285,83 +330,77 @@ Dataset of 63 children from which 32 are female and 31 are male, total of 1254 v
 and number of people who have expressed that emo-
 tion in EmoReact.\cite{Nojavanasghari16}}
     \end{figure}
-   
+
 
  \begin{figure}
     	\centerline{\includegraphics[width=12cm, height=7cm]{emoReactRez}}
    		\caption{Comparison between visual and acoustic models in predicting emotions.\cite{Nojavanasghari16}}
-    \end{figure}
-   
-  
-\textbf{\section{Training}}
+  \end{figure}
 
-	Facial Action Coding System (FACS) is a system to taxonomize human facial movements by their appearance on the face. Movements of individual facial muscles are encoded by FACS from slight different instant changes in facial appearance. Using FACS it is possible to code nearly any anatomically possible facial expression, deconstructing it into the specific Action Units (AU) that produced the expression. It is a common standard to objectively describe facial expressions.
-OpenFace is able to recognize a subset of AUs, specifically: 1, 2, 4, 5, 6, 7, 9, 10, 12, 14, 15, 17, 20, 23, 25, 26, 28, and 45. \cite{Baltrusaitis18} \\ \\Scikit-learn is a software machine learning library for Python. It features various classification, regression and clustering algorithms including support vector machines, random forests, gradient boosting, k-means and DBSCAN. \\
-\end{itemize}
-
-{
-\section{Testing and Results}
-}
-
-For videos from EmoReact 
-
-   
-
-
-\chapter{Application (numerical validation)}
-\label{chapter:application}
-
-
-Explain the experimental methodology and the numerical results obtained with your approach and the state of art approache(s).
-
-Try to perform a comparison of several approaches.
-
-Statistical validation of the results.
-
-
-\section{Methodology}
-\label{section:methodology}
-
-\begin{itemize}
-	\item What are criteria you are using to evaluate your method? 
-	\item What specific hypotheses does your experiment test? Describe the experimental methodology that you used. 
-	\item What are the dependent and independent variables? 
-	\item What is the training/test data that was used, and why is it realistic or interesting? Exactly what performance data did you collect and how are you presenting and analyzing it? Comparisons to competing methods that address the same problem are particularly useful.
-\end{itemize}
-
-\section{Data}
-\label{section:data}
-
-Describe the used data.
+    \\
 
 \section{Results}
 \label{section:results}
 
-Present the quantitative results of your experiments. Graphical data presentation such as graphs and histograms are frequently better than tables. What are the basic differences revealed in the data. Are they statistically significant?
+\\
+For a given video from webcam or from the datasets we generated 2 graphics describing the emotions from the videos.
 
+The firs graphic (\ref{fig:EmotionTime}) shows the emotions in different time frames from the video. Using this graphic we can analyze the kid's emotions, and the transitions between them.
+
+The second figure (\ref{fig:emotion_histogram_video})  is a histogram for every emotion that was recognized in the video. Also this histogram show which emotions lasted longer.
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{EmotionTime}
+    \caption{Emotion time analysis on a video}
+    \label{fig:EmotionTime}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{EmotionHistogram}
+    \caption{Emotion histogram for a video}
+    \label{fig:emotion_histogram_video}
+\end{figure}
+
+\subsection{Tests}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{test_comparison}
+    \caption{Side to side comparison of the two models}
+    \label{fig:test_comparison}
+\end{figure}
+
+The third dataset(EmoReact) was used as testing data for both models. Given the differences in labels, the not matching labels were treated as not applicable(N/A). For each video, the tested model predicted emotions for each frame at a given interval and the results were gathered in a top emotion list. The first two emotions in the list were compared to the given list of labels from the testing dataset. If any of the top two emotions is present in the label list, we count it as a succes, otherwise as a failure.
+In \label{test_comparison} can be seen that the cafe model achieves an almost 50\% success rate, while the CK model, which was trained using "perfect" emotion expressions, achieves a significantly worse result.
+
+\newpage
 \section{Discussion}
 \label{section:discussion}
 
-\begin{itemize}
-	\item Is your hypothesis supported? 
-	\item What conclusions do the results support about the strengths and weaknesses of your method compared to other methods? 
-	\item How can the results be explained in terms of the underlying properties of the algorithm and/or the data. 
-\end{itemize}
+The results are promising, and our application can already be used for recognizing emotions in a recorded video.
 
+The algoritm is also tested and for CAFE model we have a 50\% accuracy.
 
+The tests would be more accurate if the different datasets had the same Actions Units and the same emotions as the output.
 
 \chapter{Conclusion and future work}
 \label{chapter:concl}
 
-Try to emphasise the strengths and the weaknesses of your approach.
-What are the major shortcomings of your current method? For each shortcoming, propose additions or enhancements that would help overcome it. 
+We described the need for emotion recognition, we presented our approach and the results.
 
-Briefly summarize the important results and conclusions presented in the paper. 
+The application we implemented can be used by teachers, who have to record the kids during their activities. After that step the can analyze the results from the video, they can see the emotions in time frames and the transitions between the emotions. Also the teacher can see the kid's emotions intensities and what emotions took longer. This gives the teachers the desired result, and they can adjust the activities for the kids.
 
-\begin{itemize}
-	\item What are the most important points illustrated by your work? 
-	\item How will your results improve future research and applications in the area? 
-\end{itemize}
+For future work we the application can be optimized to give more accurate results, also a real time emotion recognition can be added.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=12cm]{mindmap}
+    \caption{Project development mindmap}
+    \label{fig:mindmap}
+\end{figure}
 
 
 \bibliographystyle{plain}
