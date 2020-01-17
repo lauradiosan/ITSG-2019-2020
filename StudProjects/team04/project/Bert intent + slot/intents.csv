@@ -1,0 +1,134 @@
+hello,commonQ.greet
+hi,commonQ.greet
+good afternoon,commonQ.greet
+hi there,commonQ.greet
+hello there,commonQ.greet
+hey,commonQ.greet
+hey bot,commonQ.greet
+good morning,commonQ.greet
+hello,commonQ.greet
+goodmorning,commonQ.greet
+goodevening,commonQ.greet
+goodafternoon,commonQ.greet
+hi,commonQ.greet
+morning,commonQ.greet
+need help,commonQ.assist
+i need you to help me,commonQ.assist
+I need some info,commonQ.assist
+Will you assist me?,commonQ.assist
+please help me,commonQ.assist
+i need you to help me now,commonQ.assist
+i need you to help me find a hotel,commonQ.assist
+i want to fin a hotel,commonQ.assist
+i want to go on a holiday,commonQ.assist
+i need a hotel,commonQ.assist
+i need a holiday,commonQ.assist
+please help me find a hotel,commonQ.assist
+thanks,commonQ.thank
+thank you,commonQ.thank
+that is very helpful,commonQ.thank
+thank you goodbye,commonQ.thank
+help me,commonQ.thank
+okay thank you,commonQ.thank
+thanks goodbye,commonQ.thank
+ah thank you goodbye,commonQ.thank
+thank you good bye,commonQ.thank
+uh okay thank you good bye,commonQ.thank
+thank you bye,commonQ.thank
+um okay thank you good bye,commonQ.thank
+the data is correct,task.search
+search that data,task.search
+please search,task.search
+search this,task.search
+yes,task.search
+ok,task.search
+thank you,commonQ.thank
+that is very helpful,commonQ.thank
+thank you goodbye,commonQ.thank
+help me,commonQ.thank
+okay thank you,commonQ.thank
+bye,task.stop
+exit,task.stop
+quit,task.stop
+hello,commonQ.greet
+hello,commonQ.greet
+go,task.search
+search,task.search
+go on,task.search
+search that,task.search
+search this,task.search
+search it,task.search
+go ahead,task.search
+go,task.search
+yes,task.search
+quit,task.stop
+i want to fin a hotel,commonQ.assist
+i want to go on a holiday,commonQ.assist
+i need a hotel,commonQ.assist
+i need a holiday,commonQ.assist
+please help me find a hotel,commonQ.assist
+thanks,commonQ.thank
+thank you,commonQ.thank
+that is very helpful,commonQ.thank
+thank you goodbye,commonQ.thank
+help me,commonQ.thank
+okay thank you,commonQ.thank
+bye,task.stop
+exit,task.stop
+quit,task.stop
+hello,commonQ.greet
+hi,commonQ.greet
+hello,commonQ.greet
+hi,commonQ.greet
+bye,task.stop
+exit,task.stop
+quit,task.stop
+e,task.stop
+exit,task.stop
+quit,task.stop
+bye,task.stop
+y thank you,commonQ.thank
+thanks goodbye,commonQ.thank
+ah thank you goodbye,commonQ.thank
+thank you good bye,commonQ.thank
+uh okay thank you good bye,commonQ.thank
+thank you bye,commonQ.thank
+bye,task.stop
+exit,task.stop
+quit,task.stop
+bye,task.stop
+exit,task.stop
+hello,commonQ.greet
+hi,commonQ.greet
+hello,commonQ.greet
+hi,commonQ.greet
+good afternoon,commonQ.greet
+hi there,commonQ.greet
+hello there,commonQ.greet
+hey,commonQ.greet
+hey bot,commonQ.greet
+good morning,commonQ.greet
+hello,commonQ.greet
+goodmorning,commonQ.greet
+goodevening,commonQ.greet
+goodafternoon,commonQ.greet
+hi,commonQ.greet
+hello,commonQ.greet
+hi,commonQ.greet
+bye,task.stop
+exit,task.stop
+quit,task.stop
+bye,task.stop
+exit,task.stop
+quit,task.stop
+bye,task.stop
+y thank you,commonQ.thank
+thanks goodbye,commonQ.thank
+ah thank you goodbye,commonQ.thank
+thank you good bye,commonQ.thank
+uh okay thank you good bye,commonQ.thank
+thank you bye,commonQ.thank
+um okay thank you good bye,commonQ.thank
+the data is correct,task.search
+search that data,task.search
+

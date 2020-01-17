@@ -1,0 +1,4 @@
+O O O O O B-hotel O B-toloc.city_name
+O O O O O B-toloc.city_name O B-arrive_date.month_name B-arrive_date.day_number
+O O O O B-money.cost_relative B-money.price I-money.price
+O O O B-toloc.city_name O B-arrive_date.month_name O B-money.cost_relative O B-money.price I-money.price
