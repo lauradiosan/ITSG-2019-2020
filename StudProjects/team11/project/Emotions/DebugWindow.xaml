@@ -1,0 +1,31 @@
+﻿<Window x:Class="Emotions.Debug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Emotions"
+        mc:Ignorable="d"
+        Title="Debug">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Image Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Name="originalVideoFrameHolder"/>
+        <Image Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Name="boxedVideoFrameHolder"/>
+        <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Name="faceFrameHolder"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" >
+            <TextBlock Name="emotion"/>
+            <TextBlock Name="loggedInUser"/>
+            <TextBlock Name="lastUserAction"/>
+            <TextBlock Name="visibleUser"/>
+            <TextBox  Name="registerFaceName"/>
+            <Button Content="Register"/>
+        </StackPanel>
+    </Grid>
+</Window>
