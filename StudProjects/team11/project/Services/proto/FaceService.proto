@@ -1,0 +1,12 @@
+﻿syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+service FaceDetection {
+  rpc SendProcessedData (ImageData) returns (google.protobuf.Empty);
+}
+
+message ImageData {
+  bytes ImageBytes = 1;
+  int32 emotion = 2;
+  repeated double embedding = 3 [packed=true];
+}

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Emotions.Windows.Management.AddChildDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Emotions.Windows.Management"
+             mc:Ignorable="d" 
+             Height="450" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="1" Grid.Row="1" Source="{Binding ChildImage}" />
+        <Button Grid.Column="1" Grid.Row="3" Command="{Binding CaptureFrameCommand}" Content="Take snapshot"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4" Margin="10">
+            <TextBlock Text="Usename: " VerticalAlignment="Center" />
+            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="5" Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Content="Save"/>
+    </Grid>
+</UserControl>
