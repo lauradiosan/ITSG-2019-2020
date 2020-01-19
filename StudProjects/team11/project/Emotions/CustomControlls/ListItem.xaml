@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="Emotions.CustomControlls.ApplicationIcon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:Emotions.Properties"
+             xmlns:local="clr-namespace:Emotions.CustomControlls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             Width="150"
+             Height="150">
+    <UserControl.Resources>
+        <Style x:Key="TransparentStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="Transparent">
+                            <ContentPresenter/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Button Style="{StaticResource TransparentStyle}" Command="{Binding OnClick}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="{Binding Icon}"/>
+                <TextBlock Grid.Row="1" Margin="10" Text="{Binding Name}" HorizontalAlignment="Center" FontSize="15"/>
+            </Grid>
+        </Button>
+
+
+        <Button Grid.Column="1" Grid.Row="0" Background="Transparent" BorderBrush="Transparent"  Height="Auto" Width="Auto" Command="{Binding OnDelete}" Padding="0" Visibility="{Binding DeleteButtonVisibility}">
+            <materialDesign:PackIcon Kind="RemoveCircle" Foreground="Red" Height="Auto" Width="Auto"/>
+        </Button>
+    </Grid>
+</UserControl>

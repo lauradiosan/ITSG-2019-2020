@@ -1,0 +1,54 @@
+﻿<Window x:Class="Emotions.Windows.Children.ApplicationsWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:Emotions.Windows.Children"
+        
+             xmlns:customcontrolls="clr-namespace:Emotions.CustomControlls"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       WindowState="Maximized"
+        WindowStyle="None"
+      Title="ApplicationsWindow">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type customcontrolls:ListItemViewModel}">
+                <customcontrolls:ApplicationIcon/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type customcontrolls:ListButton}">
+                <customcontrolls:AddButton/>
+            </DataTemplate>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Shadows.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ToggleButton.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <materialDesign:DialogHost Identifier="LoginDialogHost">
+        <DockPanel>
+            <materialDesign:ColorZone Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="PrimaryMid" DockPanel.Dock="Top">
+                <DockPanel>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Applications</TextBlock>
+                    <Button HorizontalAlignment="Right" Click="Button_Click">Exit</Button>
+                </DockPanel>
+            </materialDesign:ColorZone>
+            <Grid Margin="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding ApplicationPanelItems}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </Grid>
+        </DockPanel>
+    </materialDesign:DialogHost>
+</Window>
