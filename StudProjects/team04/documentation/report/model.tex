@@ -292,7 +292,7 @@ which classifies the message into one of several intents. Depending on the inten
 	\label{stateM}
 \end{figure}
 
-BERT (Bidirectional Encoder Representations from Transformers) is a machine learning architecture, that presents state-of-the-art results on eleven natural language processing tasks \cite{bert}. BERT is a pretrained model which can then be optimized for downstream tasks. The implementation of downstream tasks can be done through fine-tunning or feature-based. Feature based approach implies architecture changes to accommodate for additional weight categories. The fine-tunnig approach, that BERT uses, adds an additional final layer to accommodate the weights for a specific set of data. The pretraining of the model is done in two steps: masked language model and next sentence prediction. MLM was needed because of the bidirectional nature and full connectivity of the model, without which nodes could find their word in the output of the previous nodes. Next sentence prediction proved to be very useful in natural language understanding tasks like question answering.
+BERT (Bidirectional Encoder Representations from Transformers) is a machine learning architecture, that presents state-of-the-art results on eleven natural language processing tasks \cite{bert}. BERT is a pretrained model which can then be optimized for downstream tasks. The implementation of downstream tasks can be done through fine-tuning or feature-based. Feature based approach implies architecture changes to accommodate for additional weight categories. The fine-tunig approach, that BERT uses, adds an additional final layer to accommodate the weights for a specific set of data. The pretraining of the model is done in two steps: masked language model and next sentence prediction. MLM was needed because of the bidirectional nature and full connectivity of the model, without which nodes could find their word in the output of the previous nodes. Next sentence prediction proved to be very useful in natural language understanding tasks like question answering.
 
 \subsection{Custom intent classification model}
 \label{section:customModels}
@@ -420,7 +420,54 @@ We defined four intent classes for our custom intent classifier. The results obt
 	\label{lossM1}
 \end{figure}
 
-We obtained an accuracy of 97\% for the custom intent classifier and of 92.59\% for the Joined BERT model. The BERT model behaved better in a real-life usage simulation of the application.
+We obtained an accuracy of 87\% for the custom intent classifier and of 92.59\% for the Joined BERT model. The BERT model behaved better in a real-life usage simulation of the application.
+
+As a further analysis, we computed the confidence intervals for the accuracy of our two approaches. The computations follow Equation \ref{formula}. The results of the comparison are shown in Table \ref{compInt}, computed on validation datasets of 30 (n=30) samples with p1=0.87 and p2=0.9259.
+
+\begin{figure}[h!]
+\begin{center}
+    \begin{equation}
+    P\in[p-z(p(1-p)/n)^{1/2}, p+z(p(1-p)/n)^{1/2}]
+    \label{formula}
+    \end{equation}
+\end{center}
+\end{figure}
+
+Confidence intervals are a way of quantifying the uncertainty of an estimate, in our case, the accuracy, by providing upper and lower bounds for that parameter, as well as likelihood. Generally speaking, we can assert that smaller confidence intervals denote a more precise estimate, while larger confidence intervals show a less precise estimate.
+
+\begin{table}
+\begin{center}
+    \begin{tabular}{ | m{1.5cm} | m{1cm}| m{4cm} | m{4cm} | m{4cm} |} 
+    \hline
+    \multicolumn{5}{|c|}{Confidence intervals} \\
+    \hline
+    P = 1 - $\alpha$ & z & Interval bi-LSTM (I1) & Interval Bert (I2) &  I1 $\cap$ I2 \\
+    \hline
+    99.9\% & 3.3 & [0.5281, 1.0] & [0.7665, 1.0] & [0.7665, 1.0] \\ 
+    99.0\% & 2.577 & [0.5856, 0.9744] & [0.8028, 1.0] & [0.8028, 0.9744] \\ 
+    98.5\% & 2.43 & [0.5962, 0.9638] & [0.8095, 1.0] & [0.8095,  0.9638] \\ 
+    97.5\% & 2.243 & [0.6104, 0.9496] & [0.8185, 1.0] & [0.8185, 0.9496] \\ 
+    95.0\% & 1.96 & [0.6318, 0.9282] & [0.832, 1.0] & [0.832, 0.9282] \\ 
+    90.0\% & 1.645 & [0.6556, 0.9044] & [0.8471, 1.00] & [0.8471, 0.9044] \\ 
+    85.0\% & 1.439 & [0.6712, 0.8888] & [0.8569, 0.9947] & [0.8569, 0.888] \\ 
+    75.0\% & 1.151 & [0.6929, 0.8671] & [0.8707, 0.9809] & $\emptyset$ \\
+    \hline
+    \end{tabular}
+\end{center}
+\caption{Confidence intervals for bi-LSTM and Bert models, and their comparison.}
+\label{compInt}
+\end{table}
+
+Following the study of these confidence intervals, we can affirm with highest probability of 75.0\% that the Bert model performs better for our problem and case study. Furthermore, there is a 95\% likelihood that the confidence interval [0.832, 1.0] covers the true classification accuracy of the Bert model on unseen data.
+
+A visual representation of the confidence intervals is depicted in Figure \ref{interv}. It is noticeable that the smaller confidence intervals for Bert also denote that the algorithm produces more precise estimations.
+
+\begin{figure}
+\centerline{\includegraphics[width=12cm]{Img/intervals.png}}  
+	\caption{Confidence intervals for bi-LSTM and Bert. We notice that, with 75\% probability, Bert performs better for the task at hand. The smaller intervals for Bert also denote that the algorithm produces more precise estimations.}
+	\label{interv}
+\end{figure}
+
 
 \section{Back-end Python application}
 \label{section:BE}
