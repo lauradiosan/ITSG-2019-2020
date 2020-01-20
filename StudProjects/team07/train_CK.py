@@ -8,7 +8,7 @@ def get_data(path, normalized):
             emotion_path = os.path.join(subdir, file)
             facs_path = os.path.join(subdir.replace('Emotion', 'FACS'), file.replace('emotion', 'facs'))
 
-            emotion = emotionNames[int(float(extract_emotion(emotion_path)))]
+            emotion = emotion_names[int(float(extract_emotion(emotion_path)))]
             if normalized:
                 facs = extract_normalized_facs_without_intensity(facs_path)
             else:
@@ -59,8 +59,8 @@ def extract_facs_without_intensity(path):
 
 
 def main():
-    data = get_data('Emotion/', True)
-    train(data, 'model_ck')
+    data = get_data('data/ck/Emotion/', True)
+    train(data, 'model/model_ck')
 
 
 main()
