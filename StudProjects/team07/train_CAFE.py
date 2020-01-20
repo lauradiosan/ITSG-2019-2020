@@ -4,12 +4,11 @@ from utils import *
 def get_data():
     data = {}
 
-    cafe_path = './CAFEdataset/dataset'
+    cafe_path = './data/cafe'
     for emotion in os.listdir(cafe_path):
         aus_path = os.path.join(cafe_path, emotion, 'out', emotion + '.csv')
         with open(aus_path) as fp:
             column_names = fp.readline().split(", ")
-            next(fp)
             for line in fp:
                 aus = [0] * len(all_aus)
                 column_values = line.split(", ")
@@ -30,7 +29,7 @@ def get_data():
 
 def main():
     data = get_data()
-    train(data, 'model_cafe')
+    train(data, 'model/model_cafe')
 
 
 main()
