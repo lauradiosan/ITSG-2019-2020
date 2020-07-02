@@ -40,7 +40,7 @@
         <querydsl.version>4.1.4</querydsl.version>
         <lombok.version>1.16.16</lombok.version>
         <spring.boot.starter.version>1.5.3.RELEASE</spring.boot.starter.version>
-        <mysql.connector.version>5.1.43</mysql.connector.version>
+        <mysql.connector.version>8.0.16</mysql.connector.version>
         <h2.version>1.4.196</h2.version>
         <slf4j.version>1.7.25</slf4j.version>
         <thymeleaf.spring.security.version>3.0.2.RELEASE</thymeleaf.spring.security.version>
